@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from accounts.models import Player
 from django.db.models import Count
 from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_200_OK
+
 # from badges.api.serializers import BadgesSerializer
 
 # @api_view(['GET'])
@@ -15,5 +16,5 @@ from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_200_OK
 
 #     # if serializer.is_valid():
 #     #     return Response(serializer.data, HTTP_200_OK)
-#     # else:    
+#     # else:
 #     return Response(serializer.data, HTTP_200_OK)

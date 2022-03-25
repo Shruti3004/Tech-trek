@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('badges', '0001_initial'),
+        ("badges", "0001_initial"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='badge',
-            old_name='one_player_only',
-            new_name='one_time_only',
+            model_name="badge",
+            old_name="one_player_only",
+            new_name="one_time_only",
         ),
         migrations.AddField(
-            model_name='badgetoplayer',
-            name='is_active',
+            model_name="badgetoplayer",
+            name="is_active",
             field=models.BooleanField(default=True),
         ),
     ]

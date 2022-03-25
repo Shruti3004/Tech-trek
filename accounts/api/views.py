@@ -6,18 +6,21 @@ from rest_framework.response import Response
 from accounts.api.serializers import (
     PlayerRegisterSerializer,
     PlayerListSerializer,
-    PlayerDashboardSerializer
+    PlayerDashboardSerializer,
 )
+
 
 class PlayerRegisterAPIView(generics.CreateAPIView):
     serializer_class = PlayerRegisterSerializer
     queryset = Player.objects.all()
     permission_classes = [AllowAny]
 
+
 class PlayerListAPIView(generics.ListAPIView):
     serializer_class = PlayerListSerializer
     queryset = Player.objects.all()
     permission_classes = [IsAdminUser]
+
 
 class PlayerDashboardAPIView(views.APIView):
     permission_classes = [IsAuthenticated]

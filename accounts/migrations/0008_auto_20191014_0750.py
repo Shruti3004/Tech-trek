@@ -7,24 +7,33 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('accounts', '0007_auto_20191008_0804'),
+        ("accounts", "0007_auto_20191008_0804"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='player',
-            name='avatar',
+            model_name="player",
+            name="avatar",
         ),
         migrations.AddField(
-            model_name='player',
-            name='admission_no',
+            model_name="player",
+            name="admission_no",
             field=models.CharField(default=123, max_length=10),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='player',
-            name='contact_no',
-            field=models.CharField(default=123456789, max_length=10, validators=[django.core.validators.RegexValidator(message='Phone number should be of 10 digits.', regex='^[1-9]\\d{9}$')]),
+            model_name="player",
+            name="contact_no",
+            field=models.CharField(
+                default=123456789,
+                max_length=10,
+                validators=[
+                    django.core.validators.RegexValidator(
+                        message="Phone number should be of 10 digits.",
+                        regex="^[1-9]\\d{9}$",
+                    )
+                ],
+            ),
             preserve_default=False,
         ),
     ]

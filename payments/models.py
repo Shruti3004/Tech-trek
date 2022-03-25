@@ -2,12 +2,14 @@ from django.db import models
 from accounts.models import Player
 from django.utils import timezone
 
+
 class Order(models.Model):
     order_id = models.CharField(max_length=30)
-    player = models.ForeignKey(Player, related_name='Player', on_delete=models.CASCADE)
+    player = models.ForeignKey(Player, related_name="Player", on_delete=models.CASCADE)
+
 
 class PaymentHistory(models.Model):
-    player = models.ForeignKey(Player, related_name='player', on_delete=models.CASCADE)
+    player = models.ForeignKey(Player, related_name="player", on_delete=models.CASCADE)
     ORDERID = models.CharField(max_length=30)
     TXNID = models.CharField(max_length=64)
     BANKTXNID = models.CharField(max_length=100, null=True, blank=True)

@@ -8,19 +8,29 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Question',
+            name="Question",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('question', models.CharField(max_length=200)),
-                ('tech_answer', models.CharField(max_length=100)),
-                ('nontech_answer', models.CharField(max_length=100)),
-                ('level', models.IntegerField(blank=True)),
-                ('wait_duration', models.DurationField(default=datetime.timedelta(0, 13))),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("question", models.CharField(max_length=200)),
+                ("tech_answer", models.CharField(max_length=100)),
+                ("nontech_answer", models.CharField(max_length=100)),
+                ("level", models.IntegerField(blank=True)),
+                (
+                    "wait_duration",
+                    models.DurationField(default=datetime.timedelta(0, 13)),
+                ),
             ],
         ),
     ]

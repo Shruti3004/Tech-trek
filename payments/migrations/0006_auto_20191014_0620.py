@@ -6,23 +6,23 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('payments', '0005_auto_20191012_1839'),
+        ("payments", "0005_auto_20191012_1839"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='paymenthistory',
-            name='REFUNDAMT',
+            model_name="paymenthistory",
+            name="REFUNDAMT",
             field=models.CharField(blank=True, max_length=10, null=True),
         ),
         migrations.AddField(
-            model_name='paymenthistory',
-            name='TXNTYPE',
+            model_name="paymenthistory",
+            name="TXNTYPE",
             field=models.CharField(blank=True, max_length=5, null=True),
         ),
         migrations.AlterField(
-            model_name='paymenthistory',
-            name='RESPCODE',
+            model_name="paymenthistory",
+            name="RESPCODE",
             field=models.CharField(max_length=10),
         ),
     ]

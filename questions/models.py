@@ -1,6 +1,7 @@
 from datetime import timedelta
 from django.db import models
 
+
 class Question(models.Model):
     question = models.CharField(max_length=200)
     tech_answer = models.CharField(max_length=100)
