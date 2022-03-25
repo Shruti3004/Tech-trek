@@ -6,13 +6,23 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('badges', '0003_auto_20191013_1910'),
+        ("badges", "0003_auto_20191013_1910"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='badge',
-            name='badge_type',
-            field=models.CharField(choices=[('1', 'level1'), ('2', 'level2'), ('3', 'level3'), ('4', 'level4'), ('5', 'level5'), ('6', 'solved first')], max_length=1),
+            model_name="badge",
+            name="badge_type",
+            field=models.CharField(
+                choices=[
+                    ("1", "level1"),
+                    ("2", "level2"),
+                    ("3", "level3"),
+                    ("4", "level4"),
+                    ("5", "level5"),
+                    ("6", "solved first"),
+                ],
+                max_length=1,
+            ),
         ),
     ]

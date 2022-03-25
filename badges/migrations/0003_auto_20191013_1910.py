@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('badges', '0002_auto_20191011_1558'),
+        ("badges", "0002_auto_20191011_1558"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='badge',
-            name='one_time_only',
+            model_name="badge",
+            name="one_time_only",
             field=models.BooleanField(default=True),
         ),
     ]

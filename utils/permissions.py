@@ -4,28 +4,33 @@ from rest_framework import status
 from datetime import datetime
 from django.conf import settings
 
+
 class IsPaid(permissions.BasePermission):
     """
     Allow access to only paid users.
     """
+
     message = "Only paid users can access this."
-    
+
     def has_object_permission(self, request, view, obj):
         if obj.is_paid:
             return True
         raise RequirePayment()
 
+
 class RequirePayment(APIException):
     status_code = status.HTTP_403_FORBIDDEN
     default_detail = {
-        'player_info': {
-            'is_paid': False,
+        "player_info": {
+            "is_paid": False,
         },
-        'message': "Only paid users can access this."
+        "message": "Only paid users can access this.",
     }
-    
+
+
 class GameStarted(permissions.BasePermission):
     message = "The game is yet to start"
+
     def has_permission(self, request, view):
         if datetime.now() < settings.START_TIME:
             return False

@@ -7,18 +7,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('accounts', '0003_player_score'),
+        ("accounts", "0003_player_score"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='player',
-            name='unlock_time',
+            model_name="player",
+            name="unlock_time",
             field=models.DateTimeField(default=datetime.datetime.now),
         ),
         migrations.AlterField(
-            model_name='player',
-            name='last_solved',
+            model_name="player",
+            name="last_solved",
             field=models.DateTimeField(default=datetime.datetime.now),
         ),
     ]

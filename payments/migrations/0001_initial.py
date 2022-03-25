@@ -16,22 +16,37 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='PaymentHistory',
+            name="PaymentHistory",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('ORDER_ID', models.CharField(max_length=30)),
-                ('TXNID', models.IntegerField()),
-                ('BANKTXNID', models.IntegerField(blank=True, null=True)),
-                ('TXNAMOUNT', models.FloatField()),
-                ('CURRENCY', models.CharField(blank=True, max_length=4, null=True)),
-                ('STATUS', models.CharField(max_length=12)),
-                ('RESPCODE', models.IntegerField()),
-                ('RESPMSG', models.TextField(max_length=250)),
-                ('TXNDATE', models.DateTimeField(default=django.utils.timezone.now)),
-                ('GATEWAYNAME', models.CharField(blank=True, max_length=30, null=True)),
-                ('BANKNAME', models.CharField(blank=True, max_length=50, null=True)),
-                ('PAYMENTMODE', models.CharField(blank=True, max_length=10, null=True)),
-                ('player', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='player', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("ORDER_ID", models.CharField(max_length=30)),
+                ("TXNID", models.IntegerField()),
+                ("BANKTXNID", models.IntegerField(blank=True, null=True)),
+                ("TXNAMOUNT", models.FloatField()),
+                ("CURRENCY", models.CharField(blank=True, max_length=4, null=True)),
+                ("STATUS", models.CharField(max_length=12)),
+                ("RESPCODE", models.IntegerField()),
+                ("RESPMSG", models.TextField(max_length=250)),
+                ("TXNDATE", models.DateTimeField(default=django.utils.timezone.now)),
+                ("GATEWAYNAME", models.CharField(blank=True, max_length=30, null=True)),
+                ("BANKNAME", models.CharField(blank=True, max_length=50, null=True)),
+                ("PAYMENTMODE", models.CharField(blank=True, max_length=10, null=True)),
+                (
+                    "player",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="player",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

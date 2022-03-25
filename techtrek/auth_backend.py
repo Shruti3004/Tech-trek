@@ -1,6 +1,7 @@
 from accounts.models import Player
 from django.db.models import Q
 
+
 class EmailOrUsernameBackend:
     def authenticate(self, request, username=None, password=None):
         try:

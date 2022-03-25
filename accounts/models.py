@@ -4,7 +4,9 @@ from django.utils import timezone
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.core.validators import RegexValidator
+
 # from utils.badges import award_badge
+
 
 class Player(AbstractUser):
     is_paid = models.BooleanField(default=False)
@@ -14,12 +16,14 @@ class Player(AbstractUser):
     score = models.IntegerField(default=0)
     avatar_no = models.PositiveIntegerField(default=1)
     admission_no = models.CharField(max_length=10)
-    contact_regex = RegexValidator(regex=r'^[1-9]\d{9}$',
-        message="Phone number should be of 10 digits.")
+    contact_regex = RegexValidator(
+        regex=r"^[1-9]\d{9}$", message="Phone number should be of 10 digits."
+    )
     contact_no = models.CharField(validators=[contact_regex], max_length=10)
 
     def __str__(self):
         return self.username
+
     @property
     def num_questions_solved(self):
         return self.current_question - 1
