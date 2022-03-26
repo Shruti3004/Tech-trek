@@ -87,7 +87,7 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "techtrek.middleware.TimeMiddleware",
+    # "techtrek.middleware.TimeMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -177,3 +177,5 @@ PAYTM_MERCHANT_ID = "QrlbWY45369945644865"
 HOST_URL = "http://localhost:8000"
 PAYTM_CALLBACK_URL = "/paytm/response/"
 PAYTM_WEBSITE = "WEBSTAGING"
+
+FEE_AMOUNT = 40

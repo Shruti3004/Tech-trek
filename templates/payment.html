@@ -1,22 +1,43 @@
-<html>
-  <head>
-    <title>Merchant Checkout Page</title>
-  </head>
-  <body>
-    <center>
-      <h1>Please do not refresh this page.</h1>
-    </center>
-    <form method="post" action="https://securegw-stage.paytm.in/order/process" name="paytm">
-      <table border="1">
-        <tbody>
-          {% for key,value in paytmdict.items %}
-              <input type="hidden" name="{{key}}" value="{{value}}">
-          {% endfor %}
-        </tbody>
-      </table>
-      <script type="text/javascript">
-        document.paytm.submit();
-      </script>
-    </form>
-  </body>
-</html>
+<button id="rzp-button1">Pay</button>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "{{ key_id }}",
+    "amount": "{{ amount }}",
+    "currency": "INR",
+    "name": "Nibble Computer Society",
+    "description": "Tech Trek participation fee",
+    "order_id": "{{ order_id }}",
+    "handler": function (response){
+        alert("payment successful!");
+        console.log(response);
+
+        var formData = new FormData();
+        formData.append('razorpay_payment_id', response.razorpay_payment_id);
+        formData.append('razorpay_order_id', response.razorpay_order_id);
+        formData.append('razorpay_signature', response.razorpay_signature);
+        formData.append('server_order_id', '{{ server_order_id }}');
+
+        var callback = new XMLHttpRequest();
+        callback.open('POST', '');
+        callback.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
+        callback.send(formData);
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#7e33ff",
+        "backdrop_color": "#5822b5" 
+    }
+};
+var rzp1 = new Razorpay(options);
+rzp1.on('payment.failed', function (response){
+    alert("Payment failed!");
+    console.log(response.error);
+});
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>

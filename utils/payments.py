@@ -14,7 +14,7 @@ def random_string_generator(
 def unique_order_id_generator(Klass):
     new_order_id = random_string_generator()
 
-    qs_exists = Klass.objects.filter(ORDERID=new_order_id).exists()
+    qs_exists = Klass.objects.filter(order_id=new_order_id).exists()
     if qs_exists:
         return unique_order_id_generator(Klass)
     return new_order_id
