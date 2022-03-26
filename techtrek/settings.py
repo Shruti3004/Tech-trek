@@ -12,8 +12,10 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
-# from .secrets import KEY
 from datetime import datetime, timedelta
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -172,10 +174,6 @@ MEDIA_URL = "/media/"
 # CAUTION: USE DIFFERENT TIMES IN PRODUCTION
 START_TIME = datetime(2019, 10, 15, 20, 20, 0)
 END_TIME = datetime(2019, 10, 16, 12, 14, 5)
-PAYTM_MERCHANT_KEY = "#nR%j@LUkBqgIlI%"
-PAYTM_MERCHANT_ID = "QrlbWY45369945644865"
 HOST_URL = "http://localhost:8000"
-PAYTM_CALLBACK_URL = "/paytm/response/"
-PAYTM_WEBSITE = "WEBSTAGING"
 
 FEE_AMOUNT = 40

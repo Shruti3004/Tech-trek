@@ -1,7 +1,6 @@
+import os
 from django.shortcuts import render
-from django.conf import settings
 from accounts.models import Player
-from secrets import KEYS
 from payments.models import Order
 from techtrek.settings import FEE_AMOUNT
 from .razorpay_utils import payment_order, verify_payment
@@ -12,7 +11,6 @@ from rest_framework.permissions import IsAuthenticated
 
 # TEMPLATING IMPORTS
 
-from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
 
@@ -26,7 +24,7 @@ class Payment(APIView):
 
         order_data, order_id = payment_order(player)
         context = {
-            "key_id": KEYS["key_id"],
+            "key_id": os.environ.get("key_id"),
             "order_id": order_data["id"],
             "amount": order_data["amount"],
             "server_order_id": order_id,
@@ -38,7 +36,7 @@ class Payment(APIView):
             player = Player.objects.get(username=request.user.username)
             player.is_paid = True
             player.save()
-            
+
             order = Order.objects.get(order_id=request.POST.get("server_order_id"))
             order.amount_paid = FEE_AMOUNT
             order.amount_due = 0

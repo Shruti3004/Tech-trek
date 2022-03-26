@@ -1,13 +1,13 @@
+import os
 import hmac
 import hashlib
 import razorpay
 from .models import Order
 from utils.payments import unique_order_id_generator
-from secrets import KEYS
 from techtrek.settings import FEE_AMOUNT
 
 
-client = razorpay.Client(auth=(KEYS["key_id"], KEYS["key_secret"]))
+client = razorpay.Client(auth=(os.environ.get("key_id"), os.environ.get("key_secret")))
 client.set_app_details({"title": "Tech Trek", "version": "2.1.0"})
 
 
@@ -21,17 +21,17 @@ def payment_order(player):
     payment = client.order.create(data=data)
     print(payment)
     Order.objects.create(
-        player = player,
-        order_id = receipt_id,
-        entity = payment["entity"],
-        amount = str(payment["amount"]),
-        amount_paid = str(payment["amount_paid"]),
-        amount_due = str(payment["amount_due"]),
-        currency = payment["currency"],
-        receipt = payment["receipt"],
-        offer_id = payment["offer_id"],
-        status = payment["status"],
-        attempts = str(payment["attempts"]),
+        player=player,
+        order_id=receipt_id,
+        entity=payment["entity"],
+        amount=str(payment["amount"]),
+        amount_paid=str(payment["amount_paid"]),
+        amount_due=str(payment["amount_due"]),
+        currency=payment["currency"],
+        receipt=payment["receipt"],
+        offer_id=payment["offer_id"],
+        status=payment["status"],
+        attempts=str(payment["attempts"]),
     )
     return payment, receipt_id
 
@@ -43,7 +43,7 @@ def verify_payment(callback):
     print("callback signature: ", callback_signature)
 
     generated_signature = hmac_sha256(
-        razorpay_order_id + "|" + razorpay_payment_id, KEYS["key_secret"]
+        razorpay_order_id + "|" + razorpay_payment_id, os.environ.get("key_secret")
     )
     print("generated signature: ", generated_signature)
 

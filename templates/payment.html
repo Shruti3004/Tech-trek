@@ -9,9 +9,8 @@ var options = {
     "description": "Tech Trek participation fee",
     "order_id": "{{ order_id }}",
     "handler": function (response){
-        alert("payment successful!");
         console.log(response);
-
+        
         var formData = new FormData();
         formData.append('razorpay_payment_id', response.razorpay_payment_id);
         formData.append('razorpay_order_id', response.razorpay_order_id);
@@ -22,6 +21,7 @@ var options = {
         callback.open('POST', '');
         callback.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
         callback.send(formData);
+        alert("payment successful!");
     },
     "notes": {
         "address": "Razorpay Corporate Office"
