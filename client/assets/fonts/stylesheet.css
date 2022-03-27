@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'Ephemera Egyptian Condensed';
+    src: url('EphemeraEgyptian-CondensedSemibold.eot');
+    src: local('Ephemera Egyptian Condensed Semibold'), local('EphemeraEgyptian-CondensedSemibold'),
+        url('EphemeraEgyptian-CondensedSemibold.eot?#iefix') format('embedded-opentype'),
+        url('EphemeraEgyptian-CondensedSemibold.woff2') format('woff2'),
+        url('EphemeraEgyptian-CondensedSemibold.woff') format('woff'),
+        url('EphemeraEgyptian-CondensedSemibold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ephemera Egyptian Condensed';
+    src: url('EphemeraEgyptian-CondensedMedium.eot');
+    src: local('Ephemera Egyptian Condensed Medium'), local('EphemeraEgyptian-CondensedMedium'),
+        url('EphemeraEgyptian-CondensedMedium.eot?#iefix') format('embedded-opentype'),
+        url('EphemeraEgyptian-CondensedMedium.woff2') format('woff2'),
+        url('EphemeraEgyptian-CondensedMedium.woff') format('woff'),
+        url('EphemeraEgyptian-CondensedMedium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ephemera Egyptian Condensed';
+    src: url('EphemeraEgyptian-CondensedLight.eot');
+    src: local('Ephemera Egyptian Condensed Light'), local('EphemeraEgyptian-CondensedLight'),
+        url('EphemeraEgyptian-CondensedLight.eot?#iefix') format('embedded-opentype'),
+        url('EphemeraEgyptian-CondensedLight.woff2') format('woff2'),
+        url('EphemeraEgyptian-CondensedLight.woff') format('woff'),
+        url('EphemeraEgyptian-CondensedLight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ephemera Egyptian Variable';
+    src: url('EphemeraEgyptian-Variable.eot');
+    src: local('Ephemera Egyptian Variable'), local('EphemeraEgyptian-Variable'),
+        url('EphemeraEgyptian-Variable.eot?#iefix') format('embedded-opentype'),
+        url('EphemeraEgyptian-Variable.woff2') format('woff2'),
+        url('EphemeraEgyptian-Variable.woff') format('woff'),
+        url('EphemeraEgyptian-Variable.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ephemera Egyptian Condensed';
+    src: url('EphemeraEgyptian-CondensedRegular.eot');
+    src: local('Ephemera Egyptian Condensed'), local('EphemeraEgyptian-CondensedRegular'),
+        url('EphemeraEgyptian-CondensedRegular.eot?#iefix') format('embedded-opentype'),
+        url('EphemeraEgyptian-CondensedRegular.woff2') format('woff2'),
+        url('EphemeraEgyptian-CondensedRegular.woff') format('woff'),
+        url('EphemeraEgyptian-CondensedRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ephemera Egyptian Condensed';
+    src: url('EphemeraEgyptian-CondensedBold.eot');
+    src: local('Ephemera Egyptian Condensed Bold'), local('EphemeraEgyptian-CondensedBold'),
+        url('EphemeraEgyptian-CondensedBold.eot?#iefix') format('embedded-opentype'),
+        url('EphemeraEgyptian-CondensedBold.woff2') format('woff2'),
+        url('EphemeraEgyptian-CondensedBold.woff') format('woff'),
+        url('EphemeraEgyptian-CondensedBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
