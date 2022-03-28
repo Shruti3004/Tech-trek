@@ -27,7 +27,7 @@ const Routes = () => {
       />
       <Route
         exact
-        path="/signup"
+        path="/register"
         element={
           <React.Suspense fallback={<div>Loading..</div>}>
             <Signup />

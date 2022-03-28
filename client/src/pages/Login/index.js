@@ -1,20 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import ButtonPrimary from "../../components/ButtonPrimary";
 
 const Login = () => {
+  const [details, setDetails] = useState({
+    name: "",
+    password: ""
+  })
+
+  const handleChange = (e) => {
+    setDetails({
+      ...details,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleSubmit = (e) => {
+    // e.preventDefault()
+    console.log(details)
+  }
+
   return (
     <div className="background">
       <div className="flex justify-center items-center h-full">
-        <div className="blur-background  p-5">
+        <div className="blur-background p-8">
           <div className="login-container">
-            <div className="login-header">
-              <h1 className="font-bold main-heading text-white center">
-                Login
+            <div className="login-header grid grid-cols-2">
+              <h1 className="font-bold cursor-pointer main-heading text-white center">
+                <Link to="/login">
+                  LOGIN
+                </Link>
+              </h1>
+              <h1 className="font-bold cursor-pointer main-heading text-white center">
+                <Link to="/register">
+                  REGISTER
+                </Link>
               </h1>
             </div>
-            <div className="login-body mt-6">
+            <div className="login-body mt-11">
               <form className="w-full max-w-xs">
-                <input className="w-full input-text" value="Shruti" />
-                {/* <input className="mt-4 w-1"/> */}
+                <input name="name" onChange={handleChange} className="w-full input-text input-background p-[20px] text-[18px]" type="text" placeholder="Username" />
+                <input name="password" onChange={handleChange} className="w-full input-text mt-6 input-background p-[20px] text-[18px]" type="password" placeholder="Password" />
+                <div className="w-full flex justify-center item-center mt-11">
+                  <ButtonPrimary handleClick={handleSubmit} text="LOGIN" className="py-5 button-background-form button-background-login" />
+                </div>
               </form>
             </div>
           </div>
