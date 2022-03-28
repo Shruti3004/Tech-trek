@@ -14,6 +14,15 @@ const Routes = () => {
           </React.Suspense>
         }
       />
+      <Route
+        exact
+        path="/register"
+        element={
+          <React.Suspense fallback={<div>Loading..</div>}>
+            <App />
+          </React.Suspense>
+        }
+      />
       <Route path="*" element={<div>404</div>} />
     </Router>
   );
