@@ -1,5 +1,6 @@
 .background {
   background: url("./images/bg-xl.svg");
+  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
@@ -9,6 +10,7 @@
   .background {
     background: url("./images/bg-l.svg");
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     height: 100vh;
     width: 100vw;
@@ -18,15 +20,17 @@
   .background {
     background: url("./images/bg-md.svg");
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     height: 100vh;
     width: 100vw;
   }
 }
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 500px) {
   .background {
     background: url("./images/bg-xs.svg");
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     max-width: 100%;
   }
@@ -35,6 +39,7 @@
 .button-background {
   background: url("./images/button-bg.svg");
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   background-position-y: -4px;
   height: 100%;
@@ -50,9 +55,8 @@ body {
 :root {
   --darkOrange: #ffa43e;
   --brown: #663d14;
-  --darkBrown: #1a0f05;
 }
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
@@ -62,7 +66,7 @@ body {
 ::-webkit-scrollbar-thumb {
   background: var(--darkOrange);
   border-radius: 10px;
-}
+} */
 ::selection {
   color: var(--brown);
   background: var(--darkOrange);
