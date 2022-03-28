@@ -4,7 +4,7 @@ const ButtonPrimary = ({ text, className, handleClick }) => {
   console.log(className);
   return (
     <div
-      className={`flex cursor-pointer hover:shadow-lg items-center px-9 py-5 justify-center button-background font-bold text-4xl text-primary ${
+      className={`flex cursor-pointer hover:shadow-lg items-center px-9 py-5 justify-center button-background text-4xl text-primary font-bold ${
         !!className && className
       }`}
       onClick={() => handleClick()}
