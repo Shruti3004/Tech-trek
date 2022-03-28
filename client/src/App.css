@@ -27,7 +27,16 @@
   .background {
     background: url("./images/bg-xs.svg");
     background-size: cover;
-    background-repeat: no-repeat;    
-    max-width: 100%;    
+    background-repeat: no-repeat;
+    max-width: 100%;
   }
+}
+
+.button-background {
+  background: url("./images/button-bg.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: -4px;
+  height: 100%;
+  width: 100%;
 }
