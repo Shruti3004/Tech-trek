@@ -8,16 +8,20 @@ function Clock({ expiryTimestamp }) {
   });
 
   return (
-    <div className="text-primary text-4xl font-bold flex justify-center items-center">
-      <div className="flex flex-col">
-        <div>{hours + days * 24}</div>
-        <div>hrs</div>
+    <>
+      <div className="text-primary text-4xl font-bold flex justify-center items-center">
+        <div className="mx-1">{hours + days * 24}</div>
+        <div className="mx-1">:</div>
+        <div className="mx-1"> {minutes}</div>
+        <div className="mx-1">:</div>
+        <div className="mx-1">{seconds}</div>
       </div>
-      <div className="mx-1">:</div>
-      <div> {minutes}</div>
-      <div className="mx-1">:</div>
-      <div>{seconds}</div>
-    </div>
+      <div className="flex justify-between items-center w-10/12 mx-auto">
+        <div>hrs</div>
+        <div>mins</div>
+        <div>sec</div>
+      </div>
+    </>
   );
 }
 export default Clock;
