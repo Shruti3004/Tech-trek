@@ -1,5 +1,6 @@
 .background {
   background: url("./images/bg-xl.svg");
+  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
@@ -9,6 +10,7 @@
   .background {
     background: url("./images/bg-l.svg");
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     height: 100vh;
     width: 100vw;
@@ -18,15 +20,17 @@
   .background {
     background: url("./images/bg-md.svg");
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     height: 100vh;
     width: 100vw;
   }
 }
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 500px) {
   .background {
     background: url("./images/bg-xs.svg");
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     max-width: 100%;
   }
@@ -35,8 +39,78 @@
 .button-background {
   background: url("./images/button-bg.svg");
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   background-position-y: -4px;
   height: 100%;
   width: 100%;
+}
+
+html,
+body {
+  font-size: 100%;
+  overflow-x: hidden !important;
+  scroll-behavior: smooth;
+}
+:root {
+  --darkOrange: #ffa43e;
+  --brown: #663d14;
+}
+/* ::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--darkOrange);
+  border-radius: 10px;
+} */
+::selection {
+  color: var(--brown);
+  background: var(--darkOrange);
+}
+@font-face {
+  font-family: Emphera-bold;
+  src: url("../assets/fonts/EphemeraEgyptian-CondensedBold.ttf");
+  font-display: swap;
+}
+@font-face {
+  font-family: Emphera-demi;
+  src: url("../assets/fonts/EphemeraEgyptian-CondensedSemibold.ttf");
+  font-display: swap;
+}
+@font-face {
+  font-family: Emphera-medium;
+  src: url("../assets/fonts/EphemeraEgyptian-CondensedMedium.ttf");
+  font-display: swap;
+}
+@font-face {
+  font-family: Emphera-regular;
+  src: url("../assets/fonts/EphemeraEgyptian-CondensedRegular.ttf");
+  font-display: swap;
+}
+.font-bold {
+  margin: 0;
+  font-family: Emphera-bold !important;
+}
+.font-demi {
+  margin: 0;
+  font-family: Emphera-demi;
+}
+.font-medium {
+  margin: 0;
+  font-family: Emphera-medium;
+}
+.font-regular {
+  margin: 0;
+  font-family: Emphera-regular;
+}
+.main-heading {
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 100%;
+  text-align: center;
+  text-transform: uppercase;
 }
