@@ -103,3 +103,10 @@ body {
   margin: 0;
   font-family: Emphera-regular;
 }
+.main-heading {
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 100%;
+  text-align: center;
+  text-transform: uppercase;
+}
