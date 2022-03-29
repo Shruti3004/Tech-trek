@@ -7,8 +7,76 @@ import avatar3 from '../../images/avatar-3.svg'
 import avatar4 from '../../images/avatar-4.svg'
 import avatar5 from '../../images/avatar-5.svg'
 import avatar6 from '../../images/avatar-6.svg'
+import axios from 'axios';
 
 const Signup = () => {
+  function loadScript(src) {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+      document.body.appendChild(script);
+    });
+  }
+
+  async function displayRazorpay() {
+    const res = await loadScript(
+      "https://checkout.razorpay.com/v1/checkout.js"
+    );
+
+    if (!res) {
+      alert("Razorpay SDK failed to load. Are you online?");
+      return;
+    }
+
+    const result = await axios.post("http://localhost:5000/payment/orders");
+    console.log("RESULTS: ", result);
+    if (!result) {
+      alert("Server error. Are you online?");
+      return;
+    }
+
+    const { amount, id: order_id, currency } = result.data;
+
+    const options = {
+      key: process.env.REACT_APP_RAZORPAY, // Enter the Key ID generated from the Dashboard
+      amount: amount.toString(),
+      currency: currency,
+      name: "Tech Trek",
+      description: "TechTrek registration fees",
+      order_id: order_id,
+      handler: async function (response) {
+        const data = {
+          orderCreationId: order_id,
+          razorpayPaymentId: response.razorpay_payment_id,
+          razorpayOrderId: response.razorpay_order_id,
+          razorpaySignature: response.razorpay_signature,
+          username: "OKAy",
+        };
+
+        const result = await axios.post("http://localhost:5000/payment/success", data);
+
+        alert(result.data.msg);
+      },
+      prefill: {
+        name: details.name,
+        email: details.email,
+        contact: details.contact,
+      },
+      theme: {
+        color: "#61dafb",
+      },
+    };
+
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
+  }
+
   const [details, setDetails] = useState({
     name: "",
     password: "",
@@ -105,7 +173,7 @@ const Signup = () => {
 
                   </div>
                   <div className="w-full flex justify-center item-center mt-11">
-                    <ButtonPrimary handleClick={handleSubmit} text="PAY&nbsp;NOW" className="W-[200px] py-5 button-background-form button-background-register" />
+                    <ButtonPrimary handleClick={displayRazorpay} text="PAY&nbsp;NOW" className="W-[200px] py-5 button-background-form button-background-register" />
                   </div>
                 </form>
               )}
