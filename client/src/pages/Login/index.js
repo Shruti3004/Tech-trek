@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { signIn } from '../../api/index'
 import ButtonPrimary from "../../components/ButtonPrimary";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [details, setDetails] = useState({
     name: "",
     password: ""
@@ -15,9 +17,10 @@ const Login = () => {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async () => {
     // e.preventDefault()
-    console.log(details)
+    await signIn(details, navigate);
+
   }
 
   return (
@@ -39,7 +42,7 @@ const Login = () => {
             </div>
             <div className="login-body mt-11">
               <form className="w-full max-w-xs">
-                <input name="name" onChange={handleChange} className="w-full input-text input-background p-[20px] text-[18px]" type="text" placeholder="Username" />
+                <input name="username" onChange={handleChange} className="w-full input-text input-background p-[20px] text-[18px]" type="text" placeholder="Username" />
                 <input name="password" onChange={handleChange} className="w-full input-text mt-6 input-background p-[20px] text-[18px]" type="password" placeholder="Password" />
                 <div className="w-full flex justify-center item-center mt-11">
                   <ButtonPrimary handleClick={handleSubmit} text="LOGIN" className="py-5 button-background-form button-background-login" />
