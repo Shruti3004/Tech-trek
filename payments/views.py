@@ -1,5 +1,5 @@
 import os
-from django.shortcuts import render
+from rest_framework.response import Response
 from accounts.models import Player
 from payments.models import Order
 from techtrek.settings import FEE_AMOUNT
@@ -8,10 +8,6 @@ from .razorpay_utils import payment_order, verify_payment
 # REST FRAMEWORK IMPORTS
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
-
-# TEMPLATING IMPORTS
-
-from django.http import HttpResponse
 
 
 # REST View
@@ -29,7 +25,7 @@ class Payment(APIView):
             "amount": order_data["amount"],
             "server_order_id": order_id,
         }
-        return render(request, "payment.html", context)
+        return Response(context)
 
     def post(self, request, format=None):
         if verify_payment(request.POST):
@@ -43,6 +39,6 @@ class Payment(APIView):
             order.attempts = str(int(order.attempts) + 1)
             order.save()
 
-            return HttpResponse("Payment Successful")
+            return Response("Payment Successful")
         else:
-            return HttpResponse("Payment Failed")
+            return Response("Payment Failed")
