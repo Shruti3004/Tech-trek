@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { signIn } from '../../api/index'
 import ButtonPrimary from "../../components/ButtonPrimary";
 
 const Login = () => {
   const navigate = useNavigate();
   const [details, setDetails] = useState({
-    name: "",
+    username: "",
     password: ""
   })
 
@@ -21,6 +21,10 @@ const Login = () => {
     // e.preventDefault()
     await signIn(details, navigate);
 
+  }
+
+  if (localStorage.getItem("accessToken")) {
+    return <Navigate to="/timer" />
   }
 
   return (

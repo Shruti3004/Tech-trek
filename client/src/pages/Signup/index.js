@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, Navigate } from 'react-router-dom';
 import { generateOrder, registerUser } from "../../api/index";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import avatar1 from '../../images/avatar-1.svg'
@@ -34,7 +34,7 @@ const Signup = () => {
 
   const handleContinue = (e) => {
     // e.preventDefault()
-    console.log(details)
+
     setStep(1)
   }
 
@@ -73,10 +73,13 @@ const Signup = () => {
 
   }]
 
+  if (localStorage.getItem("accessToken")) {
+    return <Navigate to="/timer" />
+  }
   return (
     <div className="background">
       <div className="flex justify-center items-center h-full">
-        <div className="blur-background p-8 mt-[15rem]">
+        <div className="blur-background p-8 px-20 lg:px-16 md:px-7 md:mt-[18rem] lg:mt-[15rem]">
           <div className="login-container">
             <div className="login-header grid grid-cols-2">
               <h1 className="cursor-pointer text-2xl text-white text-center">
@@ -103,7 +106,7 @@ const Signup = () => {
                   </div>
                 </form>
               ) : (
-                <form className="w-full max-w-xs">
+                <form className="w-full max-w-md">
                   <div className='font-regular text-white text-[18px] text-center'>Select your avatar</div>
                   <div className='w-full grid grid-cols-2 gap-4 '>
                     {Avatars.map((avt) => (

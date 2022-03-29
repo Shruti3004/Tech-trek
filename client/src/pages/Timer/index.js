@@ -11,7 +11,7 @@ const TimerPage = () => {
             setUser(res);
             setLoading(false);
         });
-    })
+    }, [])
 
     if (loading) {
         return <div>Loading</div>

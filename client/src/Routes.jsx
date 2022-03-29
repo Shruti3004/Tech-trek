@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes as Router, Route } from "react-router-dom";
+import { Routes as Router, Route, Navigate } from "react-router-dom";
 import App from "./App";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -13,7 +13,11 @@ const Routes = () => {
         path="/"
         element={
           <React.Suspense fallback={<div>Loading..</div>}>
-            <App />
+            {localStorage.getItem("accessToken") ? (
+              <Navigate to="/timer" />
+            ) : (
+              <App />
+            )}
           </React.Suspense>
         }
       />
@@ -40,7 +44,11 @@ const Routes = () => {
         path="/timer"
         element={
           <React.Suspense fallback={<div>Loading..</div>}>
-            <TimerPage />
+            {localStorage.getItem("accessToken") ? (
+              <TimerPage />
+            ) : (
+              <Navigate to="/" />
+            )}
           </React.Suspense>
         }
       />
