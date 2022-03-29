@@ -55,7 +55,8 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 # JWT Authentication
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=50),
+    "ACCESS_TOKEN_LIFETIME": timedelta(weeks=4),
+    "REFRESH_TOKEN_LIFETIME": timedelta(weeks=4),
 }
 # Application definition
 

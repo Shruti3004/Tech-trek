@@ -9,4 +9,5 @@ db.sqlite3
 plsignore
 client/node_modules/
 media/
+static/
 client/build/
