@@ -13,11 +13,7 @@ const Routes = () => {
         path="/"
         element={
           <React.Suspense fallback={<div>Loading..</div>}>
-            {localStorage.getItem("accessToken") ? (
-              <Navigate to="/timer" />
-            ) : (
-              <App />
-            )}
+            <App />
           </React.Suspense>
         }
       />
@@ -44,11 +40,7 @@ const Routes = () => {
         path="/timer"
         element={
           <React.Suspense fallback={<div>Loading..</div>}>
-            {localStorage.getItem("accessToken") ? (
-              <TimerPage />
-            ) : (
-              <Navigate to="/" />
-            )}
+            <TimerPage />
           </React.Suspense>
         }
       />

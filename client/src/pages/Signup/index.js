@@ -21,7 +21,7 @@ const Signup = () => {
     contact_no: ""
   })
 
-  const [avatar, setAvatar] = useState();
+  const [avatar, setAvatar] = useState(0);
 
   const [step, setStep] = useState(0)
 
@@ -38,9 +38,9 @@ const Signup = () => {
     setStep(1)
   }
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
     // code
-
+    e.preventDefault();
     await registerUser({ ...details, password2: details.password, avatar_no: avatar }, navigate)
 
   }
@@ -79,7 +79,7 @@ const Signup = () => {
   return (
     <div className="background">
       <div className="flex justify-center items-center h-full">
-        <div className="blur-background p-8 px-20 lg:px-16 md:px-7 md:mt-[18rem] lg:mt-[15rem]">
+        <div className="blur-background p-8 px-20 lg:px-16 md:px-7 md:mt-[18rem] lg:mt-[16rem]">
           <div className="login-container">
             <div className="login-header grid grid-cols-2">
               <h1 className="cursor-pointer text-2xl text-white text-center">
@@ -102,7 +102,7 @@ const Signup = () => {
                   <input name='admission_no' onChange={handleChange} className="w-full input-text mt-[18px] input-background p-[20px] text-[18px]" type="text" placeholder="Admission no" />
                   <input name='contact_no' onChange={handleChange} className="w-full input-text mt-[18px] input-background p-[20px] text-[18px]" type="text" placeholder="Phone no" />
                   <div className="w-full flex justify-center item-center mt-11">
-                    <ButtonPrimary handleClick={handleContinue} text="CONTINUE" className="W-[200px] py-5 button-background-form button-background-register" />
+                    <ButtonPrimary disabled={!(!!details.username && !!details.password && !!details.email && !!details.contact_no && !!details.admission_no)} handleClick={handleContinue} text="CONTINUE" className="W-[200px] py-5 button-background-form button-background-register" />
                   </div>
                 </form>
               ) : (
@@ -115,7 +115,7 @@ const Signup = () => {
 
                   </div>
                   <div className="w-full flex justify-center item-center mt-11">
-                    <ButtonPrimary handleClick={handleSubmit} text="PAY&nbsp;NOW" className="W-[200px] py-5 button-background-form button-background-register" />
+                    <ButtonPrimary disabled={avatar === 0} handleClick={(e) => handleSubmit(e)} text="PAY&nbsp;NOW" className="W-[200px] py-5 button-background-form button-background-register" />
                   </div>
                 </form>
               )}
