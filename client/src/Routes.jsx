@@ -3,6 +3,7 @@ import { Routes as Router, Route } from "react-router-dom";
 import App from "./App";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import TimerPage from "./pages/Timer";
 
 const Routes = () => {
   return (
@@ -31,6 +32,15 @@ const Routes = () => {
         element={
           <React.Suspense fallback={<div>Loading..</div>}>
             <Signup />
+          </React.Suspense>
+        }
+      />
+      <Route
+        exact
+        path="/timer"
+        element={
+          <React.Suspense fallback={<div>Loading..</div>}>
+            <TimerPage />
           </React.Suspense>
         }
       />

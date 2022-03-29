@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { generateOrder, registerUser } from "../../api/index";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import avatar1 from '../../images/avatar-1.svg'
 import avatar2 from '../../images/avatar-2.svg'
@@ -8,13 +9,16 @@ import avatar4 from '../../images/avatar-4.svg'
 import avatar5 from '../../images/avatar-5.svg'
 import avatar6 from '../../images/avatar-6.svg'
 
+
 const Signup = () => {
+
+
   const [details, setDetails] = useState({
-    name: "",
+    username: "",
     password: "",
     email: "",
-    admission: "",
-    phone: ""
+    admission_no: "",
+    contact_no: ""
   })
 
   const [avatar, setAvatar] = useState();
@@ -34,8 +38,11 @@ const Signup = () => {
     setStep(1)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async () => {
     // code
+
+    await registerUser({ ...details, password2: details.password, avatar_no: avatar })
+
   }
 
 
@@ -86,11 +93,11 @@ const Signup = () => {
             <div className="login-body mt-6">
               {step === 0 ? (
                 <form className="w-full max-w-xs">
-                  <input name='name' onChange={handleChange} className="w-full input-text input-background p-[20px] text-[18px]" type="text" placeholder="Username" />
+                  <input name='username' onChange={handleChange} className="w-full input-text input-background p-[20px] text-[18px]" type="text" placeholder="Username" />
                   <input name='password' onChange={handleChange} className="w-full input-text mt-[18px] input-background p-[20px] text-[18px]" type="password" placeholder="Password" />
                   <input name='email' onChange={handleChange} className="w-full input-text mt-[18px] input-background p-[20px] text-[18px]" type="email" placeholder="Email" />
-                  <input name='admission' onChange={handleChange} className="w-full input-text mt-[18px] input-background p-[20px] text-[18px]" type="text" placeholder="Admission no" />
-                  <input name='phone' onChange={handleChange} className="w-full input-text mt-[18px] input-background p-[20px] text-[18px]" type="text" placeholder="Phone no" />
+                  <input name='admission_no' onChange={handleChange} className="w-full input-text mt-[18px] input-background p-[20px] text-[18px]" type="text" placeholder="Admission no" />
+                  <input name='contact_no' onChange={handleChange} className="w-full input-text mt-[18px] input-background p-[20px] text-[18px]" type="text" placeholder="Phone no" />
                   <div className="w-full flex justify-center item-center mt-11">
                     <ButtonPrimary handleClick={handleContinue} text="CONTINUE" className="W-[200px] py-5 button-background-form button-background-register" />
                   </div>
