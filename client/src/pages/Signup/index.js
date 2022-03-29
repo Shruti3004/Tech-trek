@@ -17,7 +17,7 @@ const Signup = () => {
     phone: ""
   })
 
-  const [avatar, setAvatar] = useState(0)
+  const [avatar, setAvatar] = useState();
 
   const [step, setStep] = useState(0)
 
@@ -32,16 +32,39 @@ const Signup = () => {
     // e.preventDefault()
     console.log(details)
     setStep(1)
-  }  
+  }
 
   const handleSubmit = (e) => {
     // code
   }
 
-  const handleAvatarSelect = (e) => {
-    setAvatar(e.target.parentNode.id)
-  }
 
+
+  const Avatars = [{
+    id: 1,
+    img: avatar1,
+
+  }, {
+    id: 2,
+    img: avatar2,
+
+  }, {
+    id: 3,
+    img: avatar3,
+
+  }, {
+    id: 4,
+    img: avatar4,
+
+  }, {
+    id: 5,
+    img: avatar5,
+
+  }, {
+    id: 6,
+    img: avatar6,
+
+  }]
 
   return (
     <div className="background">
@@ -49,13 +72,13 @@ const Signup = () => {
         <div className="blur-background p-8">
           <div className="login-container">
             <div className="login-header grid grid-cols-2">
-              <h1 className="font-bold cursor-pointer main-heading text-white center">
+              <h1 className="font-bold cursor-pointer main-heading text-white text-center">
                 <Link to="/login">
                   LOGIN
                 </Link>
               </h1>
-              <h1 className="font-bold cursor-pointer main-heading text-white center">
-              <Link to="/register">
+              <h1 className="font-bold cursor-pointer main-heading text-white text-center underline underline-offset-4">
+                <Link to="/register">
                   REGISTER
                 </Link>
               </h1>
@@ -76,12 +99,10 @@ const Signup = () => {
                 <form className="w-full max-w-xs">
                   <div className='font-regular text-white text-[18px] text-center'>Select your avatar</div>
                   <div className='w-full grid grid-cols-2 gap-4 '>
-                    <div onClick={handleAvatarSelect} id="1" className='flex justify-center items-center cursor-pointer'><img src={avatar1} alt="avatar1" /></div>
-                    <div onClick={handleAvatarSelect} id="2" className='flex justify-center items-center cursor-pointer'><img src={avatar2} alt="avatar2" /></div>
-                    <div onClick={handleAvatarSelect} id="3" className='flex justify-center items-center cursor-pointer'><img src={avatar3} alt="avatar3" /></div>
-                    <div onClick={handleAvatarSelect} id="4" className='flex justify-center items-center cursor-pointer'><img src={avatar4} alt="avatar4" /></div>
-                    <div onClick={handleAvatarSelect} id="5" className='flex justify-center items-center cursor-pointer mt-4'><img src={avatar5} alt="avatar5" /></div>
-                    <div onClick={handleAvatarSelect} id="6" className='flex justify-center items-center cursor-pointer mt-4'><img src={avatar6} alt="avatar6" /></div>
+                    {Avatars.map((avt) => (
+                      <div key={avt.id} onClick={() => { setAvatar(avt.id); console.log(avatar, avt.id) }} className={`flex justify-center items-center cursor-pointer ${avatar === avt.id ? "opacity-100" : "opacity-30 "}`}><img src={avt.img} alt={`${avatar}-${avt.id}`} /></div>
+                    ))}
+
                   </div>
                   <div className="w-full flex justify-center item-center mt-11">
                     <ButtonPrimary handleClick={handleSubmit} text="PAY&nbsp;NOW" className="W-[200px] py-5 button-background-form button-background-register" />
@@ -91,8 +112,8 @@ const Signup = () => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   )
 }
 

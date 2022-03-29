@@ -26,12 +26,12 @@ const Login = () => {
         <div className="blur-background p-8">
           <div className="login-container">
             <div className="login-header grid grid-cols-2">
-              <h1 className="font-bold cursor-pointer main-heading text-white center">
+              <h1 className="font-bold cursor-pointer main-heading text-white text-center underline underline-offset-4">
                 <Link to="/login">
                   LOGIN
                 </Link>
               </h1>
-              <h1 className="font-bold cursor-pointer main-heading text-white center">
+              <h1 className="font-bold cursor-pointer main-heading text-white text-center">
                 <Link to="/register">
                   REGISTER
                 </Link>
