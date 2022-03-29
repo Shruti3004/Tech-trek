@@ -28,7 +28,7 @@ class Payment(APIView):
         return Response(context)
 
     def post(self, request, format=None):
-        if verify_payment(request.POST):
+        if verify_payment(request.data):
             player = Player.objects.get(username=request.user.username)
             player.is_paid = True
             player.save()
