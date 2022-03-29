@@ -100,7 +100,7 @@ const Signup = () => {
                   <div className='font-regular text-white text-[18px] text-center'>Select your avatar</div>
                   <div className='w-full grid grid-cols-2 gap-4 '>
                     {Avatars.map((avt) => (
-                      <div key={avt.id} onClick={() => { setAvatar(avt.id); console.log(avatar, avt.id) }} className={`flex justify-center items-center cursor-pointer ${avatar === avt.id ? "opacity-100" : "opacity-30 "}`}><img src={avt.img} alt={`${avatar}-${avt.id}`} /></div>
+                      <div key={avt.id} onClick={() => { setAvatar(avt.id); console.log(avatar, avt.id) }} className={`hover:opacity-100 flex justify-center items-center cursor-pointer ${avatar === avt.id ? "opacity-100" : "opacity-30 "}`}><img src={avt.img} alt={`${avatar}-${avt.id}`} /></div>
                     ))}
 
                   </div>
