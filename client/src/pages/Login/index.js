@@ -23,15 +23,15 @@ const Login = () => {
   return (
     <div className="background">
       <div className="flex justify-center items-center h-full">
-        <div className="blur-background p-8">
+        <div className="blur-background p-8 mt-12">
           <div className="login-container">
             <div className="login-header grid grid-cols-2">
-              <h1 className="font-bold cursor-pointer main-heading text-white text-center underline underline-offset-4">
+              <h1 className="border-b-4 cursor-pointer text-2xl font-semibold text-white text-center">
                 <Link to="/login">
                   LOGIN
                 </Link>
               </h1>
-              <h1 className="font-bold cursor-pointer main-heading text-white text-center">
+              <h1 className=" cursor-pointer text-2xl text-white text-center">
                 <Link to="/register">
                   REGISTER
                 </Link>

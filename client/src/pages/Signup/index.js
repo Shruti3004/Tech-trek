@@ -69,28 +69,28 @@ const Signup = () => {
   return (
     <div className="background">
       <div className="flex justify-center items-center h-full">
-        <div className="blur-background p-8">
+        <div className="blur-background p-8 mt-[15rem]">
           <div className="login-container">
             <div className="login-header grid grid-cols-2">
-              <h1 className="font-bold cursor-pointer main-heading text-white text-center">
+              <h1 className="cursor-pointer text-2xl text-white text-center">
                 <Link to="/login">
                   LOGIN
                 </Link>
               </h1>
-              <h1 className="font-bold cursor-pointer main-heading text-white text-center underline underline-offset-4">
+              <h1 className="border-b-4 cursor-pointer text-2xl font-semibold text-white text-center">
                 <Link to="/register">
                   REGISTER
                 </Link>
               </h1>
             </div>
-            <div className="login-body mt-11">
+            <div className="login-body mt-6">
               {step === 0 ? (
                 <form className="w-full max-w-xs">
                   <input name='name' onChange={handleChange} className="w-full input-text input-background p-[20px] text-[18px]" type="text" placeholder="Username" />
-                  <input name='password' onChange={handleChange} className="w-full input-text mt-6 input-background p-[20px] text-[18px]" type="password" placeholder="Password" />
-                  <input name='email' onChange={handleChange} className="w-full input-text mt-6 input-background p-[20px] text-[18px]" type="email" placeholder="Email" />
-                  <input name='admission' onChange={handleChange} className="w-full input-text mt-6 input-background p-[20px] text-[18px]" type="text" placeholder="Admission no" />
-                  <input name='phone' onChange={handleChange} className="w-full input-text mt-6 input-background p-[20px] text-[18px]" type="text" placeholder="Phone no" />
+                  <input name='password' onChange={handleChange} className="w-full input-text mt-[18px] input-background p-[20px] text-[18px]" type="password" placeholder="Password" />
+                  <input name='email' onChange={handleChange} className="w-full input-text mt-[18px] input-background p-[20px] text-[18px]" type="email" placeholder="Email" />
+                  <input name='admission' onChange={handleChange} className="w-full input-text mt-[18px] input-background p-[20px] text-[18px]" type="text" placeholder="Admission no" />
+                  <input name='phone' onChange={handleChange} className="w-full input-text mt-[18px] input-background p-[20px] text-[18px]" type="text" placeholder="Phone no" />
                   <div className="w-full flex justify-center item-center mt-11">
                     <ButtonPrimary handleClick={handleContinue} text="CONTINUE" className="W-[200px] py-5 button-background-form button-background-register" />
                   </div>

@@ -58,17 +58,17 @@ body {
   height: 100%;
 }
 
-.button-background-login{
+.button-background-login {
   width: 129px;
   background-position-y: 1px;
 }
 
-.button-background-register{
+.button-background-register {
   width: 189px;
   background-position-y: -6px;
 }
 
-.input-background{
+.input-background {
   background: url("./images/input-bg.svg");
   background-size: cover;
   background-position: center;
