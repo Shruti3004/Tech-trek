@@ -33,7 +33,7 @@ class Payment(APIView):
             player.is_paid = True
             player.save()
 
-            order = Order.objects.get(order_id=request.POST.get("server_order_id"))
+            order = Order.objects.get(order_id=request.data.get("server_order_id"))
             order.amount_paid = FEE_AMOUNT
             order.amount_due = 0
             order.attempts = str(int(order.attempts) + 1)
