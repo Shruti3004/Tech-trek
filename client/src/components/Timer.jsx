@@ -46,10 +46,9 @@ const Timer = () => {
       order_id: order_id,
       handler: async function (response) {
         const data = {
-          order_id,
-          razorpayPaymentId: response.razorpay_payment_id,
-          razorpayOrderId: response.razorpay_order_id,
-          razorpaySignature: response.razorpay_signature,
+          razorpay_payment_id: response.razorpay_payment_id,
+          razorpay_order_id: response.razorpay_order_id,
+          razorpay_signature: response.razorpay_signature,
           server_order_id,
         };
 
