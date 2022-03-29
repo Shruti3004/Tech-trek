@@ -56,13 +56,9 @@ const Timer = () => {
 
         alert(result.data.msg);
       },
-      prefill: {
-        name: " ",
-        email: " ",
-        contact: " ",
-      },
       theme: {
-        color: "#61dafb",
+        color: "#7e33ff",
+        backdrop_color: "#5822b5"
       },
     };
 
