@@ -10,7 +10,7 @@ const Screen = () => {
           <ButtonPrimary text="LOGIN" className="px-9 py-5 text-4xl" />
         </Link>
         <div className="xl:mt-9 lg:mt-7 md:mt-6 sm:mt-4 mt-2">
-          <Link to="/signup">
+          <Link to="/register">
             <ButtonPrimary text="SIGN UP" className="px-9 py-5 text-4xl" />
           </Link>
         </div>

@@ -18,12 +18,14 @@ const config = {
     },
 };
 
-export const registerUser = async (formData) => {
+export const registerUser = async (formData, navigate) => {
     try {
         const { data } = await API.post("/accounts/api/register/", formData, config);
         console.log(data);
         localStorage.setItem("accessToken", data.token.access);
         localStorage.setItem("refreshToken", data.token.refresh);
+        navigate('/timer');
+        await getDashboardInfo();
         return data;
     } catch (error) {
         console.log(error)
@@ -37,12 +39,24 @@ export const signIn = async (formData, navigate) => {
         localStorage.setItem("accessToken", data.access);
         localStorage.setItem("refreshToken", data.refresh);
         navigate('/timer');
+        await getDashboardInfo();
         return;
     } catch (error) {
         console.log(error)
         return error.response.data;
     }
 };
+
+export const getDashboardInfo = async () => {
+    try {
+        const { data } = await API.get("/accounts/api/");
+        localStorage.setItem("user", JSON.stringify(data));
+        return data;
+    } catch (error) {
+        console.log(error)
+        return error.response.data;
+    }
+}
 
 export const generateOrder = async () => {
     try {

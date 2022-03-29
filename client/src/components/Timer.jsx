@@ -3,7 +3,7 @@ import ButtonPrimary from "./ButtonPrimary";
 import { generateOrder, makePayment } from "../api/index";
 import Clock from "./Clock";
 
-const Timer = () => {
+const Timer = ({ user }) => {
   function loadScript(src) {
     return new Promise((resolve) => {
       const script = document.createElement("script");
@@ -45,6 +45,7 @@ const Timer = () => {
       description: "TechTrek registration fees",
       order_id: order_id,
       handler: async function (response) {
+        console.log(response);
         const data = {
           razorpay_payment_id: response.razorpay_payment_id,
           razorpay_order_id: response.razorpay_order_id,
@@ -54,22 +55,22 @@ const Timer = () => {
 
         const result = await makePayment(data);
 
-        alert(result.data.msg);
+        console.log(result);
       },
       theme: {
         color: "#7e33ff",
-        backdrop_color: "#5822b5"
+        backdrop_color: "#5822b5",
       },
     };
 
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
   }
-  let hasPaid = true;
+
   return (
     <>
       {" "}
-      {!hasPaid ? (
+      {!user.is_paid ? (
         <div className="flex justify-center items-center h-full">
           <div className="mt-20 text-center rounded-md py-11 px-6 sm:px-12 md:px-16 lg:px-20 xl:px-24 2xl:px-[6rem] bg-black bg-opacity-50">
             <div className="text-white text-base font-normal">We are live</div>
@@ -81,12 +82,14 @@ const Timer = () => {
           </div>
         </div>
       ) : (
-        <div className="flex justify-center items-center">
-          <ButtonPrimary
-            handleClick={displayRazorpay}
-            text="PAY&nbsp;NOW"
-            className="W-[200px] py-5 button-background-form button-background-register"
-          />
+        <div className="flex justify-center items-center h-full">
+          <div className="mt-20 text-center rounded-md py-11 px-6 sm:px-12 md:px-16 lg:px-20 xl:px-24 2xl:px-[6rem">
+            <ButtonPrimary
+              handleClick={displayRazorpay}
+              text="PAY&nbsp;NOW"
+              className="W-[200px] py-5 button-background-form button-background-register"
+            />
+          </div>
         </div>
       )}
     </>

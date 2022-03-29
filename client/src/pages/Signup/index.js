@@ -11,7 +11,7 @@ import avatar6 from '../../images/avatar-6.svg'
 
 
 const Signup = () => {
-
+  const navigate = useNavigate();
 
   const [details, setDetails] = useState({
     username: "",
@@ -41,7 +41,7 @@ const Signup = () => {
   const handleSubmit = async () => {
     // code
 
-    await registerUser({ ...details, password2: details.password, avatar_no: avatar })
+    await registerUser({ ...details, password2: details.password, avatar_no: avatar }, navigate)
 
   }
 

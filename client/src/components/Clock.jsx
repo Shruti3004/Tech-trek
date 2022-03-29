@@ -16,7 +16,7 @@ function Clock({ expiryTimestamp }) {
         <div className="mx-1">:</div>
         <div className="mx-1">{seconds}</div>
       </div>
-      <div className="flex justify-between items-center w-10/12 mx-auto">
+      <div className="text-golden flex justify-between items-center w-10/12 mx-auto">
         <div>hrs</div>
         <div>mins</div>
         <div>sec</div>
