@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes as Router, Route, Navigate } from "react-router-dom";
 import App from "./App";
+import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -15,6 +16,7 @@ const Routes = () => {
         element={
           <React.Suspense fallback={<Loader />}>
             <App />
+            <Footer />
           </React.Suspense>
         }
       />
@@ -24,6 +26,7 @@ const Routes = () => {
         element={
           <React.Suspense fallback={<Loader />}>
             <Login />
+            <Footer />
           </React.Suspense>
         }
       />
@@ -33,6 +36,7 @@ const Routes = () => {
         element={
           <React.Suspense fallback={<Loader />}>
             <Signup />
+            <Footer />
           </React.Suspense>
         }
       />
@@ -42,6 +46,7 @@ const Routes = () => {
         element={
           <React.Suspense fallback={<Loader />}>
             <TimerPage />
+            <Footer />
           </React.Suspense>
         }
       />

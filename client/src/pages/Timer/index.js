@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getDashboardInfo } from '../../api';
+import Loader from '../../components/Loader';
 import Timer from "../../components/Timer";
 
 
@@ -14,11 +15,11 @@ const TimerPage = () => {
     }, [])
 
     if (loading) {
-        return <div>Loading</div>
+        return <div><Loader /></div>
     }
     return (
         <div className="background">
-            <Timer user={user} />
+            <Timer user={user} setUser={setUser} />
         </div>
     )
 }
