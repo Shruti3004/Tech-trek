@@ -109,9 +109,9 @@ const Signup = () => {
               ) : (
                 <form className="w-full max-w-md">
                   <div className='font-regular text-white text-[18px] text-center'>Select your avatar</div>
-                  <div className='w-full grid grid-cols-2 gap-6 mt-2'>
+                  <div className='w-full grid grid-cols-2 gap-8 mt-2'>
                     {Avatars.map((avt) => (
-                      <div key={avt.id} onClick={() => { setAvatar(avt.id); console.log(avatar, avt.id) }} className={`hover:opacity-100 flex justify-center items-center cursor-pointer ${avatar === avt.id ? "avatar-select" : "opacity-30 "}`}><img src={avt.img} alt={`${avatar}-${avt.id}`} /></div>
+                      <div key={avt.id} onClick={() => { setAvatar(avt.id); console.log(avatar, avt.id) }} className={`hover:opacity-100 flex justify-center items-center cursor-pointer ${avatar === avt.id ? "avatar-select" : "opacity-50 "}`}><img src={avt.img} alt={`${avatar}-${avt.id}`} /></div>
                     ))}
 
                   </div>
