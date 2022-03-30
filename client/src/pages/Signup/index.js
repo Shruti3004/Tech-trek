@@ -79,15 +79,15 @@ const Signup = () => {
   return (
     <div className="background">
       <div className="flex justify-center items-center h-full">
-        <div className="blur-background p-6 lg:px-8 md:px-7 md:mt-[18rem] lg:mt-[16rem]">
+        <div className="blur-background p-6 lg:px-8 md:px-7 md:mt-[18rem] lg:mt-[16rem] sm:mt-[18rem] mt-[13.2rem]">
           <div className="login-container">
             <div className="login-header grid grid-cols-2">
-              <h1 className="cursor-pointer text-2xl text-white text-center">
+              <h1 className="cursor-pointer font-demi text-2xl text-white text-center">
                 <Link to="/login">
                   LOGIN
                 </Link>
               </h1>
-              <h1 className="border-b-4 cursor-pointer text-2xl font-semibold text-white text-center">
+              <h1 className="border-b-4 pb-2 cursor-pointer text-2xl font-demi text-white text-center">
                 <Link to="/register">
                   REGISTER
                 </Link>
@@ -108,13 +108,13 @@ const Signup = () => {
               ) : (
                 <form className="w-full max-w-md">
                   <div className='font-regular text-white text-[18px] text-center'>Select your avatar</div>
-                  <div className='w-full grid grid-cols-2 gap-4 '>
+                  <div className='w-full grid grid-cols-2 gap-6 mt-2'>
                     {Avatars.map((avt) => (
-                      <div key={avt.id} onClick={() => { setAvatar(avt.id); console.log(avatar, avt.id) }} className={`hover:opacity-100 flex justify-center items-center cursor-pointer ${avatar === avt.id ? "opacity-100" : "opacity-30 "}`}><img src={avt.img} alt={`${avatar}-${avt.id}`} /></div>
+                      <div key={avt.id} onClick={() => { setAvatar(avt.id); console.log(avatar, avt.id) }} className={`hover:opacity-100 flex justify-center items-center cursor-pointer ${avatar === avt.id ? "avatar-select" : "opacity-30 "}`}><img src={avt.img} alt={`${avatar}-${avt.id}`} /></div>
                     ))}
 
                   </div>
-                  <div className="w-full flex justify-center item-center mt-11">
+                  <div className="w-full flex justify-center item-center mt-10">
                     <ButtonPrimary disabled={avatar === 0} handleClick={handleSubmit} text="Sign Up" className="W-[200px] py-5 button-background-form button-background-register" />
                   </div>
                 </form>

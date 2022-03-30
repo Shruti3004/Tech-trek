@@ -73,7 +73,18 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-position-y: -4px;
+  background-position-y: -8px;
+  height: 100%;
+  width: 100%;
+}
+
+.avatar-select{
+  /* background-color: #663d14; */
+  background: url("./images/avatar-bg.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* background-position-y: -8px; */
   height: 100%;
   width: 100%;
 }
@@ -159,6 +170,7 @@ body {
 }
 .input-text {
   font-style: normal;
+  height: 57px;
   font-weight: 400;
   font-size: 18px;
   line-height: 100%;
