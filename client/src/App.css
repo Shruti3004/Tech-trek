@@ -196,6 +196,6 @@ textarea:-webkit-autofill {
     font-size: 14px;
   }
   input{
-    height: 40px !important;
-  }
+    height: 35px !important;
+  }  
 }
