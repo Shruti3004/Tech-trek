@@ -30,7 +30,7 @@ const Login = () => {
   return (
     <div className="background">
       <div className="flex justify-center items-center h-full">
-        <div className="blur-background p-8 px-16 mt-12">
+        <div className="blur-background p-6 lg:px-8 mt-12">
           <div className="login-container">
             <div className="login-header grid grid-cols-2">
               <h1 className="border-b-4 cursor-pointer text-2xl font-semibold text-white text-center">

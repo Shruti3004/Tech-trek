@@ -79,7 +79,7 @@ const Signup = () => {
   return (
     <div className="background">
       <div className="flex justify-center items-center h-full">
-        <div className="blur-background p-8 px-20 lg:px-16 md:px-7 md:mt-[18rem] lg:mt-[16rem]">
+        <div className="blur-background p-6 lg:px-8 md:px-7 md:mt-[18rem] lg:mt-[16rem]">
           <div className="login-container">
             <div className="login-header grid grid-cols-2">
               <h1 className="cursor-pointer text-2xl text-white text-center">
