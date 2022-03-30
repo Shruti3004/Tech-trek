@@ -40,7 +40,7 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     // code
-    e.preventDefault();
+
     await registerUser({ ...details, password2: details.password, avatar_no: avatar }, navigate)
 
   }
@@ -115,7 +115,7 @@ const Signup = () => {
 
                   </div>
                   <div className="w-full flex justify-center item-center mt-11">
-                    <ButtonPrimary disabled={avatar === 0} handleClick={(e) => handleSubmit(e)} text="PAY&nbsp;NOW" className="W-[200px] py-5 button-background-form button-background-register" />
+                    <ButtonPrimary disabled={avatar === 0} handleClick={handleSubmit} text="Sign Up" className="W-[200px] py-5 button-background-form button-background-register" />
                   </div>
                 </form>
               )}
