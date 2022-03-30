@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes as Router, Route, Navigate } from "react-router-dom";
 import App from "./App";
+import Loader from "./components/Loader";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import TimerPage from "./pages/Timer";
@@ -12,7 +13,7 @@ const Routes = () => {
         exact
         path="/"
         element={
-          <React.Suspense fallback={<div>Loading..</div>}>
+          <React.Suspense fallback={<Loader />}>
             <App />
           </React.Suspense>
         }
@@ -21,7 +22,7 @@ const Routes = () => {
         exact
         path="/login"
         element={
-          <React.Suspense fallback={<div>Loading..</div>}>
+          <React.Suspense fallback={<Loader />}>
             <Login />
           </React.Suspense>
         }
@@ -30,7 +31,7 @@ const Routes = () => {
         exact
         path="/register"
         element={
-          <React.Suspense fallback={<div>Loading..</div>}>
+          <React.Suspense fallback={<Loader />}>
             <Signup />
           </React.Suspense>
         }
@@ -39,7 +40,7 @@ const Routes = () => {
         exact
         path="/timer"
         element={
-          <React.Suspense fallback={<div>Loading..</div>}>
+          <React.Suspense fallback={<Loader />}>
             <TimerPage />
           </React.Suspense>
         }
