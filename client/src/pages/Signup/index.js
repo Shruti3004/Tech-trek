@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext  } from 'react'
 import { Link, useNavigate, Navigate } from 'react-router-dom';
 import { generateOrder, registerUser } from "../../api/index";
 import ButtonPrimary from "../../components/ButtonPrimary";
@@ -8,11 +8,13 @@ import avatar3 from '../../images/avatar-3.svg'
 import avatar4 from '../../images/avatar-4.svg'
 import avatar5 from '../../images/avatar-5.svg'
 import avatar6 from '../../images/avatar-6.svg'
+import Modal from "../../components/modal";
+import { ModalContext } from "../../context/index";
 
 
 const Signup = () => {
   const navigate = useNavigate();
-
+  const { openModal } = useContext(ModalContext);
   const [details, setDetails] = useState({
     username: "",
     password: "",
@@ -41,7 +43,13 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     // code
 
-    await registerUser({ ...details, password2: details.password, avatar_no: avatar }, navigate)
+    const data = await registerUser({ ...details, password2: details.password, avatar_no: avatar }, navigate)
+    console.log(data)
+    if(data){
+      openModal(data || "Please Enter Valid Credentials");
+      <Modal />;
+      setStep(0)
+    }
 
   }
 
@@ -77,6 +85,9 @@ const Signup = () => {
     return <Navigate to="/timer" />
   }
   return (
+    <>
+    
+    <Modal />
     <div className="background">
       <div className="flex justify-center items-center h-full">
         <div className='blur-background p-6 xl:w-[344px] lg:w-[320px] md:w-[310px] sm:w-[310px] w-[240px] lg:px-8 md:mt-[18rem] lg:mt-[16rem] sm:mt-[16rem] mt-[5rem]'>
@@ -125,6 +136,7 @@ const Signup = () => {
         </div>
       </div >
     </div >
+    </>
   )
 }
 
