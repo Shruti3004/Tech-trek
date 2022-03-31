@@ -16,19 +16,15 @@ const Login = () => {
 
   const handleChange = (e) => {    
     console.log(openModal);
-    openModal("BLAH BLAH");
-    <Modal />;
     setDetails({
       ...details,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async () => {
-    // e.preventDefault()
-    await signIn(details, navigate);
-    console.log("signin");
-    openModal("BLAH BLAH");
+  const handleSubmit = async () => {   
+    await signIn(details, navigate);    
+    openModal("Please Enter the Valid Credentials");
     <Modal />;
   };
 
@@ -38,7 +34,7 @@ const Login = () => {
 
   return (
     <>
-    {/* <Modal /> */}
+    <Modal />
     <div className="background">
       <div className="flex justify-center items-center h-full">
         <div className="blur-background p-6 xl:w-[344px] lg:w-[320px] md:w-[310px] sm:w-[310px] w-[220px] lg:px-8 xs:mt-12 mt-16">
