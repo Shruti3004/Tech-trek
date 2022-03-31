@@ -81,10 +81,16 @@ export default function Example({ children }) {
 
             <Disclosure.Panel
               style={{ zIndex: "1" }}
-              className="absolute top-0 left-0 bg-bg-primary bg-opacity-80 sm:hidden h-40 w-full"
+              className="absolute top-0 left-0 bg-[#ce742f]  border border-white sm:hidden h-40 w-full"
             >
               <div className=" mt-[3.5rem]">
-                <div className="px-4 py-4 text-lg bg-bg-primary bg-opacity-90 hover:bg-opacity-100 text-white font-bold ">
+                <div
+                  onClick={() => {
+                    localStorage.clear();
+                    navigate("/login");
+                  }}
+                  className="px-4 py-4 text-lg bg-bg-primary hover:bg-opacity-100 text-white font-bold "
+                >
                   LOGOUT
                 </div>
               </div>
