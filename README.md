@@ -12,3 +12,8 @@
 ## Setting up frontend 
 1. `npm install` to add all the packages of react
 2. `npm start` to run the frontend server
+
+## Launcing on Production using Docker
+1. Create `.env` in root folder
+2. Create `.env` in `client/` folder
+3. Run `docker-compose up`.
