@@ -160,7 +160,7 @@ body {
 
 .blur-background {
   background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(5px);
+  /* backdrop-filter: blur(5px); */
   border-radius: 6px;
 }
 @media screen and (max-width: 500px) {
@@ -196,6 +196,6 @@ textarea:-webkit-autofill {
     font-size: 14px;
   }
   input{
-    height: 25px !important;
+    height: 22px !important;
   }  
 }

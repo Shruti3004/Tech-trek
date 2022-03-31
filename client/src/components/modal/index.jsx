@@ -1,6 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ModalContext } from "../../context";
 import "./modal.css";
+import ButtonPrimary from "../ButtonPrimary";
+import button from "../../images/okay.svg";
 
 function Modal() {
   const [heading, setHeading] = useState("Error");
@@ -38,6 +40,7 @@ function Modal() {
     } else {
       setHeading("Error");
     }
+    console.log(modalOpen);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modalOpen]);
   if (!modalOpen) {
@@ -45,26 +48,29 @@ function Modal() {
   } else {
     return (
       <>
-      {console.log("---")}
-        <div className="modal-container">
+        <div className="modal-container px-16">
           <div className="container">
             <div className="row">
               <div
                 id="modal"
-                className="col-8 mx-auto col-md-6 col-lg-6 text-center py-5 px-xl-3"
+                className="col-8 mx-auto text-center py-8 px-3"
+                style={{ maxWidth: "450px" }}
               >
-                <h4 className="font-vcr font-blue mb-4 text-center font-weight-bold">
-                  &lt;&lt;&nbsp;{heading}&nbsp;&gt;&gt;
-                </h4>
-                <p className="font-blue font-vcr">{message}</p>
-
-                <div className="mt-5 text-center button-hover">
-                  <div
-                    onClick={() => closeModal()}
-                    className="mt-4 see-all-buttons font-vcr px-5 pt-2 pb-2"
-                  >
-                    *OKAY*
-                  </div>
+                <h4 className="font-bold main-heading text-primary">{heading}</h4>
+                <p
+                  className="font-regular text-primary"
+                  style={{
+                    marginTop: "20px",
+                    marginBottom: "20px",
+                    fontSize: "18px",
+                  }}
+                >
+                  {message}
+                </p>
+                <div className="flex justify-center">                  
+                  <button onClick={closeModal}>
+                    <img src={button} />
+                  </button>
                 </div>
               </div>
             </div>
