@@ -48,6 +48,7 @@ const Signup = () => {
     if(data){
       openModal(data || "Please Enter Valid Credentials");
       <Modal />;
+      setStep(0)
     }
 
   }
