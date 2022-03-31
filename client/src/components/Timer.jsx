@@ -58,8 +58,8 @@ const Timer = ({ user, setUser }) => {
         console.log(result);
       },
       theme: {
-        color: "#9B5322",
-        backdrop_color: "#FD8D41",
+        color: "#FD8D41",
+        backdrop_color: "#231F2C",
       },
     };
 
