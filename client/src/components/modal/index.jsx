@@ -53,7 +53,7 @@ function Modal() {
             <div className="row">
               <div
                 id="modal"
-                className="col-8 mx-auto text-center py-8"
+                className="col-8 mx-auto text-center py-8 px-3"
                 style={{ maxWidth: "450px" }}
               >
                 <h4 className="font-bold main-heading text-primary">{heading}</h4>
@@ -62,7 +62,7 @@ function Modal() {
                   style={{
                     marginTop: "20px",
                     marginBottom: "20px",
-                    fontSize: "20px",
+                    fontSize: "18px",
                   }}
                 >
                   {message}
