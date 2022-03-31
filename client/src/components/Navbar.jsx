@@ -26,9 +26,17 @@ export default function Example({ children }) {
                   <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                     <span className="sr-only">Open main menu</span>
                     {open ? (
-                      <XIcon className="block h-6 w-6" aria-hidden="true" />
+                      <XIcon
+                        className="text-white block h-6 w-6"
+                        aria-hidden="true"
+                        style={{ zIndex: "2" }}
+                      />
                     ) : (
-                      <MenuIcon className="block h-6 w-6" aria-hidden="true" />
+                      <MenuIcon
+                        className="block h-6 w-6"
+                        aria-hidden="true"
+                        style={{ zIndex: "2" }}
+                      />
                     )}
                   </Disclosure.Button>
                 </div>
@@ -71,9 +79,12 @@ export default function Example({ children }) {
               </div>
             </div>
 
-            <Disclosure.Panel className="absolute sm:hidden">
-              <div className="px-2 pt-2 pb-3">
-                <div className="px-4 text-sm font-medium text-gray-900 bg-gray-50">
+            <Disclosure.Panel
+              style={{ zIndex: "1" }}
+              className="absolute top-0 left-0 bg-bg-primary bg-opacity-80 sm:hidden h-40 w-full"
+            >
+              <div className=" mt-[3.5rem]">
+                <div className="px-4 py-4 text-lg bg-bg-primary bg-opacity-90 hover:bg-opacity-100 text-white font-bold ">
                   LOGOUT
                 </div>
               </div>
