@@ -165,7 +165,7 @@ body {
 }
 @media screen and (max-width: 500px) {
   .main-heading {
-    font-size: 24px;
+    font-size: 22px;
   }
 }
 .input-text {
@@ -196,6 +196,6 @@ textarea:-webkit-autofill {
     font-size: 14px;
   }
   input{
-    height: 35px !important;
+    height: 32px !important;
   }  
 }

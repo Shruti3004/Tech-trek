@@ -83,7 +83,7 @@ const Signup = () => {
         {/* <div className="blur-background p-6 lg:px-8 md:px-7 md:mt-[18rem] lg:mt-[16rem] sm:mt-[18rem] mt-[13.2rem]"> */}
           <div className="login-container">
             <div className="login-header grid grid-cols-2">
-              <h1 className="cursor-pointer font-demi text-2xl text-white text-center">
+              <h1 className="cursor-pointer font-demi text-2xl text-[#DDC2AE] text-center font-regular opacity-4">
                 <Link to="/login">
                   LOGIN
                 </Link>
