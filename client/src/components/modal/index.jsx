@@ -61,7 +61,7 @@ function Modal() {
                 <div className="mt-5 text-center button-hover">
                   <div
                     onClick={() => closeModal()}
-                    className="mt-4 see-all-buttons font-vcr px-5 pt-2 pb-3 text-black"
+                    className="mt-4 see-all-buttons font-vcr px-5 pt-2 pb-2"
                   >
                     *OKAY*
                   </div>

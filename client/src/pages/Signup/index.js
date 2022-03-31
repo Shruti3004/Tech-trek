@@ -98,10 +98,10 @@ const Signup = () => {
               {step === 0 ? (
                 <form className="w-full max-w-xs">
                   <input name='username' onChange={handleChange} className="w-full input-text input-background p-[20px] text-[18px]" type="text" placeholder="Username" />
-                  <input name='password' onChange={handleChange} className="w-full input-text mt-[18px] input-background p-[20px] text-[18px]" type="password" placeholder="Password" />
-                  <input name='email' onChange={handleChange} className="w-full input-text mt-[18px] input-background p-[20px] text-[18px]" type="email" placeholder="Email" />
-                  <input name='admission_no' onChange={handleChange} className="w-full input-text mt-[18px] input-background p-[20px] text-[18px]" type="text" placeholder="Admission no" />
-                  <input name='contact_no' onChange={handleChange} className="w-full input-text mt-[18px] input-background p-[20px] text-[18px]" type="text" placeholder="Phone no" />
+                  <input name='password' onChange={handleChange} className="w-full input-text mt-[12px] input-background p-[20px] text-[16px]" type="password" placeholder="Password" />
+                  <input name='email' onChange={handleChange} className="w-full input-text mt-[12px] input-background p-[20px] text-[16px]" type="email" placeholder="Email" />
+                  <input name='admission_no' onChange={handleChange} className="w-full input-text mt-[12px] input-background p-[20px] text-[16px]" type="text" placeholder="Admission no" />
+                  <input name='contact_no' onChange={handleChange} className="w-full input-text mt-[12px] input-background p-[20px] text-[16px]" type="text" placeholder="Phone no" />
                   <div className="w-full flex justify-center item-center mt-11">
                     <ButtonPrimary disabled={!(!!details.username && !!details.password && !!details.email && !!details.contact_no && !!details.admission_no)} handleClick={handleContinue} text="CONTINUE" className="W-[200px] py-5 button-background-form button-background-register" />
                   </div>
