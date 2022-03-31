@@ -19,9 +19,6 @@ services:
       - 8000:8000
     volumes:
       - type: volume
-        source: static
-        target: /techtrek/static/
-      - type: volume
         source: database
         target: /techtrek/database/
     command: >
@@ -31,5 +28,4 @@ services:
       && /usr/local/bin/gunicorn techtrek.wsgi:application -b :8000"
 
 volumes:
-  static:
   database:

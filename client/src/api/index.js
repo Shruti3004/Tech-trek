@@ -28,8 +28,14 @@ export const registerUser = async (formData, navigate) => {
         await getDashboardInfo();
         return data;
     } catch (error) {
-        console.log(error)
-        return error.response.data;
+        let obj = error.response.data;
+        // console.log()
+        
+
+        // console.log(newObj.entries(obj => obj.value))
+         
+        // console.log(error.response.data)
+        return Object.entries(obj)[0][1][0];
     }
 }
 
