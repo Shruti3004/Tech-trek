@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes as Router, Route, Navigate } from "react-router-dom";
 import App from "./App";
+import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 import Login from "./pages/Login";
@@ -46,7 +47,6 @@ const Routes = () => {
         element={
           <React.Suspense fallback={<Loader />}>
             <TimerPage />
-            <Footer />
           </React.Suspense>
         }
       />
