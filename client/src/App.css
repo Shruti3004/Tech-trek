@@ -105,7 +105,7 @@
 .avatar-select {
   /* background-color: #663d14; */
   background: url("./images/avatar-bg.svg");
-  background-size: cover;
+  /* background-size: cover; */
   background-position: center;
   background-repeat: no-repeat;
   /* background-position-y: -8px; */
