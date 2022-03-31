@@ -3,8 +3,8 @@ import React from "react";
 const Loader = () => {
   return (
     <div style={{ height: "100vh" }}>
-      <div className="flex justify-center align-center">
-        <img src="./loader.gif" height="120px" width="250px" />
+      <div className="flex justify-center align-center h-full">
+        <img src="./loader.gif" width="200px"/>
       </div>
     </div>
   );
