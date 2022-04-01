@@ -1,10 +1,10 @@
-FROM node:14.17.3-slim AS build
+FROM node:17-slim AS build
 
 WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install --silent
 
 COPY . ./
 
