@@ -1,4 +1,4 @@
-import React, { useState, useContext  } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link, useNavigate, Navigate } from 'react-router-dom';
 import { generateOrder, registerUser } from "../../api/index";
 import ButtonPrimary from "../../components/ButtonPrimary";
@@ -45,7 +45,7 @@ const Signup = () => {
 
     const data = await registerUser({ ...details, password2: details.password, avatar_no: avatar }, navigate)
     console.log(data)
-    if(data){
+    if (data) {
       openModal(data || "Please Enter Valid Credentials");
       <Modal />;
       setStep(0)
@@ -86,56 +86,56 @@ const Signup = () => {
   }
   return (
     <>
-    
-    <Modal />
-    <div className="background">
-      <div className="flex justify-center items-center h-full">
-        <div className='blur-background p-6 xl:w-[344px] lg:w-[320px] md:w-[310px] sm:w-[310px] w-[240px] lg:px-8 md:mt-[18rem] lg:mt-[16rem] sm:mt-[16rem] mt-[5rem]'>
-        {/* <div className="blur-background p-6 lg:px-8 md:px-7 md:mt-[18rem] lg:mt-[16rem] sm:mt-[18rem] mt-[13.2rem]"> */}
-          <div className="login-container">
-            <div className="login-header grid grid-cols-2">
-              <h1 className="cursor-pointer font-demi text-2xl text-[#DDC2AE] text-center font-regular opacity-4">
-                <Link to="/login">
-                  LOGIN
-                </Link>
-              </h1>
-              <h1 className="border-b-4 pb-2 cursor-pointer text-2xl font-demi text-white text-center">
-                <Link to="/register">
-                  REGISTER
-                </Link>
-              </h1>
-            </div>
-            <div className="login-body mt-4">
-              {step === 0 ? (
-                <form className="w-full max-w-xs">
-                  <input name='username' onChange={handleChange} className="w-full input-text input-background p-[20px] text-[18px]" type="text" placeholder="Username" />
-                  <input name='password' onChange={handleChange} className="w-full input-text mt-[10px] input-background p-[20px] text-[16px]" type="password" placeholder="Password" />
-                  <input name='email' onChange={handleChange} className="w-full input-text mt-[10px] input-background p-[20px] text-[16px]" type="email" placeholder="Email" />
-                  <input name='admission_no' onChange={handleChange} className="w-full input-text mt-[10px] input-background p-[20px] text-[16px]" type="text" placeholder="Admission no" />
-                  <input name='contact_no' onChange={handleChange} className="w-full input-text mt-[10px] input-background p-[20px] text-[16px]" type="text" placeholder="Phone no" />
-                  <div className="w-full flex justify-center item-center mt-11">
-                    <ButtonPrimary disabled={!(!!details.username && !!details.password && !!details.email && !!details.contact_no && !!details.admission_no)} handleClick={handleContinue} text="CONTINUE" className="W-[200px] py-5 button-background-form button-background-register" />
-                  </div>
-                </form>
-              ) : (
-                <form className="w-full max-w-md">
-                  <div className='font-regular text-white text-[18px] text-center'>Select your avatar</div>
-                  <div className='w-full grid grid-cols-2 mt-3'>
-                    {Avatars.map((avt) => (
-                      <div key={avt.id} onClick={() => { setAvatar(avt.id); console.log(avatar, avt.id) }} className={`hover:opacity-100 flex justify-center items-center cursor-pointer py-2 mt-1 ${avatar === avt.id ? "avatar-select" : "opacity-100 "}`}><img src={avt.img} alt={`${avatar}-${avt.id}`} /></div>
-                    ))}
 
-                  </div>
-                  <div className="w-full flex justify-center item-center mt-10">
-                    <ButtonPrimary disabled={avatar === 0} handleClick={handleSubmit} text="Sign Up" className="W-[200px] py-5 button-background-form button-background-register" />
-                  </div>
-                </form>
-              )}
+      <Modal />
+      <div className="background">
+        <div className="flex justify-center items-center h-full">
+          <div className='blur-background p-6 xl:w-[344px] lg:w-[320px] md:w-[310px] sm:w-[310px] w-[240px] lg:px-8 md:mt-[18rem] lg:mt-[12rem] xl:[16rem] sm:mt-[16rem] mt-[5rem]'>
+            {/* <div className="blur-background p-6 lg:px-8 md:px-7 md:mt-[18rem] lg:mt-[16rem] sm:mt-[18rem] mt-[13.2rem]"> */}
+            <div className="login-container">
+              <div className="login-header grid grid-cols-2">
+                <h1 className="cursor-pointer font-demi text-2xl text-[#DDC2AE] text-center font-regular opacity-4">
+                  <Link to="/login">
+                    LOGIN
+                  </Link>
+                </h1>
+                <h1 className="border-b-4 pb-2 cursor-pointer text-2xl font-demi text-white text-center">
+                  <Link to="/register">
+                    REGISTER
+                  </Link>
+                </h1>
+              </div>
+              <div className="login-body mt-4">
+                {step === 0 ? (
+                  <form className="w-full max-w-xs">
+                    <input name='username' onChange={handleChange} className="w-full input-text input-background p-[20px] text-[18px]" type="text" placeholder="Username" />
+                    <input name='password' onChange={handleChange} className="w-full input-text mt-[10px] input-background p-[20px] text-[16px]" type="password" placeholder="Password" />
+                    <input name='email' onChange={handleChange} className="w-full input-text mt-[10px] input-background p-[20px] text-[16px]" type="email" placeholder="Email" />
+                    <input name='admission_no' onChange={handleChange} className="w-full input-text mt-[10px] input-background p-[20px] text-[16px]" type="text" placeholder="Admission no" />
+                    <input name='contact_no' onChange={handleChange} className="w-full input-text mt-[10px] input-background p-[20px] text-[16px]" type="text" placeholder="Phone no" />
+                    <div className="w-full flex justify-center item-center mt-11">
+                      <ButtonPrimary disabled={!(!!details.username && !!details.password && !!details.email && !!details.contact_no && !!details.admission_no)} handleClick={handleContinue} text="CONTINUE" className="W-[200px] py-5 button-background-form button-background-register" />
+                    </div>
+                  </form>
+                ) : (
+                  <form className="w-full max-w-md">
+                    <div className='font-regular text-white text-[18px] text-center'>Select your avatar</div>
+                    <div className='w-full grid grid-cols-2 mt-3'>
+                      {Avatars.map((avt) => (
+                        <div key={avt.id} onClick={() => { setAvatar(avt.id); console.log(avatar, avt.id) }} className={`hover:opacity-100 flex justify-center items-center cursor-pointer py-2 mt-1 ${avatar === avt.id ? "avatar-select" : "opacity-100 "}`}><img src={avt.img} alt={`${avatar}-${avt.id}`} /></div>
+                      ))}
+
+                    </div>
+                    <div className="w-full flex justify-center item-center mt-10">
+                      <ButtonPrimary disabled={avatar === 0} handleClick={handleSubmit} text="Sign Up" className="W-[200px] py-5 button-background-form button-background-register" />
+                    </div>
+                  </form>
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        </div >
       </div >
-    </div >
     </>
   )
 }
