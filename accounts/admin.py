@@ -12,6 +12,15 @@ class PlayerChangeForm(UserChangeForm):
 class PlayerUserAdmin(UserAdmin):
     form = PlayerChangeForm
     list_filter = ("is_paid",)
+    list_display = (
+        "username",
+        "email",
+        "is_paid",
+        "current_question",
+        "score",
+        "admission_no",
+        "contact_no",
+    )
     fieldsets = UserAdmin.fieldsets + (
         (
             None,
