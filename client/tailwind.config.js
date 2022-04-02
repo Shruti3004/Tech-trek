@@ -12,7 +12,11 @@ module.exports = {
           secondary: '#231f2c',
         },
         'btn-primary': '#1d1a25'
-      }
+      },
+      screens: {
+        '3xl': '1600px',
+      },
+
     },
   },
   plugins: [],

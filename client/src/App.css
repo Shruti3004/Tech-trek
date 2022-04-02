@@ -35,6 +35,7 @@
     width: 100%;
   }
 }
+
 @media screen and (max-width: 500px) {
   .background {
     background: url("./images/bg-xs.svg");

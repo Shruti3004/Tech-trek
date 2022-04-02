@@ -90,7 +90,7 @@ const Signup = () => {
       <Modal />
       <div className="background">
         <div className="flex justify-center items-center h-full">
-          <div className='blur-background p-6 xl:w-[344px] lg:w-[320px] md:w-[310px] sm:w-[310px] w-[240px] lg:px-8 md:mt-[18rem] lg:mt-[12rem] xl:[16rem] sm:mt-[16rem] mt-[5rem]'>
+          <div className='blur-background p-6 xl:w-[344px] lg:w-[320px] md:w-[310px] sm:w-[310px] w-[240px] lg:px-8 md:mt-[18rem] lg:mt-[12rem] xl:mt-[16rem] 2xl:mt-[8rem] 3xl:mt-[11rem] sm:mt-[16rem] mt-[5rem]'>
             {/* <div className="blur-background p-6 lg:px-8 md:px-7 md:mt-[18rem] lg:mt-[16rem] sm:mt-[18rem] mt-[13.2rem]"> */}
             <div className="login-container">
               <div className="login-header grid grid-cols-2">
