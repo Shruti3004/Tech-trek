@@ -5,7 +5,7 @@ import Screen from "./components/screen";
 
 function App() {
   return (
-    <>
+    <>    
       <div className="background">
         <Screen />
       </div>
