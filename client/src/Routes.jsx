@@ -7,6 +7,8 @@ import Loader from "./components/Loader";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import TimerPage from "./pages/Timer";
+import Rules from "./pages/Rules";
+import NavbarDashboard from "./components/NavbarDashboard";
 
 const Routes = () => {
   return (
@@ -48,6 +50,19 @@ const Routes = () => {
           <React.Suspense fallback={<Loader />}>
             <TimerPage />
           </React.Suspense>
+        }
+      />
+      <Route
+        path="/rules"
+        exact
+        element={
+          <div className="dashboard-bg">
+            <React.Suspense fallback={<Loader />}>
+              <NavbarDashboard>
+                <Rules />
+              </NavbarDashboard>
+            </React.Suspense>
+          </div>
         }
       />
       <Route path="*" element={<div>404</div>} />
