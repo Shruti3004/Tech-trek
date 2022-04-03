@@ -56,7 +56,7 @@ const Timer = ({ user, setUser }) => {
 
         const result = await makePayment(data);
         setUser({ ...user, is_paid: true });
-        console.log(result);
+        window.location.reload();
       },
       theme: {
         color: "#FD8D41",

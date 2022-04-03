@@ -13,7 +13,7 @@ const Leaderboard = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     getLeaderboard().then((res) => {
-      setLeaderboard(res);
+      setLeaderboard(res.sort((a, b) => b.score - a.score));
       setLoading(false);
     });
   }, []);
@@ -97,7 +97,7 @@ const Leaderboard = () => {
                           }`}
                         >
                           <td className="px-6 py-4 whitespace-nowrap font-semibold text-lg text-[#FDF3E7]">
-                            1
+                            {index + 1}
                           </td>
                           <td className="text-lg text-[#FDF3E7] font-semibold uppercase px-6 py-4 flex items-center whitespace-nowrap">
                             <img

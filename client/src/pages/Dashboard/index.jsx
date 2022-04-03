@@ -74,7 +74,7 @@ const Dashboard = ({ user }) => {
             </div>
             {/* <Clock /> */}
             <div className="flex-col flex sm:flex-row items-center justify-between">
-              <div className="flex flex-col justify-start items-center">
+              <div className="flex flex-col justify-start items-start">
                 <input
                   name="answer"
                   onChange={handleChange}

@@ -21,7 +21,6 @@ function classNames(...classes) {
 }
 
 export default function NavbarDashboard({ user, children }) {
-  console.log(user);
   const navigate = useNavigate();
   const getAvatar = (number) => {
     switch (number) {
@@ -40,7 +39,7 @@ export default function NavbarDashboard({ user, children }) {
   return (
     <>
       <Disclosure as="nav" className="bg-[#231F2C]">
-        {({ open }) => (
+        {({ open, close }) => (
           <>
             <div className="w-full lg:w-10/12 xl:w-8/12 mx-auto px-2 sm:px-6 lg:px-8">
               <div className="relative w-full flex items-end justify-between pt-6 pb-5">
@@ -59,14 +58,18 @@ export default function NavbarDashboard({ user, children }) {
                   <div className="flex-shrink-0 flex items-center">
                     {open ? (
                       <div className="flex items-center justify-start ml-8">
-                        <img
-                          src={getAvatar(user.avatar_no)}
-                          alt="Avatar1"
-                          className="w-11 h-11"
-                        />
-                        <div className="text-white text-lg ml-4">
-                          {user.username}
-                        </div>
+                        {localStorage.getItem("accessToken") && (
+                          <>
+                            <img
+                              src={getAvatar(user.avatar_no)}
+                              alt="Avatar1"
+                              className="w-11 h-11"
+                            />
+                            <div className="text-white text-lg ml-4">
+                              {user.username}
+                            </div>
+                          </>
+                        )}
                       </div>
                     ) : (
                       <>
@@ -121,7 +124,7 @@ export default function NavbarDashboard({ user, children }) {
                             alt=""
                           />
 
-                          <div className="text-white text-sm mr-4">
+                          <div className="text-white text-sm mx-4">
                             {user.username}
                           </div>
                           <img
@@ -141,23 +144,55 @@ export default function NavbarDashboard({ user, children }) {
             </div>
 
             <Disclosure.Panel className="sm:hidden">
-              <div className="px-2 pt-2 pb-3 space-y-1">
-                {navigation.map((item) => (
-                  <Disclosure.Button
-                    key={item.name}
-                    as="a"
-                    href={item.href}
-                    className={classNames(
-                      item.current
-                        ? "bg-gray-900 text-white"
-                        : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                      "block px-3 py-2 rounded-md text-base font-medium"
-                    )}
-                    aria-current={item.current ? "page" : undefined}
+              <div className="px-4 pt-2 pb-3 space-y-1">
+                {navigation.map((item) => {
+                  if (
+                    item.name === "Dashboard" &&
+                    !localStorage.getItem("accessToken")
+                  ) {
+                    // eslint-disable-next-line array-callback-return
+                    return;
+                  }
+                  return (
+                    <NavLink
+                      key={item.href}
+                      as="div"
+                      onClick={() => close()}
+                      to={item.href}
+                      className={({ isActive }) =>
+                        `${
+                          isActive ? "text-white" : "text-gray-400"
+                        } text-lg font-regular block`
+                      }
+                      aria-current={item.current ? "page" : undefined}
+                    >
+                      {item.name}
+                    </NavLink>
+                  );
+                })}
+                {localStorage.getItem("accessToken") ? (
+                  <div
+                    className="text-gray-400 text-lg font-regular block"
+                    onClick={() => {
+                      close();
+                      localStorage.clear();
+                      navigate("/");
+                    }}
                   >
-                    {item.name}
-                  </Disclosure.Button>
-                ))}
+                    Logout
+                  </div>
+                ) : (
+                  <div
+                    className="text-gray-400 text-lg font-regular block"
+                    onClick={() => {
+                      close();
+                      localStorage.clear();
+                      navigate("/");
+                    }}
+                  >
+                    Sign in
+                  </div>
+                )}
               </div>
             </Disclosure.Panel>
           </>

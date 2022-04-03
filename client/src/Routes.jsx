@@ -21,7 +21,8 @@ const Routes = () => {
       setUser(res);
       setLoading(false);
     });
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [localStorage.getItem("user")]);
   return (
     <Router>
       <Route
@@ -59,7 +60,7 @@ const Routes = () => {
         path="/timer"
         element={
           <React.Suspense fallback={<Loader />}>
-            <TimerPage user={user} setUser={setUser} />
+            <TimerPage />
           </React.Suspense>
         }
       />

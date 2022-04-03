@@ -45,7 +45,8 @@ export const signIn = async (formData, navigate) => {
         localStorage.setItem("accessToken", data.access);
         localStorage.setItem("refreshToken", data.refresh);
         navigate('/timer');
-        await getDashboardInfo();
+        let user = await getDashboardInfo();
+        localStorage.setItem("user", user);
         return;
     } catch (error) {
         console.log(error)
