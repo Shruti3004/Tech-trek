@@ -49,38 +49,47 @@ const Dashboard = ({ user }) => {
     <div className="w-full xl:w-8/12 mx-auto mt-8">
       <div className="dashboard-question-bg mx-auto w-11/12 xl:w-full px-8 xl:px-16 py-11">
         <div className="text-2xl text-[#D9A462] font-normal uppercase">
-          Question
+          {question.isTimeLeft ? "Next Question in..." : "Question"}
         </div>
-        <div className="w-full input-text mt-6 dashboard-input-bg p-[18px] text-[18px]">
-          {question.detail.question}
-        </div>
-        {/* <Clock /> */}
-        <div className="flex-col flex sm:flex-row items-center justify-between">
-          <div className="flex flex-col justify-start items-center">
-            <input
-              name="answer"
-              onChange={handleChange}
-              value={answer}
-              className="w-full input-text mt-6 dashboard-input-bg p-[20px] text-[18px]"
-              type="text"
-              placeholder="I seek an answer"
-            />
-            {error && (
-              <div className="text-lg text-[#FD8D41]">
-                Please enter a valid answer
+        {question.isTimeLeft ? (
+          <div className="w-3/12 mx-auto py-9 px-11 clock-background">
+            <Clock dashboard={true} expiryTimestamp={1649116800000} />
+          </div>
+        ) : (
+          <>
+            {" "}
+            <div className="w-full input-text mt-6 dashboard-input-bg p-[18px] text-[18px]">
+              {question.detail.question}
+            </div>
+            {/* <Clock /> */}
+            <div className="flex-col flex sm:flex-row items-center justify-between">
+              <div className="flex flex-col justify-start items-center">
+                <input
+                  name="answer"
+                  onChange={handleChange}
+                  value={answer}
+                  className="w-full input-text mt-6 dashboard-input-bg p-[20px] text-[18px]"
+                  type="text"
+                  placeholder="I seek an answer"
+                />
+                {error && (
+                  <div className="text-lg text-[#FD8D41]">
+                    Please enter a valid answer
+                  </div>
+                )}
               </div>
-            )}
-          </div>
-          <div className="mt-8 xl:mt-0">
-            <ButtonPrimary
-              text="Submit"
-              className="-mb-2"
-              handleClick={() => {
-                handleSubmit();
-              }}
-            />
-          </div>
-        </div>
+              <div className="mt-8 xl:mt-0">
+                <ButtonPrimary
+                  text="Submit"
+                  className="-mb-2"
+                  handleClick={() => {
+                    handleSubmit();
+                  }}
+                />
+              </div>
+            </div>
+          </>
+        )}
       </div>
       <div className="mt-6 badge-bg xl:rounded-xl w-full py-11">
         <div className="text-white flex items-center justify-center font-regular text-2xl">

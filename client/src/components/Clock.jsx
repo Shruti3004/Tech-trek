@@ -1,7 +1,7 @@
 import React from "react";
 import { useTimer } from "react-timer-hook";
 
-function Clock({ expiryTimestamp }) {
+function Clock({ expiryTimestamp, dashboard }) {
   const { seconds, minutes, hours, days } = useTimer({
     expiryTimestamp,
     onExpire: () => console.warn("onExpire called"),
@@ -16,7 +16,11 @@ function Clock({ expiryTimestamp }) {
         <div className="mx-1">:</div>
         <div className="mx-1">{seconds}</div>
       </div>
-      <div className="text-golden flex justify-between items-center w-10/12 mx-auto">
+      <div
+        className={`text-golden flex justify-between items-center ${
+          dashboard ? "w-[72%]" : "w-10/12"
+        } mx-auto`}
+      >
         <div>hrs</div>
         <div>mins</div>
         <div>sec</div>

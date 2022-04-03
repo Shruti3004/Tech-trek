@@ -5,6 +5,7 @@ import Avatar1 from "../../images/avatar-1.svg";
 import Avatar2 from "../../images/avatar-2.svg";
 import Avatar3 from "../../images/avatar-3.svg";
 import { getLeaderboard } from "../../api";
+import ClipLoader from "react-spinners/ClipLoader";
 import Avatar4 from "../../images/avatar-4.svg";
 
 const Leaderboard = () => {
@@ -78,36 +79,47 @@ const Leaderboard = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {leaderboard.map((leader, index) => (
-                      <tr
-                        key={leader.email}
-                        className={`py-2 ${
-                          index % 2 !== 0 ? "bg-black bg-opacity-20" : ""
-                        }`}
-                      >
-                        <td className="px-6 py-4 whitespace-nowrap font-semibold text-lg text-[#FDF3E7]">
-                          1
-                        </td>
-                        <td className="text-lg text-[#FDF3E7] font-semibold uppercase px-6 py-4 flex items-center whitespace-nowrap">
-                          <img
-                            src={getAvatar(leader.avatar_no)}
-                            className="w-11 h-11 mr-3"
-                            alt="image"
-                          />
-                          {leader.player_name}
-                        </td>
-                        <td className="font-semibold text-lg text-[#FDF3E7] px-6 py-4 whitespace-nowrap">
-                          {leader.score}
-                        </td>
-                        <td className="font-semibold text-lg text-[#FDF3E7] px-6 py-4 whitespace-nowrap">
-                          <img
-                            src={getAvatar(leader.badge_4)}
-                            alt="image"
-                            className="w-11 h-11"
-                          />
-                        </td>
-                      </tr>
-                    ))}
+                    {loading ? (
+                      <div className="flex overflow-hidden w-full mx-auto">
+                        <ClipLoader
+                          color="#FD8D41"
+                          css={{ textAlign: "center" }}
+                          loading={loading}
+                          size={150}
+                        />
+                      </div>
+                    ) : (
+                      leaderboard.map((leader, index) => (
+                        <tr
+                          key={leader.email}
+                          className={`py-2 ${
+                            index % 2 !== 0 ? "bg-black bg-opacity-20" : ""
+                          }`}
+                        >
+                          <td className="px-6 py-4 whitespace-nowrap font-semibold text-lg text-[#FDF3E7]">
+                            1
+                          </td>
+                          <td className="text-lg text-[#FDF3E7] font-semibold uppercase px-6 py-4 flex items-center whitespace-nowrap">
+                            <img
+                              src={getAvatar(leader.avatar_no)}
+                              className="w-11 h-11 mr-3"
+                              alt="image"
+                            />
+                            {leader.player_name}
+                          </td>
+                          <td className="font-semibold text-lg text-[#FDF3E7] px-6 py-4 whitespace-nowrap">
+                            {leader.score}
+                          </td>
+                          <td className="font-semibold text-lg text-[#FDF3E7] px-6 py-4 whitespace-nowrap">
+                            <img
+                              src={getAvatar(leader.badge_4)}
+                              alt="image"
+                              className="w-11 h-11"
+                            />
+                          </td>
+                        </tr>
+                      ))
+                    )}
                   </tbody>
                 </table>
               </div>
