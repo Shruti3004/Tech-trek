@@ -1,22 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { getDashboardInfo } from '../../api';
+import React from 'react';
+
 import Footer from "../../components/Footer";
 import Timer from "../../components/Timer";
 import Navbar from "../../components/Navbar";
 
-const TimerPage = () => {
-    const [user, setUser] = useState();
-    const [loading, setLoading] = useState(true);
-    useEffect(() => {
-        getDashboardInfo().then(res => {
-            setUser(res);
-            setLoading(false);
-        });
-    }, [])
+const TimerPage = ({ user, setUser }) => {
 
-    if (loading) {
-        return <div className="h-screen w-screen"> <div className="bg-bg-primary h-full w-full flex justify-center items-center"> <img src="./loader.gif" width="200px" /></div></div>
-    }
+
+
     return (
         <div className="background">
             <Navbar />

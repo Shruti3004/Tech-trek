@@ -59,7 +59,7 @@ const Routes = () => {
         path="/timer"
         element={
           <React.Suspense fallback={<Loader />}>
-            <TimerPage />
+            <TimerPage user={user} setUser={setUser} />
           </React.Suspense>
         }
       />

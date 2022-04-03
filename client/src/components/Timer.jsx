@@ -2,6 +2,7 @@ import React from "react";
 import ButtonPrimary from "./ButtonPrimary";
 import { generateOrder, makePayment } from "../api/index";
 import Clock from "./Clock";
+import { Navigate } from "react-router-dom";
 
 const Timer = ({ user, setUser }) => {
   function loadScript(src) {
@@ -65,6 +66,10 @@ const Timer = ({ user, setUser }) => {
 
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
+  }
+
+  if (user.is_paid && Date.now() > 16491168000) {
+    return <Navigate to="/dashboard" />;
   }
 
   return (

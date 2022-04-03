@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getQuestion, postAnswer } from "../../api";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import Clock from "../../components/Clock";
-import Loader from "../../components/Loader";
+import ClipLoader from "react-spinners/ClipLoader";
 import Avatar1 from "../../images/avatar-1.svg";
 import Avatar2 from "../../images/avatar-2.svg";
 import Avatar3 from "../../images/avatar-3.svg";
@@ -20,7 +20,18 @@ const Dashboard = ({ user }) => {
     });
   }, []);
   if (loading) {
-    return <div>{<Loader />}</div>;
+    return (
+      <div className="min-w-screen min-h-screen">
+        <div className="flex w-full h-full justify-center items-center">
+          <ClipLoader
+            color="#FD8D41"
+            css={{ textAlign: "center", marginTop: "10rem" }}
+            loading={loading}
+            size={150}
+          />
+        </div>
+      </div>
+    );
   }
   const handleChange = (event) => {
     setAnswer(event.target.value);
