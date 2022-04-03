@@ -105,3 +105,14 @@ export const postAnswer = async (formData) => {
         return error.response.data;
     }
 }
+
+export const getLeaderboard = async () => {
+    try {
+        const { data } = await API.get("/questions/leaderboard/");
+        console.log(data)
+        return data;
+    } catch (error) {
+        console.log(error)
+        return error.response.data;
+    }
+}

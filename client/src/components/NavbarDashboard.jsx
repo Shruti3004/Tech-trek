@@ -42,7 +42,7 @@ export default function NavbarDashboard({ user, children }) {
       <Disclosure as="nav" className="bg-[#231F2C]">
         {({ open }) => (
           <>
-            <div className="w-8/12 mx-auto px-2 sm:px-6 lg:px-8">
+            <div className="w-full lg:w-10/12 xl:w-8/12 mx-auto px-2 sm:px-6 lg:px-8">
               <div className="relative w-full flex items-end justify-between pt-6 pb-5">
                 <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
                   {/* Mobile menu button*/}

@@ -11,6 +11,7 @@ import Rules from "./pages/Rules";
 import NavbarDashboard from "./components/NavbarDashboard";
 import Dashboard from "./pages/Dashboard";
 import { getDashboardInfo } from "./api";
+import Leaderboard from "./pages/Leaderboard";
 
 const Routes = () => {
   const [user, setUser] = useState();
@@ -94,6 +95,25 @@ const Routes = () => {
               ) : (
                 <NavbarDashboard user={user}>
                   <Dashboard user={user} />
+                </NavbarDashboard>
+              )}
+            </React.Suspense>
+          </div>
+        }
+      />
+      <Route
+        path="/leaderboard"
+        exact
+        element={
+          <div className="dashboard-bg min-h-screen">
+            <React.Suspense fallback={<Loader />}>
+              {loading ? (
+                <div className="flex justify-center items-center h-full w-full">
+                  <Loader />
+                </div>
+              ) : (
+                <NavbarDashboard user={user}>
+                  <Leaderboard user={user} />
                 </NavbarDashboard>
               )}
             </React.Suspense>
