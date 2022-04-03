@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getQuestion } from "../../api";
+import { getQuestion, postAnswer } from "../../api";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import Clock from "../../components/Clock";
 import Loader from "../../components/Loader";
@@ -10,7 +10,9 @@ import Avatar4 from "../../images/avatar-4.svg";
 
 const Dashboard = ({ user }) => {
   const [question, setQuestion] = useState();
+  const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [answer, setAnswer] = useState("");
   useEffect(() => {
     getQuestion().then((res) => {
       setQuestion(res);
@@ -20,6 +22,29 @@ const Dashboard = ({ user }) => {
   if (loading) {
     return <div>{<Loader />}</div>;
   }
+  const handleChange = (event) => {
+    setAnswer(event.target.value);
+  };
+
+  const setMessage = () => {
+    setError(true);
+    setTimeout(() => {
+      setError(false);
+    }, 3000);
+  };
+  const handleSubmit = async () => {
+    await postAnswer(answer).then((res) => {
+      if (!res.success) {
+        setMessage();
+      } else {
+        getQuestion().then((res) => {
+          setQuestion(res);
+          setLoading(false);
+        });
+      }
+    });
+    setAnswer("");
+  };
   return (
     <div className="w-full xl:w-8/12 mx-auto mt-8">
       <div className="dashboard-question-bg mx-auto w-11/12 xl:w-full px-8 xl:px-16 py-11">
@@ -31,14 +56,29 @@ const Dashboard = ({ user }) => {
         </div>
         {/* <Clock /> */}
         <div className="flex-col flex sm:flex-row items-center justify-between">
-          <input
-            name="password"
-            className="w-9/12 input-text mt-6 dashboard-input-bg p-[20px] text-[18px]"
-            type="password"
-            placeholder="I seek an answer"
-          />
+          <div className="flex flex-col justify-start items-center">
+            <input
+              name="answer"
+              onChange={handleChange}
+              value={answer}
+              className="w-full input-text mt-6 dashboard-input-bg p-[20px] text-[18px]"
+              type="text"
+              placeholder="I seek an answer"
+            />
+            {error && (
+              <div className="text-lg text-[#FD8D41]">
+                Please enter a valid answer
+              </div>
+            )}
+          </div>
           <div className="mt-8 xl:mt-0">
-            <ButtonPrimary text="Submit" className="-mb-2" />
+            <ButtonPrimary
+              text="Submit"
+              className="-mb-2"
+              handleClick={() => {
+                handleSubmit();
+              }}
+            />
           </div>
         </div>
       </div>

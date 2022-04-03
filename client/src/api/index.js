@@ -95,3 +95,13 @@ export const makePayment = async (formData) => {
         return error.response.data;
     }
 }
+export const postAnswer = async (formData) => {
+    try {
+        const { data } = await API.post("/questions/", { answer: formData }, config);
+
+        return data;
+    } catch (error) {
+        console.log(error)
+        return error.response.data;
+    }
+}
