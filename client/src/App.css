@@ -15,6 +15,29 @@
   height: 100%;
   width: 100%;
 }
+
+.dashboard-question-bg {
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: inset 13px 13px 57px rgba(0, 0, 0, 0.5),
+    inset -13px -13px 57px rgba(253, 158, 94, 0.2);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+}
+.dashboard-input-bg {
+  background: url("./images/dashboard-input.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position-y: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+.badge-bg {
+  background: rgba(30, 26, 36, 0.7);
+  backdrop-filter: blur(10px);
+}
+
 .navborder {
   position: relative;
 }
@@ -32,9 +55,6 @@
   background: url("./assets/background/dashboard-bg.svg");
   background-size: cover;
   background-repeat: no-repeat;
-
-  width: 100vw;
-  height: 100vh;
 }
 
 @media screen and (max-width: 1650px) {
@@ -74,6 +94,11 @@
     background-position: center;
     background-repeat: no-repeat;
     max-width: 100%;
+  }
+  .dashboard-bg {
+    background: url("./assets/background/dashboard-bg-mobile.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
   }
   .logout-btn-bg {
     background: url("./assets/background/logout-bg.svg");

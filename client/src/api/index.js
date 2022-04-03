@@ -30,10 +30,10 @@ export const registerUser = async (formData, navigate) => {
     } catch (error) {
         let obj = error.response.data;
         // console.log()
-        
+
 
         // console.log(newObj.entries(obj => obj.value))
-         
+
         // console.log(error.response.data)
         return Object.entries(obj)[0][1][0];
     }
@@ -57,6 +57,17 @@ export const getDashboardInfo = async () => {
     try {
         const { data } = await API.get("/accounts/api/");
         localStorage.setItem("user", JSON.stringify(data));
+        return data;
+    } catch (error) {
+        console.log(error)
+        return error.response.data;
+    }
+}
+
+export const getQuestion = async () => {
+    try {
+        const { data } = await API.get("/questions/");
+        console.log(data)
         return data;
     } catch (error) {
         console.log(error)
