@@ -108,30 +108,6 @@ const Leaderboard = () => {
                         </td>
                       </tr>
                     ))}
-
-                    <tr className="py-3 bg-black bg-opacity-20">
-                      <td className="px-6 py-4 whitespace-nowrap font-semibold text-lg text-[#FDF3E7]">
-                        1
-                      </td>
-                      <td className="text-lg text-[#FDF3E7] font-semibold uppercase px-6 py-4 flex items-center whitespace-nowrap">
-                        <img
-                          src={getAvatar(1)}
-                          className="w-11 h-11 mr-3"
-                          alt="image"
-                        />
-                        SingingApple{" "}
-                      </td>
-                      <td className="font-semibold text-lg text-[#FDF3E7] px-6 py-4 whitespace-nowrap">
-                        30
-                      </td>
-                      <td className="font-semibold text-lg text-[#FDF3E7] px-6 py-4 whitespace-nowrap">
-                        <img
-                          src={getAvatar(2)}
-                          alt="image"
-                          className="w-11 h-11"
-                        />
-                      </td>
-                    </tr>
                   </tbody>
                 </table>
               </div>
