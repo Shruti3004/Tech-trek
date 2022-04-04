@@ -2,9 +2,10 @@ import React from "react";
 import ButtonPrimary from "./ButtonPrimary";
 import { generateOrder, makePayment } from "../api/index";
 import Clock from "./Clock";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Timer = ({ user, setUser }) => {
+  const navigate = useNavigate();
   function loadScript(src) {
     return new Promise((resolve) => {
       const script = document.createElement("script");
@@ -75,6 +76,9 @@ const Timer = ({ user, setUser }) => {
   if (user.is_paid && Date.now() > 1649116800000) {
     return <Navigate to="/dashboard" />;
   }
+  setTimeout(() => {
+    navigate("/dashboard");
+  }, 1649116800000 - Date.now());
 
   return (
     <>
