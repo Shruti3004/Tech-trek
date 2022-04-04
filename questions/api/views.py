@@ -80,6 +80,8 @@ class GetQuestion(views.APIView):
 
         # question = Question.objects.get(level=player.current_question)
         question = get_next_question(player)
+        question.hits += 1
+        question.save()
         if request.data.get("answer").lower() == question.tech_answer.lower():
             # if question.is_level_solved is False:
             #     # Update questions to mark that the level is solved.
