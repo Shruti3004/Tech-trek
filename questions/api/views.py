@@ -29,7 +29,7 @@ class GetQuestion(views.APIView):
         self.check_object_permissions(request, player)
 
         tz_info = player.unlock_time.tzinfo
-        time_left = (player.unlock_time - datetime.now(tz_info)).total_seconds()
+        time_left = int((player.unlock_time - datetime.now(tz_info)).total_seconds())
         has_started = True
         q_text = ""
         if datetime.now() < settings.START_TIME:
@@ -52,7 +52,7 @@ class GetQuestion(views.APIView):
                 "badges": badge_serializer.data,
                 "detail": {
                     "question": q_text if has_started else "",
-                    "time_left": time_left,
+                    "time_left": time_left + 1,
                 },
             }
         )
