@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-
 from datetime import datetime, timedelta
+from pytz import timezone
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -83,14 +83,14 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     "payments",
-    # 'rest_framework.authtoken',
+    # "rest_framework.authtoken",
 ]
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    # "techtrek.middleware.TimeMiddleware",
+    "techtrek.middleware.TimeMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -174,8 +174,8 @@ MEDIA_URL = "/media/"
 # TIME MIDDLEWARE SETTINGS
 
 # CAUTION: USE DIFFERENT TIMES IN PRODUCTION
-START_TIME = datetime(2019, 10, 15, 20, 20, 0)
-END_TIME = datetime(2019, 10, 16, 12, 14, 5)
+START_TIME = datetime(2022, 4, 5, 0, 0, 0, 0)
+END_TIME = datetime(2022, 4, 5, 0, 0, 0, 0)
 HOST_URL = "http://localhost:8000"
 
 FEE_AMOUNT = 40
