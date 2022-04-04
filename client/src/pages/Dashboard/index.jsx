@@ -224,7 +224,7 @@ const Dashboard = ({ user, setUser }) => {
                     alt="Avatar"
                   />
                   <div className="text-white text-base text-center font-semibold mt-3">
-                    Badge 1
+                    Solved 5th
                   </div>
                 </div>
               </Menu.Item>
@@ -240,7 +240,7 @@ const Dashboard = ({ user, setUser }) => {
                     alt="Avatar"
                   />
                   <div className="text-white text-base text-center font-semibold mt-3">
-                    Badge 2
+                    Solved 10th
                   </div>
                 </div>
               </Menu.Item>
@@ -256,7 +256,7 @@ const Dashboard = ({ user, setUser }) => {
                     alt="Avatar"
                   />
                   <div className="text-white text-base text-center font-semibold mt-3">
-                    Badge 3
+                    Solved 15th
                   </div>
                 </div>
               </Menu.Item>
@@ -272,7 +272,7 @@ const Dashboard = ({ user, setUser }) => {
                     alt="Avatar"
                   />
                   <div className="text-white text-base text-center font-semibold mt-3">
-                    Badge 4
+                    Solved 20th
                   </div>
                 </div>
               </Menu.Item>
@@ -288,7 +288,7 @@ const Dashboard = ({ user, setUser }) => {
                     alt="Avatar"
                   />
                   <div className="text-white text-base text-center font-semibold mt-3">
-                    Badge 5
+                    Solved 25th
                   </div>
                 </div>
               </Menu.Item>
@@ -304,7 +304,7 @@ const Dashboard = ({ user, setUser }) => {
                     alt="Avatar"
                   />
                   <div className="text-white text-base text-center font-semibold mt-3">
-                    Badge 6
+                    Solved 30th
                   </div>
                 </div>
               </Menu.Item>
