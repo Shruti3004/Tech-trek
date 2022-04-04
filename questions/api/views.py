@@ -52,7 +52,7 @@ class GetQuestion(views.APIView):
                 "badges": badge_serializer.data,
                 "detail": {
                     "question": q_text if has_started else "",
-                    "time_left": time_left,
+                    "time_left": time_left + 1,
                 },
             }
         )
