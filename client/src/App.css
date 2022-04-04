@@ -148,6 +148,11 @@
   background-position-y: -6px;
 }
 
+.button-background-paynow {
+  width: 230px;
+  background-position-y: -6px;
+}
+
 .input-background {
   background: url("./images/input-bg.svg");
   background-size: cover;

@@ -3,6 +3,7 @@ import { getQuestion, postAnswer } from "../../api";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import Clock from "../../components/Clock";
 import ClipLoader from "react-spinners/ClipLoader";
+import { Menu } from '@headlessui/react'
 import Avatar1 from "../../images/avatar-1.svg";
 import Avatar2 from "../../images/avatar-2.svg";
 import Avatar3 from "../../images/avatar-3.svg";
@@ -73,8 +74,8 @@ const Dashboard = ({ user }) => {
               {question.detail.question}
             </div>
             {/* <Clock /> */}
-            <div className="flex-col flex sm:flex-row items-center justify-between">
-              <div className="flex flex-col justify-start items-start">
+            <div className="flex-col flex sm:flex-row items-baseline justify-between">
+              <div className="w-full pr-4 flex flex-col justify-start items-start ">
                 <input
                   name="answer"
                   onChange={handleChange}
@@ -92,7 +93,7 @@ const Dashboard = ({ user }) => {
               <div className="mt-8 xl:mt-0">
                 <ButtonPrimary
                   text="Submit"
-                  className="-mb-2"
+                  className="-mt-2"
                   handleClick={() => {
                     handleSubmit();
                   }}
@@ -102,7 +103,168 @@ const Dashboard = ({ user }) => {
           </>
         )}
       </div>
-      <div className="mt-6 badge-bg xl:rounded-xl w-full py-11">
+
+        <Menu>
+          <Menu.Button className="mt-6 badge-bg xl:rounded-xl w-full py-11">
+            <div className="text-white flex items-center justify-center font-regular text-2xl">
+              <div>
+                LEVEL: <span className="font-demi">{user.current_question}</span>
+              </div>
+
+              <div className="mx-6">-</div>
+              <div>
+                SCORE: <span className="font-demi">{user.score}</span>
+              </div>
+            </div>
+            <hr className="w-9/12 bg-gray-100 mt-6 mx-auto"></hr>
+            <div className="text-center font-semibold  text-2xl mt-5 text-golden uppercase">
+              Achievements
+            </div>
+          </Menu.Button>
+          <Menu.Items className="w-full badge-bg xl:pt-10 pb-10 mx-auto xl:mt-6 grid grid-cols-3 gap-y-5 xl:gap-y-8 justify-items-center">
+            <Menu.Item className="flex flex-col justify-center items-center w-full  opacity-100">
+              <div>
+                <img
+                  src={Avatar1}
+                  className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
+                  alt="Avatar"
+                />
+                <div className="text-white text-base text-center font-semibold mt-3">
+                  Badge 1
+                </div>
+              </div>
+            </Menu.Item>
+            <Menu.Item className="flex flex-col justify-center items-center w-full  opacity-30">
+            <div>
+            <img
+              src={Avatar2}
+              className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
+              alt="Avatar"
+            />
+            <div className="text-white text-base text-center font-semibold mt-3">
+              Badge 2
+            </div>
+          </div>
+            </Menu.Item>
+            <Menu.Item className="flex flex-col justify-center items-center w-full opacity-30">
+              <div>
+              <img
+                src={Avatar3}
+                className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
+                alt="Avatar"
+              />
+              <div className="text-white text-base text-center font-semibold mt-3">
+                Badge 3
+              </div>
+            </div>
+            </Menu.Item>
+            <Menu.Item className="flex flex-col justify-center items-center w-full  opacity-30">
+            <div>
+              <img
+                src={Avatar4}
+                className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
+                alt="Avatar"
+              />
+              <div className="text-white text-base text-center font-semibold mt-3">
+                Badge 1
+              </div>
+            </div>
+            </Menu.Item>
+            <Menu.Item className="flex flex-col justify-center items-center w-full  opacity-30">
+            <div>
+              <img
+                src={Avatar4}
+                className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
+                alt="Avatar"
+              />
+              <div className="text-white text-base text-center font-semibold mt-3">
+                Badge 1
+              </div>
+            </div>
+            </Menu.Item>
+            <Menu.Item className="flex flex-col justify-center items-center w-full  opacity-30">
+            <div>
+              <img
+                src={Avatar4}
+                className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
+                alt="Avatar"
+              />
+              <div className="text-white text-base text-center font-semibold mt-3">
+                Badge 1
+              </div>
+            </div>
+            </Menu.Item>
+          </Menu.Items>
+        </Menu>
+
+      {/* <div className="mt-6 badge-bg xl:rounded-xl w-full py-11">
+        
+        
+        <div className="w-full mx-auto mt-10 xl:mt-6 grid grid-cols-3 gap-y-4 xl:gap-y-8 justify-items-center">
+          <div className="opacity-100">
+            <img
+              src={Avatar1}
+              className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
+              alt="Avatar"
+            />
+            <div className="text-white text-base text-center font-semibold mt-3">
+              Badge 1
+            </div>
+          </div>
+          <div>
+            <img
+              src={Avatar2}
+              className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
+              alt="Avatar"
+            />
+            <div className="text-white text-base text-center font-semibold mt-3">
+              Badge 1
+            </div>
+          </div>
+          <div>
+            <img
+              src={Avatar3}
+              className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
+              alt="Avatar"
+            />
+            <div className="text-white text-base text-center font-semibold mt-3">
+              Badge 1
+            </div>
+          </div>
+          <div>
+            <img
+              src={Avatar4}
+              className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
+              alt="Avatar"
+            />
+            <div className="text-white text-base text-center font-semibold mt-3">
+              Badge 1
+            </div>
+          </div>
+          <div>
+            <img
+              src={Avatar1}
+              className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
+              alt="Avatar"
+            />
+            <div className="text-white text-base text-center font-semibold mt-3">
+              Badge 1
+            </div>
+          </div>
+          <div>
+            <img
+              src={Avatar2}
+              className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
+              alt="Avatar"
+            />
+            <div className="text-white text-base text-center font-semibold mt-3">
+              Badge 1
+            </div>
+          </div>
+        </div>
+      </div> */}
+
+      {/* <div className="mt-6 badge-bg xl:rounded-xl w-full py-11">
         <div className="text-white flex items-center justify-center font-regular text-2xl">
           <div>
             LEVEL: <span className="font-bold">{user.current_question}</span>
@@ -121,57 +283,57 @@ const Dashboard = ({ user }) => {
           <div className="opacity-100">
             <img
               src={Avatar1}
-              className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px]"
+              className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
               alt="Avatar"
             />
             <div className="text-white text-base text-center font-semibold mt-3">
               Badge 1
             </div>
           </div>
-          <div className="opacity-30">
+          <div>
             <img
               src={Avatar2}
-              className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px]"
+              className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
               alt="Avatar"
             />
             <div className="text-white text-base text-center font-semibold mt-3">
               Badge 1
             </div>
           </div>
-          <div className="opacity-30">
+          <div>
             <img
               src={Avatar3}
-              className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px]"
+              className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
               alt="Avatar"
             />
             <div className="text-white text-base text-center font-semibold mt-3">
               Badge 1
             </div>
           </div>
-          <div className="opacity-30">
+          <div>
             <img
               src={Avatar4}
-              className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px]"
+              className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
               alt="Avatar"
             />
             <div className="text-white text-base text-center font-semibold mt-3">
               Badge 1
             </div>
           </div>
-          <div className="opacity-30">
+          <div>
             <img
               src={Avatar1}
-              className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px]"
+              className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
               alt="Avatar"
             />
             <div className="text-white text-base text-center font-semibold mt-3">
               Badge 1
             </div>
           </div>
-          <div className="opacity-30">
+          <div>
             <img
               src={Avatar2}
-              className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px]"
+              className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
               alt="Avatar"
             />
             <div className="text-white text-base text-center font-semibold mt-3">
@@ -179,7 +341,7 @@ const Dashboard = ({ user }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
