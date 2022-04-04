@@ -26,6 +26,7 @@ export const registerUser = async (formData, navigate) => {
         localStorage.setItem("refreshToken", data.token.refresh);
         navigate('/timer');
         await getDashboardInfo();
+        window.location.reload();
         return data;
     } catch (error) {
         let obj = error.response.data;
@@ -47,6 +48,7 @@ export const signIn = async (formData, navigate) => {
         navigate('/timer');
         let user = await getDashboardInfo();
         localStorage.setItem("user", user);
+        window.location.reload();
         return;
     } catch (error) {
         console.log(error)
