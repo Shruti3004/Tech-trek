@@ -8,6 +8,8 @@ import Avatar3 from "../../images/avatar-3.svg";
 import { getLeaderboard } from "../../api";
 import ClipLoader from "react-spinners/ClipLoader";
 import Avatar4 from "../../images/avatar-4.svg";
+import Avatar5 from "../../images/avatar-5.svg";
+import Avatar6 from "../../images/avatar-6.svg";
 import Badge1 from "../../images/badge-1.svg";
 import Badge2 from "../../images/badge-2.svg";
 import Badge3 from "../../images/badge-3.svg";
@@ -62,6 +64,10 @@ const Leaderboard = () => {
         return Avatar3;
       case 4:
         return Avatar4;
+      case 5:
+        return Avatar5;
+      case 6:
+        return Avatar6;
       default:
         return Avatar1;
     }

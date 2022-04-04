@@ -8,6 +8,8 @@ import Avatar1 from "../images/avatar-1.svg";
 import Avatar2 from "../images/avatar-2.svg";
 import Avatar3 from "../images/avatar-3.svg";
 import Avatar4 from "../images/avatar-4.svg";
+import Avatar5 from "../images/avatar-5.svg";
+import Avatar6 from "../images/avatar-6.svg";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const navigation = [
@@ -33,6 +35,10 @@ export default function NavbarDashboard({ user, children }) {
         return Avatar3;
       case 4:
         return Avatar4;
+      case 5:
+        return Avatar5;
+      case 6:
+        return Avatar6;
       default:
         return Avatar1;
     }
