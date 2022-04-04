@@ -33,7 +33,10 @@ const Dashboard = ({ user, setUser }) => {
     navigate("/");
     return <></>;
   }
-  if (user.is_paid || Date.now() < 1649116800000) {
+  if (!user.is_paid) {
+    return <Navigate to="/timer" />;
+  }
+  if (Date.now() < 16491168000) {
     return <Navigate to="/timer" />;
   }
 
