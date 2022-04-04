@@ -10,6 +10,7 @@ from accounts.models import Player
 from badges.models import Badge, BadgeToPlayer
 from datetime import datetime
 from django.db.models import Count
+from django.utils import timezone
 from django.conf import settings
 
 from questions.api.serializers import (
@@ -80,14 +81,14 @@ class GetQuestion(views.APIView):
         # question = Question.objects.get(level=player.current_question)
         question = get_next_question(player)
         if request.data.get("answer").lower() == question.tech_answer:
-            if question.is_level_solved is False:
-                # Update questions to mark that the level is solved.
-                Question.objects.filter(level=player.current_question).update(
-                    is_level_solved=True
-                )
-                badge = Badge.objects.get(badge_type="4")
-                # print("AWARDING...")
-                badge.award_to(player)
+            # if question.is_level_solved is False:
+            #     # Update questions to mark that the level is solved.
+            #     Question.objects.filter(level=player.current_question).update(
+            #         is_level_solved=True
+            #     )
+            #     badge = Badge.objects.get(badge_type="4")
+            #     # print("AWARDING...")
+            #     badge.award_to(player)
 
             player.current_question = player.current_question + 1
             player.score = player.score + 10
@@ -99,19 +100,31 @@ class GetQuestion(views.APIView):
             if should_award:
                 badge = Badge.objects.get(badge_type=badge_type)
                 badge.award_to(player)
+
+            player.technical_solved += 1
             player.save()
+
+            special_badge = Badge.objects.get(badge_type="0")
+            current_special_badge = BadgeToPlayer.objects.get(badge=special_badge)
+            special_badge_holder = current_special_badge.player
+            if (
+                special_badge_holder != player
+                and player.technical_solved > special_badge_holder.technical_solved
+            ):
+                current_special_badge.player = player
+                current_special_badge.save()
 
             is_correct = True
 
         elif request.data.get("answer").lower() == question.nontech_answer:
-            if question.is_level_solved is False:
-                # Update questions to mark that the level is solved.
-                Question.objects.filter(level=player.current_question).update(
-                    is_level_solved=True
-                )
-                badge = Badge.objects.get(badge_type="4")
-                print("AWARDING...")
-                badge.award_to(player)
+            # if question.is_level_solved is False:
+            #     # Update questions to mark that the level is solved.
+            #     Question.objects.filter(level=player.current_question).update(
+            #         is_level_solved=True
+            #     )
+            #     badge = Badge.objects.get(badge_type="4")
+            #     print("AWARDING...")
+            #     badge.award_to(player)
 
             player.current_question = player.current_question + 1
             player.score = player.score + 5

@@ -20,6 +20,7 @@ class Player(AbstractUser):
         regex=r"^[1-9]\d{9}$", message="Phone number should be of 10 digits."
     )
     contact_no = models.CharField(validators=[contact_regex], max_length=10)
+    technical_solved = models.IntegerField(default=0)
 
     def __str__(self):
         return self.username

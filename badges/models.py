@@ -4,10 +4,11 @@ from accounts.models import Player
 from django.utils import timezone
 
 BADGE_CHOICES = (
+    ("0", "special"),
     ("1", "level1"),
     ("2", "level2"),
     ("3", "level3"),
-    ("4", "solved first"),
+    ("4", "level4"),
     ("5", "level5"),
     ("6", "level6"),
 )
