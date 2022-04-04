@@ -17,12 +17,14 @@ function Clock({ expiryTimestamp, dashboard }) {
         <div className="mx-1">{seconds}</div>
       </div>
       <div
-        className={`text-golden flex justify-between items-center ${
+        className={`text-golden flex justify-center items-center ${
           dashboard ? "w-[72%]" : "w-10/12"
         } mx-auto`}
       >
         <div>hrs</div>
+        &nbsp;&nbsp;&nbsp;&nbsp;
         <div>mins</div>
+        &nbsp;&nbsp;&nbsp;&nbsp;
         <div>sec</div>
       </div>
     </>

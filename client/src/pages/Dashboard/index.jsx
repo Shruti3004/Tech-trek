@@ -21,11 +21,12 @@ import Timer from "../../components/DashboardTimer";
 const Dashboard = ({ user }) => {
   const navigate = useNavigate();
   const [question, setQuestion] = useState();
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [answer, setAnswer] = useState("");
 
   let badges = [];
+  const [success, setSuccess] = useState("");
   useEffect(() => {
     getQuestion().then((res) => {
       setQuestion(res);
@@ -59,16 +60,42 @@ const Dashboard = ({ user }) => {
   };
 
   const setMessage = () => {
-    setError(true);
+    const errorMsg = [
+      "Oops!! Try Again",
+      "You are almost there",
+      "Better Luck Next Time",
+      "Wrong!!",
+      "Try! Try! Try!",
+      "Far from Bingo",
+    ];
+
+    setError(errorMsg[Math.floor(Math.random() * errorMsg.length)]);
     setTimeout(() => {
-      setError(false);
+      setError("");
     }, 3000);
+  };
+  const successMessage = () => {
+    const successMsg = [
+      "Bingo",
+      "Congratulations",
+      "Correct",
+      "Target Accomplish",
+      "One step ahead",
+      "Level up",
+      "Hurray!!!",
+      "Yay",
+    ];
+    setSuccess(successMsg[Math.floor(Math.random() * successMsg.length)]);
+    setTimeout(() => {
+      setSuccess("");
+    }, 6000);
   };
   const handleSubmit = async () => {
     await postAnswer(answer).then((res) => {
       if (!res.success) {
         setMessage();
       } else {
+        successMessage();
         getQuestion().then((res) => {
           setQuestion(res);
           setLoading(false);
@@ -109,10 +136,11 @@ const Dashboard = ({ user }) => {
                   type="text"
                   placeholder="I seek an answer"
                 />
-                {error && (
-                  <div className="text-lg text-[#FD8D41]">
-                    Please enter a valid answer
-                  </div>
+                {error.length > 0 && (
+                  <div className="text-lg text-[#FD8D41]">{error}</div>
+                )}
+                {success.length > 0 && (
+                  <div className="text-lg text-[#FD8D41]">{success}</div>
                 )}
               </div>
               <div className="mt-8 xl:mt-0">
