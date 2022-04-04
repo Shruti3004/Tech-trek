@@ -3,7 +3,7 @@ import { getQuestion, postAnswer } from "../../api";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import Clock from "../../components/Clock";
 import ClipLoader from "react-spinners/ClipLoader";
-import { Menu } from '@headlessui/react'
+import { Menu } from "@headlessui/react";
 import Avatar1 from "../../images/avatar-1.svg";
 import Avatar2 from "../../images/avatar-2.svg";
 import Avatar3 from "../../images/avatar-3.svg";
@@ -11,9 +11,10 @@ import Avatar4 from "../../images/avatar-4.svg";
 
 const Dashboard = ({ user }) => {
   const [question, setQuestion] = useState();
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [answer, setAnswer] = useState("");
+  const [success, setSuccess] = useState("");
   useEffect(() => {
     getQuestion().then((res) => {
       setQuestion(res);
@@ -39,16 +40,42 @@ const Dashboard = ({ user }) => {
   };
 
   const setMessage = () => {
-    setError(true);
+    const errorMsg = [
+      "Oops!! Try Again",
+      "You are almost there",
+      "Better Luck Next Time",
+      "Wrong!!",
+      "Try! Try! Try!",
+      "Far from Bingo",
+    ];
+
+    setError(errorMsg[Math.floor(Math.random() * errorMsg.length)]);
     setTimeout(() => {
-      setError(false);
+      setError("");
     }, 3000);
+  };
+  const successMessage = () => {
+    const successMsg = [
+      "Bingo",
+      "Congratulations",
+      "Correct",
+      "Target Accomplish",
+      "One step ahead",
+      "Level up",
+      "Hurray!!!",
+      "Yay",
+    ];
+    setSuccess(successMsg[Math.floor(Math.random() * successMsg.length)]);
+    setTimeout(() => {
+      setSuccess("");
+    }, 6000);
   };
   const handleSubmit = async () => {
     await postAnswer(answer).then((res) => {
       if (!res.success) {
         setMessage();
       } else {
+        successMessage();
         getQuestion().then((res) => {
           setQuestion(res);
           setLoading(false);
@@ -84,10 +111,11 @@ const Dashboard = ({ user }) => {
                   type="text"
                   placeholder="I seek an answer"
                 />
-                {error && (
-                  <div className="text-lg text-[#FD8D41]">
-                    Please enter a valid answer
-                  </div>
+                {error.length > 0 && (
+                  <div className="text-lg text-[#FD8D41]">{error}</div>
+                )}
+                {success.length > 0 && (
+                  <div className="text-lg text-[#FD8D41]">{success}</div>
                 )}
               </div>
               <div className="mt-8 xl:mt-0">
@@ -104,50 +132,50 @@ const Dashboard = ({ user }) => {
         )}
       </div>
 
-        <Menu>
-          <Menu.Button className="mt-6 badge-bg xl:rounded-xl w-full py-11">
-            <div className="text-white flex items-center justify-center font-regular text-2xl">
-              <div>
-                LEVEL: <span className="font-demi">{user.current_question}</span>
-              </div>
-
-              <div className="mx-6">-</div>
-              <div>
-                SCORE: <span className="font-demi">{user.score}</span>
-              </div>
-            </div>
-            <hr className="w-9/12 bg-gray-100 mt-6 mx-auto"></hr>
-            <div className="text-center font-semibold  text-2xl mt-5 text-golden uppercase">
-              Achievements
-            </div>
-          </Menu.Button>
-          <Menu.Items className="w-full badge-bg xl:pt-10 pb-10 mx-auto xl:mt-6 grid grid-cols-3 gap-y-5 xl:gap-y-8 justify-items-center">
-            <Menu.Item className="flex flex-col justify-center items-center w-full  opacity-100">
-              <div>
-                <img
-                  src={Avatar1}
-                  className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
-                  alt="Avatar"
-                />
-                <div className="text-white text-base text-center font-semibold mt-3">
-                  Badge 1
-                </div>
-              </div>
-            </Menu.Item>
-            <Menu.Item className="flex flex-col justify-center items-center w-full  opacity-30">
+      <Menu>
+        <Menu.Button className="mt-6 badge-bg xl:rounded-xl w-full py-11">
+          <div className="text-white flex items-center justify-center font-regular text-2xl">
             <div>
-            <img
-              src={Avatar2}
-              className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
-              alt="Avatar"
-            />
-            <div className="text-white text-base text-center font-semibold mt-3">
-              Badge 2
+              LEVEL: <span className="font-demi">{user.current_question}</span>
+            </div>
+
+            <div className="mx-6">-</div>
+            <div>
+              SCORE: <span className="font-demi">{user.score}</span>
             </div>
           </div>
-            </Menu.Item>
-            <Menu.Item className="flex flex-col justify-center items-center w-full opacity-30">
-              <div>
+          <hr className="w-9/12 bg-gray-100 mt-6 mx-auto"></hr>
+          <div className="text-center font-semibold  text-2xl mt-5 text-golden uppercase">
+            Achievements
+          </div>
+        </Menu.Button>
+        <Menu.Items className="w-full badge-bg xl:pt-10 pb-10 mx-auto xl:mt-6 grid grid-cols-3 gap-y-5 xl:gap-y-8 justify-items-center">
+          <Menu.Item className="flex flex-col justify-center items-center w-full  opacity-100">
+            <div>
+              <img
+                src={Avatar1}
+                className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
+                alt="Avatar"
+              />
+              <div className="text-white text-base text-center font-semibold mt-3">
+                Badge 1
+              </div>
+            </div>
+          </Menu.Item>
+          <Menu.Item className="flex flex-col justify-center items-center w-full  opacity-30">
+            <div>
+              <img
+                src={Avatar2}
+                className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
+                alt="Avatar"
+              />
+              <div className="text-white text-base text-center font-semibold mt-3">
+                Badge 2
+              </div>
+            </div>
+          </Menu.Item>
+          <Menu.Item className="flex flex-col justify-center items-center w-full opacity-30">
+            <div>
               <img
                 src={Avatar3}
                 className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
@@ -157,8 +185,8 @@ const Dashboard = ({ user }) => {
                 Badge 3
               </div>
             </div>
-            </Menu.Item>
-            <Menu.Item className="flex flex-col justify-center items-center w-full  opacity-30">
+          </Menu.Item>
+          <Menu.Item className="flex flex-col justify-center items-center w-full  opacity-30">
             <div>
               <img
                 src={Avatar4}
@@ -169,8 +197,8 @@ const Dashboard = ({ user }) => {
                 Badge 1
               </div>
             </div>
-            </Menu.Item>
-            <Menu.Item className="flex flex-col justify-center items-center w-full  opacity-30">
+          </Menu.Item>
+          <Menu.Item className="flex flex-col justify-center items-center w-full  opacity-30">
             <div>
               <img
                 src={Avatar4}
@@ -181,8 +209,8 @@ const Dashboard = ({ user }) => {
                 Badge 1
               </div>
             </div>
-            </Menu.Item>
-            <Menu.Item className="flex flex-col justify-center items-center w-full  opacity-30">
+          </Menu.Item>
+          <Menu.Item className="flex flex-col justify-center items-center w-full  opacity-30">
             <div>
               <img
                 src={Avatar4}
@@ -193,9 +221,9 @@ const Dashboard = ({ user }) => {
                 Badge 1
               </div>
             </div>
-            </Menu.Item>
-          </Menu.Items>
-        </Menu>
+          </Menu.Item>
+        </Menu.Items>
+      </Menu>
 
       {/* <div className="mt-6 badge-bg xl:rounded-xl w-full py-11">
         
