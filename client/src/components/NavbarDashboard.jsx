@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Fragment } from "react";
 import Logo from "../images/Logo.svg";
 import { Disclosure, Menu } from "@headlessui/react";
@@ -12,7 +13,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 const navigation = [
   { name: "Dashboard", href: "/dashboard" },
   { name: "Rules", href: "/rules" },
-  { name: "Hint", href: "/hint" },
+
   { name: "Leaderboard", href: "/leaderboard" },
 ];
 
@@ -107,6 +108,13 @@ export default function NavbarDashboard({ user, children }) {
                           {item.name}
                         </NavLink>
                       ))}
+                      <a
+                        target="_blank"
+                        className="text-gray-400 text-lg font-regular block"
+                        herf="https://facebook.com"
+                      >
+                        Hint
+                      </a>
 
                       <Menu
                         as="div"
@@ -170,6 +178,13 @@ export default function NavbarDashboard({ user, children }) {
                     </NavLink>
                   );
                 })}
+
+                <a
+                  className="text-gray-400 text-lg font-regular block"
+                  herf="https://facebook.com"
+                >
+                  Hint
+                </a>
                 {localStorage.getItem("accessToken") ? (
                   <div
                     className="text-gray-400 text-lg font-regular block"

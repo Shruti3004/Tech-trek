@@ -21,8 +21,9 @@ const Routes = () => {
       setUser(res);
       setLoading(false);
     });
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [localStorage.getItem("user")]);
+  }, []);
   return (
     <Router>
       <Route
@@ -75,7 +76,7 @@ const Routes = () => {
                   <Loader />
                 </div>
               ) : (
-                <NavbarDashboard user={user}>
+                <NavbarDashboard user={user} setUser={setUser}>
                   <Rules user={user} />
                 </NavbarDashboard>
               )}
@@ -94,7 +95,7 @@ const Routes = () => {
                   <Loader />
                 </div>
               ) : (
-                <NavbarDashboard user={user}>
+                <NavbarDashboard user={user} setUser={setUser}>
                   <Dashboard user={user} />
                 </NavbarDashboard>
               )}
@@ -113,7 +114,7 @@ const Routes = () => {
                   <Loader />
                 </div>
               ) : (
-                <NavbarDashboard user={user}>
+                <NavbarDashboard user={user} setUser={setUser}>
                   <Leaderboard user={user} />
                 </NavbarDashboard>
               )}

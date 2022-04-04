@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useEffect, useState } from "react";
 import Star from "../../images/star.svg";
+import { Navigate, useNavigate } from "react-router-dom";
 import Avatar1 from "../../images/avatar-1.svg";
 import Avatar2 from "../../images/avatar-2.svg";
 import Avatar3 from "../../images/avatar-3.svg";
@@ -16,6 +17,7 @@ import Badge6 from "../../images/badge-6.svg";
 import Badge7 from "../../images/badge-7.svg";
 
 const Leaderboard = () => {
+  const navigate = useNavigate();
   const [leaderboard, setLeaderboard] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -25,6 +27,11 @@ const Leaderboard = () => {
       setLoading(false);
     });
   }, []);
+
+  if (!localStorage.getItem("accessToken")) {
+    navigate("/");
+    return <></>;
+  }
   const getBadge = (number) => {
     switch (number) {
       case 1:
@@ -39,7 +46,7 @@ const Leaderboard = () => {
         return Badge5;
       case 6:
         return Badge6;
-      case 7:
+      case 0:
         return Badge7;
       default:
         return Badge1;

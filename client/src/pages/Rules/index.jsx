@@ -1,7 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Star from "../../images/star.svg";
-
 const Rules = () => {
+  const navigate = useNavigate();
+  if (!localStorage.getItem("accessToken")) {
+    navigate("/");
+    return <></>;
+  }
   return (
     <div className="w-11/12 xl:w-8/12 mx-auto mt-8">
       <div className=" badge-bg w-full pt-11 pb-8 xl:pl-[75px] xl:pr-[30px]">

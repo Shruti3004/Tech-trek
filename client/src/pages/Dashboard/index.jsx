@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getQuestion, postAnswer } from "../../api";
+import { useNavigate } from "react-router-dom";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import Clock from "../../components/Clock";
 import ClipLoader from "react-spinners/ClipLoader";
@@ -15,8 +16,10 @@ import Badge4 from "../../images/badge-4.svg";
 import Badge5 from "../../images/badge-5.svg";
 import Badge6 from "../../images/badge-6.svg";
 import Badge7 from "../../images/badge-7.svg";
+import Timer from "../../components/DashboardTimer";
 
 const Dashboard = ({ user }) => {
+  const navigate = useNavigate();
   const [question, setQuestion] = useState();
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -27,13 +30,16 @@ const Dashboard = ({ user }) => {
     getQuestion().then((res) => {
       setQuestion(res);
 
-      res.badges.forEach((badge) => badges.push(badge.badge));
+      res?.badges?.forEach((badge) => badges.push(badge.badge));
       setLoading(false);
     });
   }, []);
 
   question?.badges?.forEach((badge) => badges.push(badge.badge));
-  console.log(badges);
+  if (!localStorage.getItem("accessToken")) {
+    navigate("/");
+    return <></>;
+  }
   if (loading) {
     return (
       <div className="min-w-screen min-h-screen">
@@ -78,8 +84,13 @@ const Dashboard = ({ user }) => {
           {question.isTimeLeft ? "Next Question in..." : "Question"}
         </div>
         {question.isTimeLeft ? (
-          <div className="w-3/12 mx-auto py-9 px-11 clock-background">
-            <Clock dashboard={true} expiryTimestamp={1649116800000} />
+          <div className="w-full lg:w-5/12 xl:w-3/12 mx-auto py-9 px-11 clock-background">
+            <Timer
+              time={question.detail.time_left}
+              setQuestion={setQuestion}
+              question={question}
+              setLoading={setLoading}
+            />
           </div>
         ) : (
           <>
@@ -148,7 +159,7 @@ const Dashboard = ({ user }) => {
                 alt="Avatar"
               />
               <div className="text-white text-base text-center font-semibold mt-3">
-                Special Badge
+                Most Technical Answer
               </div>
             </div>
           </Menu.Item>
