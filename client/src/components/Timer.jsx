@@ -97,7 +97,9 @@ const Timer = ({ user, setUser }) => {
               className="W-[200px] py-5 button-background-form button-background-paynow"
             />
           </div>
-          <div className="text-white font-demi text-[20px]">Registration fees 40rs.</div>
+          <div className="text-white font-demi text-[20px]">
+            Registration fees 40rs.
+          </div>
         </div>
       )}
     </>
