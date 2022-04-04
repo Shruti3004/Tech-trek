@@ -79,7 +79,6 @@ const Timer = ({ user, setUser }) => {
   setTimeout(() => {
     navigate("/dashboard");
   }, 1649116800000 - Date.now());
-
   return (
     <>
       {" "}

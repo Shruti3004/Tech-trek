@@ -17,6 +17,7 @@ import Badge5 from "../../images/badge-5.svg";
 import Badge6 from "../../images/badge-6.svg";
 import Badge7 from "../../images/badge-7.svg";
 import Timer from "../../components/DashboardTimer";
+import { ChevronDownIcon } from "@heroicons/react/solid";
 
 const Dashboard = ({ user, setUser }) => {
   const navigate = useNavigate();
@@ -97,10 +98,12 @@ const Dashboard = ({ user, setUser }) => {
         setMessage();
       } else {
         successMessage();
-        getQuestion().then((res) => {
-          setQuestion(res);
-          setLoading(false);
-        });
+        setTimeout(() => {
+          getQuestion().then((res) => {
+            setQuestion(res);
+            setLoading(false);
+          });
+        }, 500);
       }
     });
     setAnswer("");
@@ -160,136 +163,152 @@ const Dashboard = ({ user, setUser }) => {
       </div>
 
       <Menu>
-        <Menu.Button className="mt-6 badge-bg xl:rounded-xl w-full py-11">
-          <div className="text-white flex items-center justify-center font-regular text-2xl">
-            <div>
-              LEVEL: <span className="font-demi">{user.current_question}</span>
-            </div>
+        {({ open }) => (
+          <>
+            <Menu.Button className="mt-6 badge-bg xl:rounded-xl w-full py-11">
+              <div className="text-white flex items-center justify-center font-regular text-2xl">
+                <div>
+                  LEVEL:{" "}
+                  <span className="font-demi">{user.current_question}</span>
+                </div>
 
-            <div className="mx-6">-</div>
-            <div>
-              SCORE: <span className="font-demi">{user.score}</span>
-            </div>
-          </div>
-          <hr className="w-9/12 bg-gray-100 mt-6 mx-auto"></hr>
-          <div className="text-center font-semibold  text-2xl mt-5 text-golden uppercase">
-            Achievements
-          </div>
-        </Menu.Button>
-        <Menu.Items className="w-full badge-bg xl:pt-10 pb-10 mx-auto xl:mt-6 grid grid-cols-3 gap-y-5 xl:gap-y-8 justify-items-center">
-          <Menu.Item
-            className={`col-span-3 flex flex-col justify-center items-center w-full  ${
-              badges.includes("0") ? "glow opacity-100" : " opacity-30 "
-            }`}
-          >
-            <div>
-              <img
-                src={Badge7}
-                className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
-                alt="Avatar"
-              />
-              <div className="text-white text-base text-center font-semibold mt-3">
-                Most Technical Answer
+                <div className="mx-6">-</div>
+                <div>
+                  SCORE: <span className="font-demi">{user.score}</span>
+                </div>
               </div>
-            </div>
-          </Menu.Item>
-          <Menu.Item
-            className={`flex flex-col justify-center items-center w-full  ${
-              badges.includes("1") ? " opacity-100" : " opacity-30"
-            }`}
-          >
-            <div>
-              <img
-                src={Badge1}
-                className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
-                alt="Avatar"
-              />
-              <div className="text-white text-base text-center font-semibold mt-3">
-                Badge 1
+              <hr className="w-9/12 bg-gray-100 mt-6 mx-auto"></hr>
+              <div className="text-center font-semibold  flex items-center justify-center text-2xl mt-5 text-golden uppercase">
+                Achievements{" "}
+                {open ? (
+                  <ChevronDownIcon
+                    className="w-5 h-5 rotate-180 ml-2 -mr-1 text-violet-200 hover:text-violet-100"
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <ChevronDownIcon
+                    className="w-5 h-5 ml-2 -mr-1 text-violet-200 hover:text-violet-100"
+                    aria-hidden="true"
+                  />
+                )}
               </div>
-            </div>
-          </Menu.Item>
-          <Menu.Item
-            className={`flex flex-col justify-center items-center w-full  ${
-              badges.includes("2") ? " opacity-100" : " opacity-30"
-            }`}
-          >
-            <div>
-              <img
-                src={Badge2}
-                className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
-                alt="Avatar"
-              />
-              <div className="text-white text-base text-center font-semibold mt-3">
-                Badge 2
-              </div>
-            </div>
-          </Menu.Item>
-          <Menu.Item
-            className={`flex flex-col justify-center items-center w-full  ${
-              badges.includes("3") ? " opacity-100" : " opacity-30"
-            }`}
-          >
-            <div>
-              <img
-                src={Badge3}
-                className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
-                alt="Avatar"
-              />
-              <div className="text-white text-base text-center font-semibold mt-3">
-                Badge 3
-              </div>
-            </div>
-          </Menu.Item>
-          <Menu.Item
-            className={`flex flex-col justify-center items-center w-full  ${
-              badges.includes("4") ? " opacity-100" : " opacity-30"
-            }`}
-          >
-            <div>
-              <img
-                src={Badge4}
-                className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
-                alt="Avatar"
-              />
-              <div className="text-white text-base text-center font-semibold mt-3">
-                Badge 4
-              </div>
-            </div>
-          </Menu.Item>
-          <Menu.Item
-            className={`flex flex-col justify-center items-center w-full  ${
-              badges.includes("5") ? " opacity-100" : " opacity-30"
-            }`}
-          >
-            <div>
-              <img
-                src={Badge5}
-                className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
-                alt="Avatar"
-              />
-              <div className="text-white text-base text-center font-semibold mt-3">
-                Badge 5
-              </div>
-            </div>
-          </Menu.Item>
-          <Menu.Item
-            className={`flex flex-col justify-center items-center w-full  ${
-              badges.includes("6") ? " opacity-100" : " opacity-30"
-            }`}
-          >
-            <div>
-              <img
-                src={Badge6}
-                className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
-                alt="Avatar"
-              />
-              <div className="text-white text-base text-center font-semibold mt-3">
-                Badge 6
-              </div>
-            </div>
-          </Menu.Item>
-        </Menu.Items>
+            </Menu.Button>
+            <Menu.Items className="w-full badge-bg xl:pt-10 pb-10 mx-auto xl:mt-6 grid grid-cols-3 gap-y-5 xl:gap-y-8 justify-items-center">
+              <Menu.Item
+                className={`col-span-3 flex flex-col justify-center items-center w-full  ${
+                  badges.includes("0") ? "glow opacity-100" : " opacity-30 "
+                }`}
+              >
+                <div>
+                  <img
+                    src={Badge7}
+                    className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
+                    alt="Avatar"
+                  />
+                  <div className="text-white text-base text-center font-semibold mt-3">
+                    Most Technical Answer
+                  </div>
+                </div>
+              </Menu.Item>
+              <Menu.Item
+                className={`flex flex-col justify-center items-center w-full  ${
+                  badges.includes("1") ? " opacity-100" : " opacity-30"
+                }`}
+              >
+                <div>
+                  <img
+                    src={Badge1}
+                    className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
+                    alt="Avatar"
+                  />
+                  <div className="text-white text-base text-center font-semibold mt-3">
+                    Badge 1
+                  </div>
+                </div>
+              </Menu.Item>
+              <Menu.Item
+                className={`flex flex-col justify-center items-center w-full  ${
+                  badges.includes("2") ? " opacity-100" : " opacity-30"
+                }`}
+              >
+                <div>
+                  <img
+                    src={Badge2}
+                    className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
+                    alt="Avatar"
+                  />
+                  <div className="text-white text-base text-center font-semibold mt-3">
+                    Badge 2
+                  </div>
+                </div>
+              </Menu.Item>
+              <Menu.Item
+                className={`flex flex-col justify-center items-center w-full  ${
+                  badges.includes("3") ? " opacity-100" : " opacity-30"
+                }`}
+              >
+                <div>
+                  <img
+                    src={Badge3}
+                    className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
+                    alt="Avatar"
+                  />
+                  <div className="text-white text-base text-center font-semibold mt-3">
+                    Badge 3
+                  </div>
+                </div>
+              </Menu.Item>
+              <Menu.Item
+                className={`flex flex-col justify-center items-center w-full  ${
+                  badges.includes("4") ? " opacity-100" : " opacity-30"
+                }`}
+              >
+                <div>
+                  <img
+                    src={Badge4}
+                    className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
+                    alt="Avatar"
+                  />
+                  <div className="text-white text-base text-center font-semibold mt-3">
+                    Badge 4
+                  </div>
+                </div>
+              </Menu.Item>
+              <Menu.Item
+                className={`flex flex-col justify-center items-center w-full  ${
+                  badges.includes("5") ? " opacity-100" : " opacity-30"
+                }`}
+              >
+                <div>
+                  <img
+                    src={Badge5}
+                    className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
+                    alt="Avatar"
+                  />
+                  <div className="text-white text-base text-center font-semibold mt-3">
+                    Badge 5
+                  </div>
+                </div>
+              </Menu.Item>
+              <Menu.Item
+                className={`flex flex-col justify-center items-center w-full  ${
+                  badges.includes("6") ? " opacity-100" : " opacity-30"
+                }`}
+              >
+                <div>
+                  <img
+                    src={Badge6}
+                    className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
+                    alt="Avatar"
+                  />
+                  <div className="text-white text-base text-center font-semibold mt-3">
+                    Badge 6
+                  </div>
+                </div>
+              </Menu.Item>
+            </Menu.Items>
+          </>
+        )}
       </Menu>
 
       {/* <div className="mt-6 badge-bg xl:rounded-xl w-full py-11">
