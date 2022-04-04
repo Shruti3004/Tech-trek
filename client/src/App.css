@@ -6,6 +6,57 @@
   height: 100vh;
   width: 100vw;
 }
+.score-btn-bg {
+  background: url("./images/score-bg.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position-y: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+.dashboard-question-bg {
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: inset 13px 13px 57px rgba(0, 0, 0, 0.5),
+    inset -13px -13px 57px rgba(253, 158, 94, 0.2);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+}
+.dashboard-input-bg {
+  background: url("./images/dashboard-input.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position-y: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+.badge-bg {
+  background: rgba(30, 26, 36, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+.navborder {
+  position: relative;
+}
+.navborder::after {
+  bottom: -20px;
+  left: 0;
+  margin-top: 2rem;
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 5px;
+  background-color: #fd8d41;
+}
+.dashboard-bg {
+  background: url("./assets/background/dashboard-bg.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 @media screen and (max-width: 1650px) {
   .background {
     background: url("./images/bg-l.svg");
@@ -44,6 +95,11 @@
     background-repeat: no-repeat;
     max-width: 100%;
   }
+  .dashboard-bg {
+    background: url("./assets/background/dashboard-bg-mobile.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
   .logout-btn-bg {
     background: url("./assets/background/logout-bg.svg");
     background-size: cover;
@@ -64,6 +120,17 @@
   height: 100%;
   width: 100%;
 }
+.glow {
+  filter: drop-shadow(0px 0px 13px #fcbb48);
+}
+.clock-background {
+  background: url("./images/button-bg.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position-y: -4px;
+  height: 100%;
+}
 
 .button-background-form {
   background: url("./images/button-bg.svg");
@@ -80,6 +147,11 @@
 
 .button-background-register {
   width: 189px;
+  background-position-y: -6px;
+}
+
+.button-background-paynow {
+  width: 230px;
   background-position-y: -6px;
 }
 
