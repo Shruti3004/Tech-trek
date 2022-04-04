@@ -108,13 +108,6 @@ export default function NavbarDashboard({ user, children }) {
                           {item.name}
                         </NavLink>
                       ))}
-                      <a
-                        target="_blank"
-                        className="text-gray-400 text-lg font-regular block"
-                        herf="https://facebook.com"
-                      >
-                        Hint
-                      </a>
 
                       <Menu
                         as="div"
@@ -179,12 +172,6 @@ export default function NavbarDashboard({ user, children }) {
                   );
                 })}
 
-                <a
-                  className="text-gray-400 text-lg font-regular block"
-                  herf="https://facebook.com"
-                >
-                  Hint
-                </a>
                 {localStorage.getItem("accessToken") ? (
                   <div
                     className="text-gray-400 text-lg font-regular block"

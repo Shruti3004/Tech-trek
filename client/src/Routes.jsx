@@ -96,7 +96,7 @@ const Routes = () => {
                 </div>
               ) : (
                 <NavbarDashboard user={user} setUser={setUser}>
-                  <Dashboard user={user} />
+                  <Dashboard user={user} setUser={setUser} />
                 </NavbarDashboard>
               )}
             </React.Suspense>

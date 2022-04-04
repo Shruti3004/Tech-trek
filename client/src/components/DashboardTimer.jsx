@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TimeFormat from "hh-mm-ss";
-import { getQuestion } from "../api";
+import { getDashboardInfo, getQuestion } from "../api";
 
 const Timer = (props) => {
   let mainTime;
@@ -31,6 +31,9 @@ const Timer = (props) => {
         props.setLoading(true);
         getQuestion().then((res) => {
           props.setQuestion(res);
+          getDashboardInfo().then((res) => {
+            props.setUser(res);
+          });
           props.setLoading(false);
         });
       }

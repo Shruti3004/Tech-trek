@@ -18,8 +18,9 @@ import Badge6 from "../../images/badge-6.svg";
 import Badge7 from "../../images/badge-7.svg";
 import Timer from "../../components/DashboardTimer";
 
-const Dashboard = ({ user }) => {
+const Dashboard = ({ user, setUser }) => {
   const navigate = useNavigate();
+  console.log(setUser);
   const [question, setQuestion] = useState();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
@@ -117,6 +118,7 @@ const Dashboard = ({ user }) => {
               setQuestion={setQuestion}
               question={question}
               setLoading={setLoading}
+              setUser={setUser}
             />
           </div>
         ) : (
