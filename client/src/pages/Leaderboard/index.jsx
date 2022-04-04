@@ -74,7 +74,7 @@ const Leaderboard = () => {
   };
   return (
     <div className="w-11/12 xl:w-8/12 2xl:w-6/12 mx-auto mt-8">
-      <div className=" badge-bg w-full pt-11 pb-8 xl:w-9/12 mx-auto">
+      <div className=" badge-bg w-full pt-11 pb-8 xl:w-9/12 mx-auto max-h-[80vh] overflow-y-scroll">
         <div className=" text-3xl text-center flex justify-center items-center text-[#D9A462]">
           <div className="items-center hidden md:flex">
             <img src={Star} alt="star" className="mr-2" />
