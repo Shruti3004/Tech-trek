@@ -72,13 +72,13 @@ const Timer = ({ user, setUser }) => {
   if (!localStorage.getItem("accessToken")) {
     return <Navigate to="/" />;
   }
-
+  console.log(user);
   if (user.is_paid && Date.now() > 16491168000) {
     return <Navigate to="/dashboard" />;
   }
   setTimeout(() => {
     navigate("/dashboard");
-  }, 16491168000 - Date.now());
+  }, 1649116800000 - Date.now());
   return (
     <>
       {" "}

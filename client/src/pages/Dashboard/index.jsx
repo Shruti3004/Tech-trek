@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useState } from "react";
 import { getQuestion, postAnswer } from "../../api";
 import { useNavigate } from "react-router-dom";
@@ -28,6 +29,10 @@ const Dashboard = ({ user, setUser }) => {
   const [answer, setAnswer] = useState("");
 
   let badges = [];
+  if (!localStorage.getItem("accessToken")) {
+    navigate("/");
+    return <></>;
+  }
   const [success, setSuccess] = useState("");
   useEffect(() => {
     getQuestion().then((res) => {
@@ -39,10 +44,7 @@ const Dashboard = ({ user, setUser }) => {
   }, []);
 
   question?.badges?.forEach((badge) => badges.push(badge.badge));
-  if (!localStorage.getItem("accessToken")) {
-    navigate("/");
-    return <></>;
-  }
+
   if (loading) {
     return (
       <div className="min-w-screen min-h-screen">
