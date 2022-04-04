@@ -7,16 +7,44 @@ import Avatar3 from "../../images/avatar-3.svg";
 import { getLeaderboard } from "../../api";
 import ClipLoader from "react-spinners/ClipLoader";
 import Avatar4 from "../../images/avatar-4.svg";
+import Badge1 from "../../images/badge-1.svg";
+import Badge2 from "../../images/badge-2.svg";
+import Badge3 from "../../images/badge-3.svg";
+import Badge4 from "../../images/badge-4.svg";
+import Badge5 from "../../images/badge-5.svg";
+import Badge6 from "../../images/badge-6.svg";
+import Badge7 from "../../images/badge-7.svg";
 
 const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState([]);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     getLeaderboard().then((res) => {
       setLeaderboard(res.sort((a, b) => b.score - a.score));
       setLoading(false);
     });
   }, []);
+  const getBadge = (number) => {
+    switch (number) {
+      case 1:
+        return Badge1;
+      case 2:
+        return Badge2;
+      case 3:
+        return Badge3;
+      case 4:
+        return Badge4;
+      case 5:
+        return Badge5;
+      case 6:
+        return Badge6;
+      case 7:
+        return Badge7;
+      default:
+        return Badge1;
+    }
+  };
   const getAvatar = (number) => {
     switch (number) {
       case 1:
@@ -78,7 +106,7 @@ const Leaderboard = () => {
                       </th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody className="">
                     {loading ? (
                       <div className="flex overflow-hidden w-full mx-auto">
                         <ClipLoader
@@ -111,11 +139,13 @@ const Leaderboard = () => {
                             {leader.score}
                           </td>
                           <td className="font-semibold text-lg text-[#FDF3E7] px-6 py-4 whitespace-nowrap">
-                            <img
-                              src={getAvatar(leader.badge_4)}
-                              alt="image"
-                              className="w-11 h-11"
-                            />
+                            {leader.badge_4 !== 0 && (
+                              <img
+                                src={getBadge(leader.badge_4)}
+                                alt="image"
+                                className="w-11 h-11"
+                              />
+                            )}
                           </td>
                         </tr>
                       ))
@@ -124,14 +154,6 @@ const Leaderboard = () => {
                 </table>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="flex justify-between items-center py-3 min-w-full sm:px-12 lg:px-18">
-          <div className="text-lg text-center text-[#FD8D41] font-semibold underline">
-            Previous Page
-          </div>
-          <div className="text-lg text-center text-[#FD8D41] font-semibold underline">
-            Next Page
           </div>
         </div>
       </div>
