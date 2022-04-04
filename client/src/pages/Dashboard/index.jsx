@@ -20,7 +20,7 @@ import Timer from "../../components/DashboardTimer";
 
 const Dashboard = ({ user, setUser }) => {
   const navigate = useNavigate();
-  console.log(setUser);
+
   const [question, setQuestion] = useState();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);

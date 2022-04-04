@@ -44,7 +44,7 @@ const Signup = () => {
     // code
 
     const data = await registerUser({ ...details, password2: details.password, avatar_no: avatar }, navigate)
-    console.log(data)
+
     if (data) {
       openModal(data || "Please Enter Valid Credentials");
       <Modal />;
