@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useState } from "react";
 import { getQuestion, postAnswer } from "../../api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import Clock from "../../components/Clock";
 import ClipLoader from "react-spinners/ClipLoader";
@@ -33,6 +33,13 @@ const Dashboard = ({ user, setUser }) => {
     navigate("/");
     return <></>;
   }
+  if (!user.is_paid) {
+    return <Navigate to="/timer" />;
+  }
+  if (Date.now() < 1649116800000) {
+    return <Navigate to="/timer" />;
+  }
+
   const [success, setSuccess] = useState("");
   useEffect(() => {
     getQuestion().then((res) => {
