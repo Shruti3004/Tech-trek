@@ -36,19 +36,19 @@ const Leaderboard = () => {
   }
   const getBadge = (number) => {
     switch (number) {
-      case 1:
+      case "1":
         return Badge1;
-      case 2:
+      case "2":
         return Badge2;
-      case 3:
+      case "3":
         return Badge3;
-      case 4:
+      case "4":
         return Badge4;
-      case 5:
+      case "5":
         return Badge5;
-      case 6:
+      case "6":
         return Badge6;
-      case 0:
+      case "0":
         return Badge7;
       default:
         return Badge1;
