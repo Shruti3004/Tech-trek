@@ -31,6 +31,8 @@ class PlayerUserAdmin(UserAdmin):
                     "last_solved",
                     "unlock_time",
                     "avatar_no",
+                    "technical_solved",
+                    "score",
                 )
             },
         ),

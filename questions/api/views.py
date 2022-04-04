@@ -105,14 +105,18 @@ class GetQuestion(views.APIView):
             player.save()
 
             special_badge = Badge.objects.get(badge_type="0")
-            current_special_badge = BadgeToPlayer.objects.get(badge=special_badge)
-            special_badge_holder = current_special_badge.player
-            if (
-                special_badge_holder != player
-                and player.technical_solved > special_badge_holder.technical_solved
-            ):
-                current_special_badge.player = player
-                current_special_badge.save()
+            current_special_badge = BadgeToPlayer.objects.filter(badge=special_badge)
+            if current_special_badge.count() == 0:
+                BadgeToPlayer.objects.create(player=player, badge=special_badge)
+            else:
+                current_special_badge = current_special_badge[0]
+                special_badge_holder = current_special_badge.player
+                if (
+                    special_badge_holder != player
+                    and player.technical_solved > special_badge_holder.technical_solved
+                ):
+                    current_special_badge.player = player
+                    current_special_badge.save()
 
             is_correct = True
 
