@@ -62,7 +62,7 @@ class GetQuestion(views.APIView):
         self.check_object_permissions(request, player)
 
         tz_info = player.unlock_time.tzinfo
-        time_left = (player.unlock_time - datetime.now(tz_info)).total_seconds()
+        time_left = int((player.unlock_time - datetime.now(tz_info)).total_seconds())
 
         if datetime.now() < settings.START_TIME:
             return Response({"detail": "Game is not started yet."})
