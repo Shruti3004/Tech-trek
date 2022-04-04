@@ -72,13 +72,15 @@ const Timer = ({ user, setUser }) => {
   if (!localStorage.getItem("accessToken")) {
     return <Navigate to="/" />;
   }
-  console.log(user);
-  if (user.is_paid && Date.now() > 16491168000) {
+
+  if (user.is_paid && Date.now() > 1649110500000) {
     return <Navigate to="/dashboard" />;
   }
-  // setTimeout(() => {
-  //   navigate("/dashboard");
-  // }, 16491168000 - Date.now());
+  if (Date.now() < 1649110500000) {
+    setTimeout(() => {
+      navigate("/dashboard");
+    }, 1649110500000 - Date.now());
+  }
   return (
     <>
       {" "}
@@ -90,7 +92,7 @@ const Timer = ({ user, setUser }) => {
             </div>
             <div className="mt-6">
               <div className="py-9 px-11 button-background">
-                <Clock expiryTimestamp={1649116800000} />
+                <Clock expiryTimestamp={1649110500000} />
               </div>
             </div>
           </div>
