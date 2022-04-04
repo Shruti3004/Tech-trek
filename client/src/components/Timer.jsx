@@ -68,6 +68,10 @@ const Timer = ({ user, setUser }) => {
     paymentObject.open();
   }
 
+  if (!localStorage.getItem("accessToken")) {
+    return <Navigate to="/" />;
+  }
+
   if (user.is_paid && Date.now() > 16491168000) {
     return <Navigate to="/dashboard" />;
   }
