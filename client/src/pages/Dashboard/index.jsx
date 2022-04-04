@@ -36,7 +36,7 @@ const Dashboard = ({ user, setUser }) => {
   if (!user.is_paid) {
     return <Navigate to="/timer" />;
   }
-  if (Date.now() < 16491168000) {
+  if (Date.now() < 1649116800000) {
     return <Navigate to="/timer" />;
   }
 
