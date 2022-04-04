@@ -73,12 +73,12 @@ const Timer = ({ user, setUser }) => {
     return <Navigate to="/" />;
   }
 
-  if (user.is_paid && Date.now() > 1649116800000) {
+  if (user.is_paid && Date.now() > 16491168000) {
     return <Navigate to="/dashboard" />;
   }
   setTimeout(() => {
     navigate("/dashboard");
-  }, 1649116800000 - Date.now());
+  }, 16491168000 - Date.now());
   return (
     <>
       {" "}
