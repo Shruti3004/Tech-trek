@@ -9,6 +9,7 @@ class Question(models.Model):
     level = models.IntegerField(default=1)
     wait_duration = models.DurationField(default=timedelta(seconds=13))
     is_level_solved = models.BooleanField(default=False)
+    hits = models.IntegerField(default=0)
 
     def __str__(self):
         return self.question
