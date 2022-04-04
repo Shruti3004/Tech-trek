@@ -21,7 +21,7 @@ const config = {
 export const registerUser = async (formData, navigate) => {
     try {
         const { data } = await API.post("/accounts/api/register/", formData, config);
-        console.log(data);
+
         localStorage.setItem("accessToken", data.token.access);
         localStorage.setItem("refreshToken", data.token.refresh);
         navigate('/timer');
@@ -70,7 +70,7 @@ export const getDashboardInfo = async () => {
 export const getQuestion = async () => {
     try {
         const { data } = await API.get("/questions/");
-        console.log(data)
+
         return data;
     } catch (error) {
         console.log(error)
@@ -91,7 +91,7 @@ export const generateOrder = async () => {
 export const makePayment = async (formData) => {
     try {
         const { data } = await API.post("/payment/", formData, config);
-        console.log(data);
+
         return data;
     } catch (error) {
         console.log(error)
@@ -112,7 +112,7 @@ export const postAnswer = async (formData) => {
 export const getLeaderboard = async () => {
     try {
         const { data } = await API.get("/questions/leaderboard/");
-        console.log(data)
+
         return data;
     } catch (error) {
         console.log(error)
