@@ -52,15 +52,47 @@
         background-position: center;
         background-size: contain;
       }
+      html {
+        position: relative;
+      }
+      /* #walker {
+        background: url("https://media.baamboozle.com/uploads/images/79887/1604357190_701205");
+        background-repeat: no-repeat;
+        width: 170px;
+        height: 260px;
+        animation: forward 300s linear infinite;
+        position: fixed;
+        bottom: 0;
+
+        margin-top: calc(100vh - 260px);
+        /* margin-top: 50px; */
+        /* z-index: 10;
+      
+      
+
+      @keyframes forward {
+        0% {
+          transform: translateX(-100px);
+        }
+        100% {
+          transform: translateX(10000px);
+        }
+      }  */
     </style>
     <title>Tech Trek</title>
   </head>
   <body onload="preloader()">
+    <!-- <div id="walker"></div> -->
     <div id="preloader">
       <div id="status"></div>
     </div>
     <audio src="./EgyptianBGM.mp3" preload="auto" id="iframeAudio" loop></audio>
     <script>
+      var height = window.screen.height;
+      var topHeight = height - 260;
+      var element = getElementById("walker");
+      element.classList.add("height-req");
+      console.log(height);
       var myVar;
       function preloader() {
         myVar = setTimeout(showPage, 500);
@@ -74,7 +106,6 @@
         document.removeEventListener("click", musicPlay);
       }
     </script>
-
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--

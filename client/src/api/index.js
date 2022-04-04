@@ -26,14 +26,15 @@ export const registerUser = async (formData, navigate) => {
         localStorage.setItem("refreshToken", data.token.refresh);
         navigate('/timer');
         await getDashboardInfo();
+        window.location.reload();
         return data;
     } catch (error) {
         let obj = error.response.data;
         // console.log()
-        
+
 
         // console.log(newObj.entries(obj => obj.value))
-         
+
         // console.log(error.response.data)
         return Object.entries(obj)[0][1][0];
     }
@@ -45,7 +46,9 @@ export const signIn = async (formData, navigate) => {
         localStorage.setItem("accessToken", data.access);
         localStorage.setItem("refreshToken", data.refresh);
         navigate('/timer');
-        await getDashboardInfo();
+        let user = await getDashboardInfo();
+        localStorage.setItem("user", user);
+        window.location.reload();
         return;
     } catch (error) {
         console.log(error)
@@ -57,6 +60,17 @@ export const getDashboardInfo = async () => {
     try {
         const { data } = await API.get("/accounts/api/");
         localStorage.setItem("user", JSON.stringify(data));
+        return data;
+    } catch (error) {
+        console.log(error)
+        return error.response.data;
+    }
+}
+
+export const getQuestion = async () => {
+    try {
+        const { data } = await API.get("/questions/");
+        console.log(data)
         return data;
     } catch (error) {
         console.log(error)
@@ -78,6 +92,27 @@ export const makePayment = async (formData) => {
     try {
         const { data } = await API.post("/payment/", formData, config);
         console.log(data);
+        return data;
+    } catch (error) {
+        console.log(error)
+        return error.response.data;
+    }
+}
+export const postAnswer = async (formData) => {
+    try {
+        const { data } = await API.post("/questions/", { answer: formData }, config);
+
+        return data;
+    } catch (error) {
+        console.log(error)
+        return error.response.data;
+    }
+}
+
+export const getLeaderboard = async () => {
+    try {
+        const { data } = await API.get("/questions/leaderboard/");
+        console.log(data)
         return data;
     } catch (error) {
         console.log(error)

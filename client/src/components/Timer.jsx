@@ -2,6 +2,7 @@ import React from "react";
 import ButtonPrimary from "./ButtonPrimary";
 import { generateOrder, makePayment } from "../api/index";
 import Clock from "./Clock";
+import { Navigate } from "react-router-dom";
 
 const Timer = ({ user, setUser }) => {
   function loadScript(src) {
@@ -55,7 +56,7 @@ const Timer = ({ user, setUser }) => {
 
         const result = await makePayment(data);
         setUser({ ...user, is_paid: true });
-        console.log(result);
+        window.location.reload();
       },
       theme: {
         color: "#FD8D41",
@@ -65,6 +66,10 @@ const Timer = ({ user, setUser }) => {
 
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
+  }
+
+  if (user.is_paid && Date.now() > 1649116800000) {
+    return <Navigate to="/dashboard" />;
   }
 
   return (
@@ -84,13 +89,16 @@ const Timer = ({ user, setUser }) => {
           </div>
         </div>
       ) : (
-        <div className="flex justify-center items-center h-full">
+        <div className="flex flex-col justify-center items-center h-full">
           <div className="mt-20 text-center rounded-md py-11 px-6 sm:px-12 md:px-16 lg:px-20 xl:px-24 2xl:px-[6rem">
             <ButtonPrimary
               handleClick={displayRazorpay}
-              text="PAY&nbsp;NOW"
-              className="W-[200px] py-5 button-background-form button-background-register"
+              text="PAY&nbsp;NOW&nbsp;40/-"
+              className="W-[200px] py-5 button-background-form button-background-paynow"
             />
+          </div>
+          <div className="text-white font-demi text-[20px]">
+            Registration fees 40rs.
           </div>
         </div>
       )}
