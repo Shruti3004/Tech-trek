@@ -152,9 +152,9 @@ const Leaderboard = () => {
                             {leader.score}
                           </td>
                           <td className="font-semibold text-lg text-[#FDF3E7] px-6 py-4 whitespace-nowrap">
-                            {leader.badge_4 !== 0 && (
+                            {leader.best_badge && (
                               <img
-                                src={getBadge(leader.badge_4)}
+                                src={getBadge(leader.best_badge)}
                                 alt="image"
                                 className="w-11 h-11"
                               />
