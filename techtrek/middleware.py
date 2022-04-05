@@ -13,7 +13,9 @@ class TimeMiddleware(object):
     def process_view(self, request, callback, callback_args, callback_kwargs):
         if request.path.startswith("/accounts/"):
             return None
-        if request.path.startswith("/paytm/"):
+        if request.path.startswith("/payment/"):
+            return None
+        if request.path.startswith("/admin/"):
             return None
         print(datetime.now(), settings.START_TIME)
         if datetime.now() < settings.START_TIME:
