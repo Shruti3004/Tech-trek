@@ -30,8 +30,7 @@ const Dashboard = ({ user, setUser }) => {
 
   let badges = [];
   if (!localStorage.getItem("accessToken")) {
-    navigate("/");
-    return <></>;
+    return <Navigate to="/" />;
   }
   if (!user.is_paid) {
     return <Navigate to="/timer" />;
