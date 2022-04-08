@@ -83,14 +83,14 @@ class GetQuestion(views.APIView):
         question.hits += 1
         question.save()
         if request.data.get("answer").lower() == question.tech_answer.lower():
-            # if question.is_level_solved is False:
-            #     # Update questions to mark that the level is solved.
-            #     Question.objects.filter(level=player.current_question).update(
-            #         is_level_solved=True
-            #     )
-            #     badge = Badge.objects.get(badge_type="4")
-            #     # print("AWARDING...")
-            #     badge.award_to(player)
+            if question.is_level_solved is False:
+                # Update questions to mark that the level is solved.
+                Question.objects.filter(level=player.current_question).update(
+                    is_level_solved=True
+                )
+                # badge = Badge.objects.get(badge_type="4")
+                # # print("AWARDING...")
+                # badge.award_to(player)
 
             player.current_question = player.current_question + 1
             player.score = player.score + 10
@@ -123,14 +123,14 @@ class GetQuestion(views.APIView):
             is_correct = True
 
         elif request.data.get("answer").lower() == question.nontech_answer.lower():
-            # if question.is_level_solved is False:
-            #     # Update questions to mark that the level is solved.
-            #     Question.objects.filter(level=player.current_question).update(
-            #         is_level_solved=True
-            #     )
-            #     badge = Badge.objects.get(badge_type="4")
-            #     print("AWARDING...")
-            #     badge.award_to(player)
+            if question.is_level_solved is False:
+                # Update questions to mark that the level is solved.
+                Question.objects.filter(level=player.current_question).update(
+                    is_level_solved=True
+                )
+                # badge = Badge.objects.get(badge_type="4")
+                # print("AWARDING...")
+                # badge.award_to(player)
 
             player.current_question = player.current_question + 1
             player.score = player.score + 5
