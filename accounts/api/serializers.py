@@ -43,13 +43,13 @@ class PlayerRegisterSerializer(serializers.ModelSerializer):
 
     avatar_no = serializers.IntegerField(default=1)
 
-    def validate_avatar_no(self, value):
-        """
-        Check that the avatar no. is among the available avatars.
-        """
-        if value > 6:
-            raise serializers.ValidationError("The avatar specified is not avaliable.")
-        return value
+    # def validate_avatar_no(self, value):
+    #     """
+    #     Check that the avatar no. is among the available avatars.
+    #     """
+    #     if value > 6:
+    #         raise serializers.ValidationError("The avatar specified is not avaliable.")
+    #     return value
 
     def get_token(self, obj):
         refresh = RefreshToken.for_user(obj)
@@ -67,7 +67,7 @@ class PlayerRegisterSerializer(serializers.ModelSerializer):
             "password",
             "password2",
             "token",
-            "avatar_no",
+            #"avatar_no",
             "contact_no",
             "admission_no",
         ]
@@ -77,7 +77,7 @@ class PlayerRegisterSerializer(serializers.ModelSerializer):
         email = validated_data["email"]
         password = validated_data["password"]
         password2 = validated_data.pop("password2", None)
-        avatar_no = validated_data["avatar_no"]
+        # avatar_no = validated_data["avatar_no"]
         contact_no = validated_data["contact_no"]
         admission_no = validated_data["admission_no"]
         if password != password2:
@@ -86,7 +86,7 @@ class PlayerRegisterSerializer(serializers.ModelSerializer):
         user = Player(
             username=username,
             email=email,
-            avatar_no=avatar_no,
+            # avatar_no=avatar_no,
             contact_no=contact_no,
             admission_no=admission_no,
         )
@@ -101,10 +101,10 @@ class PlayerDashboardSerializer(serializers.ModelSerializer):
         model = Player
         fields = [
             "username",
-            "is_paid",
+            # "is_paid",
             "current_question",
             "score",
-            "avatar_no",
+            # "avatar_no",
         ]
 
 
@@ -114,7 +114,7 @@ class PlayerListSerializer(serializers.ModelSerializer):
         fields = [
             "username",
             "email",
-            "is_paid",
+            # "is_paid",
             "last_solved",
             "current_question",
         ]

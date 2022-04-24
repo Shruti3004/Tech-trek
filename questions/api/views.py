@@ -22,23 +22,23 @@ from badges.api.serializers import BadgeToPlayerSerializer
 
 
 class GetQuestion(views.APIView):
-    permission_classes = [IsAuthenticated, IsPaid]
+    permission_classes = [IsAuthenticated,]
 
     def get(self, request, format=None):
         player = request.user
         self.check_object_permissions(request, player)
 
-        tz_info = player.unlock_time.tzinfo
-        time_left = int((player.unlock_time - datetime.now(tz_info)).total_seconds())
-        has_started = True
+        # tz_info = player.unlock_time.tzinfo
+        # time_left = int((player.unlock_time - datetime.now(tz_info)).total_seconds())
+        # has_started = True
         q_text = ""
-        if datetime.now() < settings.START_TIME:
-            has_started = False
-        if time_left < 0:
-            time_left = 0
+        # if datetime.now() < settings.START_TIME:
+        #     has_started = False
+        # if time_left < 0:
+        #     time_left = 0
 
-            q = get_next_question(player)
-            q_text = q.question
+        q = get_next_question(player)
+        q_text = q.question
 
         player_info_serializer = PlayerInfoSerializer(player)
         # queryset = player.badges.annotate(total=Count('badge_type'))
@@ -48,11 +48,11 @@ class GetQuestion(views.APIView):
         return Response(
             {
                 "player_info": player_info_serializer.data,
-                "isTimeLeft": bool(time_left),
+                # "isTimeLeft": bool(time_left),
                 "badges": badge_serializer.data,
                 "detail": {
-                    "question": q_text if has_started else "",
-                    "time_left": time_left + 1,
+                    "question": q_text,
+                    # "time_left": time_left + 1,
                 },
             }
         )
@@ -61,19 +61,19 @@ class GetQuestion(views.APIView):
         player = request.user
         self.check_object_permissions(request, player)
 
-        tz_info = player.unlock_time.tzinfo
-        time_left = (player.unlock_time - datetime.now(tz_info)).total_seconds()
+        # tz_info = player.unlock_time.tzinfo
+        # time_left = (player.unlock_time - datetime.now(tz_info)).total_seconds()
 
-        if datetime.now() < settings.START_TIME:
-            return Response({"detail": "Game is not started yet."})
+        # if datetime.now() < settings.START_TIME:
+        #     return Response({"detail": "Game is not started yet."})
 
-        if time_left >= 0:
-            return Response(
+        # if time_left >= 0:
+        return Response(
                 {
                     "isTimeLeft": True,
                     "detail": {
                         "question": "",
-                        "time_left": time_left,
+                        # "time_left": time_left,
                     },
                 }
             )
@@ -159,7 +159,7 @@ def leaderboard(request):
     """
 
     queryset = Player.objects.order_by("-score", "last_solved").filter(
-        is_superuser=False, is_paid=True
+         is_superuser=False
     )
     serializer = LeaderboardSerializer(queryset, many=True)
 

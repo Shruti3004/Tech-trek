@@ -12,10 +12,10 @@ class PlayerInfoSerializer(serializers.ModelSerializer):
         model = Player
         fields = [
             "username",
-            "is_paid",
+            # "is_paid",
             "current_question",
             "score",
-            "avatar_no",
+            # "avatar_no",
         ]
 
 
@@ -37,6 +37,6 @@ class LeaderboardSerializer(serializers.BaseSerializer):
             "player_name": obj.username,
             "score": obj.score,
             "email": obj.email,
-            "avatar_no": obj.avatar_no,
+            # "avatar_no": obj.avatar_no,
             "best_badge": best_badge,
         }

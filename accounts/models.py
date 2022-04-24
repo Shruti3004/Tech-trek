@@ -9,12 +9,12 @@ from django.core.validators import RegexValidator
 
 
 class Player(AbstractUser):
-    is_paid = models.BooleanField(default=False)
+    # is_paid = models.BooleanField(default=False)
     last_solved = models.DateTimeField(default=timezone.now)
     unlock_time = models.DateTimeField(default=timezone.now)
     current_question = models.IntegerField(default=1)
     score = models.IntegerField(default=0)
-    avatar_no = models.PositiveIntegerField(default=1)
+    # avatar_no = models.PositiveIntegerField(default=1)
     admission_no = models.CharField(max_length=10)
     contact_regex = RegexValidator(
         regex=r"^[1-9]\d{9}$", message="Phone number should be of 10 digits."

@@ -82,7 +82,7 @@ INSTALLED_APPS = [
     "badges",
     "corsheaders",
     "rest_framework",
-    "payments",
+    # "payments",
     # "rest_framework.authtoken",
 ]
 
@@ -178,4 +178,4 @@ START_TIME = datetime(2022, 4, 5, 5, 30, 0, 0)
 END_TIME = datetime(2022, 4, 8, 12, 0, 0, 0)
 HOST_URL = "http://localhost:8000"
 
-FEE_AMOUNT = 40
+# FEE_AMOUNT = 40
