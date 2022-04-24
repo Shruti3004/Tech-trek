@@ -1,13 +1,8 @@
 import React, { useState, useContext } from 'react'
 import { Link, useNavigate, Navigate } from 'react-router-dom';
-import { generateOrder, registerUser } from "../../api/index";
+import { registerUser } from "../../api/index";
 import ButtonPrimary from "../../components/ButtonPrimary";
-import avatar1 from '../../images/avatar-1.svg'
-import avatar2 from '../../images/avatar-2.svg'
-import avatar3 from '../../images/avatar-3.svg'
-import avatar4 from '../../images/avatar-4.svg'
-import avatar5 from '../../images/avatar-5.svg'
-import avatar6 from '../../images/avatar-6.svg'
+
 import Modal from "../../components/modal";
 import { ModalContext } from "../../context/index";
 
@@ -23,10 +18,6 @@ const Signup = () => {
     contact_no: ""
   })
 
-  const [avatar, setAvatar] = useState(0);
-
-  const [step, setStep] = useState(0)
-
   const handleChange = (e) => {
     setDetails({
       ...details,
@@ -34,52 +25,19 @@ const Signup = () => {
     })
   }
 
-  const handleContinue = (e) => {
-    // e.preventDefault()
-
-    setStep(1)
-  }
 
   const handleSubmit = async (e) => {
     // code
 
-    const data = await registerUser({ ...details, password2: details.password, avatar_no: avatar }, navigate)
+    const data = await registerUser({ ...details, password2: details.password }, navigate)
 
     if (data) {
       openModal(data || "Please Enter Valid Credentials");
       <Modal />;
-      setStep(0)
+
     }
 
   }
-
-
-
-  const Avatars = [{
-    id: 1,
-    img: avatar1,
-
-  }, {
-    id: 2,
-    img: avatar2,
-
-  }, {
-    id: 3,
-    img: avatar3,
-
-  }, {
-    id: 4,
-    img: avatar4,
-
-  }, {
-    id: 5,
-    img: avatar5,
-
-  }, {
-    id: 6,
-    img: avatar6,
-
-  }]
 
   if (localStorage.getItem("accessToken")) {
     return <Navigate to="/timer" />
@@ -106,31 +64,18 @@ const Signup = () => {
                 </h1>
               </div>
               <div className="login-body mt-4">
-                {step === 0 ? (
-                  <form className="w-full max-w-xs">
-                    <input name='username' onChange={handleChange} className="w-full input-text input-background p-[20px] text-[18px]" type="text" placeholder="Username" />
-                    <input name='password' onChange={handleChange} className="w-full input-text mt-[10px] input-background p-[20px] text-[16px]" type="password" placeholder="Password" />
-                    <input name='email' onChange={handleChange} className="w-full input-text mt-[10px] input-background p-[20px] text-[16px]" type="email" placeholder="Email" />
-                    <input name='admission_no' onChange={handleChange} className="w-full input-text mt-[10px] input-background p-[20px] text-[16px]" type="text" placeholder="Admission no" />
-                    <input name='contact_no' onChange={handleChange} className="w-full input-text mt-[10px] input-background p-[20px] text-[16px]" type="text" placeholder="Phone no" />
-                    <div className="w-full flex justify-center item-center mt-11">
-                      <ButtonPrimary disabled={!(!!details.username && !!details.password && !!details.email && !!details.contact_no && !!details.admission_no)} handleClick={handleContinue} text="CONTINUE" className="W-[200px] py-5 button-background-form button-background-register" />
-                    </div>
-                  </form>
-                ) : (
-                  <form className="w-full max-w-md">
-                    <div className='font-regular text-white text-[18px] text-center'>Select your avatar</div>
-                    <div className='w-full grid grid-cols-2 mt-3'>
-                      {Avatars.map((avt) => (
-                        <div key={avt.id} onClick={() => { setAvatar(avt.id); console.log(avatar, avt.id) }} className={`hover:opacity-100 flex justify-center items-center cursor-pointer py-2 mt-1 ${avatar === avt.id ? "avatar-select" : "opacity-100 "}`}><img src={avt.img} alt={`${avatar}-${avt.id}`} /></div>
-                      ))}
 
-                    </div>
-                    <div className="w-full flex justify-center item-center mt-10">
-                      <ButtonPrimary disabled={avatar === 0} handleClick={handleSubmit} text="Sign Up" className="W-[200px] py-5 button-background-form button-background-register" />
-                    </div>
-                  </form>
-                )}
+                <form className="w-full max-w-xs">
+                  <input name='username' onChange={handleChange} className="w-full input-text input-background p-[20px] text-[18px]" type="text" required placeholder="Username" />
+                  <input name='password' onChange={handleChange} className="w-full input-text mt-[10px] input-background p-[20px] text-[16px]" type="password" required placeholder="Password" />
+                  <input name='email' onChange={handleChange} className="w-full input-text mt-[10px] input-background p-[20px] text-[16px]" type="email" required placeholder="Email" />
+                  <input name='admission_no' onChange={handleChange} className="w-full input-text mt-[10px] input-background p-[20px] text-[16px]" type="text" required placeholder="Admission no" />
+                  <input name='contact_no' onChange={handleChange} className="w-full input-text mt-[10px] input-background p-[20px] text-[16px]" type="text" required placeholder="Phone no" />
+                  <div className="w-full flex justify-center item-center mt-11">
+                    <ButtonPrimary disabled={!(!!details.username && !!details.password && !!details.email && !!details.contact_no && !!details.admission_no)} handleClick={handleSubmit} text="Submit" className="W-[200px] py-5 button-background-form button-background-register" />
+                  </div>
+                </form>
+
               </div>
             </div>
           </div>

@@ -25,24 +25,24 @@ function classNames(...classes) {
 
 export default function NavbarDashboard({ user, children }) {
   const navigate = useNavigate();
-  const getAvatar = (number) => {
-    switch (number) {
-      case 1:
-        return Avatar1;
-      case 2:
-        return Avatar2;
-      case 3:
-        return Avatar3;
-      case 4:
-        return Avatar4;
-      case 5:
-        return Avatar5;
-      case 6:
-        return Avatar6;
-      default:
-        return Avatar1;
-    }
-  };
+  // const getAvatar = (number) => {
+  //   switch (number) {
+  //     case 1:
+  //       return Avatar1;
+  //     case 2:
+  //       return Avatar2;
+  //     case 3:
+  //       return Avatar3;
+  //     case 4:
+  //       return Avatar4;
+  //     case 5:
+  //       return Avatar5;
+  //     case 6:
+  //       return Avatar6;
+  //     default:
+  //       return Avatar1;
+  //   }
+  // };
   return (
     <>
       <Disclosure as="nav" className="bg-[#231F2C]">
@@ -67,11 +67,6 @@ export default function NavbarDashboard({ user, children }) {
                       <div className="flex items-center justify-start ml-8">
                         {localStorage.getItem("accessToken") && (
                           <>
-                            <img
-                              src={getAvatar(user.avatar_no)}
-                              alt="Avatar1"
-                              className="w-11 h-11"
-                            />
                             <div className="text-white text-lg ml-4">
                               {user.username}
                             </div>
@@ -125,11 +120,11 @@ export default function NavbarDashboard({ user, children }) {
                       >
                         <Menu.Button className="h-11 flex justify-between items-center w-[180px] text-sm ">
                           <span className="sr-only">Open user menu</span>
-                          <img
+                          {/* <img
                             className="h-11 w-11 rounded-full ml-3"
                             src={getAvatar(user.avatar_no)}
                             alt=""
-                          />
+                          /> */}
 
                           <div className="text-white text-sm mx-4">
                             {user.username}

@@ -5,18 +5,18 @@ import { useNavigate, Navigate } from "react-router-dom";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import Clock from "../../components/Clock";
 import ClipLoader from "react-spinners/ClipLoader";
-import { Menu } from "@headlessui/react";
-import Avatar1 from "../../images/avatar-1.svg";
-import Avatar2 from "../../images/avatar-2.svg";
-import Avatar3 from "../../images/avatar-3.svg";
-import Avatar4 from "../../images/avatar-4.svg";
-import Badge1 from "../../images/badge-1.svg";
-import Badge2 from "../../images/badge-2.svg";
-import Badge3 from "../../images/badge-3.svg";
-import Badge4 from "../../images/badge-4.svg";
-import Badge5 from "../../images/badge-5.svg";
-import Badge6 from "../../images/badge-6.svg";
-import Badge7 from "../../images/badge-7.svg";
+// import { Menu } from "@headlessui/react";
+// import Avatar1 from "../../images/avatar-1.svg";
+// import Avatar2 from "../../images/avatar-2.svg";
+// import Avatar3 from "../../images/avatar-3.svg";
+// import Avatar4 from "../../images/avatar-4.svg";
+// import Badge1 from "../../images/badge-1.svg";
+// import Badge2 from "../../images/badge-2.svg";
+// import Badge3 from "../../images/badge-3.svg";
+// import Badge4 from "../../images/badge-4.svg";
+// import Badge5 from "../../images/badge-5.svg";
+// import Badge6 from "../../images/badge-6.svg";
+// import Badge7 from "../../images/badge-7.svg";
 import Timer from "../../components/DashboardTimer";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 
@@ -32,9 +32,7 @@ const Dashboard = ({ user, setUser }) => {
   if (!localStorage.getItem("accessToken")) {
     return <Navigate to="/" />;
   }
-  if (!user.is_paid) {
-    return <Navigate to="/timer" />;
-  }
+
   if (Date.now() < 1649116800000) {
     return <Navigate to="/timer" />;
   }
@@ -71,9 +69,9 @@ const Dashboard = ({ user, setUser }) => {
 
   const setMessage = () => {
     const errorMsg = [
-      "Oops!! Try Again",
-      "You are almost there",
-      "Better Luck Next Time",
+      "Nope..",
+      "Try again! M",
+      "You can do it!",
       "Wrong!!",
       "Try! Try! Try!",
       "Far from Bingo",
@@ -136,7 +134,11 @@ const Dashboard = ({ user, setUser }) => {
           <>
             {" "}
             <div className="w-full input-text mt-6 dashboard-input-bg p-[18px] text-[18px]">
-              {question.detail.question}
+              {question.isImage ? (
+                <img src={question.details.question} alt="question" />
+              ) : (
+                <>{question.detail.question}</>
+              )}
             </div>
             {/* <Clock /> */}
             <div className="flex-col flex sm:flex-row items-baseline justify-between">
@@ -169,156 +171,6 @@ const Dashboard = ({ user, setUser }) => {
           </>
         )}
       </div>
-
-      <Menu>
-        {({ open }) => (
-          <>
-            <Menu.Button className="mt-6 badge-bg xl:rounded-xl w-full py-11">
-              <div className="text-white flex items-center justify-center font-regular text-2xl">
-                <div>
-                  LEVEL:{" "}
-                  <span className="font-demi">{user.current_question}</span>
-                </div>
-
-                <div className="mx-6">-</div>
-                <div>
-                  SCORE: <span className="font-demi">{user.score}</span>
-                </div>
-              </div>
-              <hr className="w-9/12 bg-gray-100 mt-6 mx-auto"></hr>
-              <div className="text-center font-semibold  flex items-center justify-center text-2xl mt-5 text-golden uppercase">
-                Achievements{" "}
-                {open ? (
-                  <ChevronDownIcon
-                    className="w-5 h-5 rotate-180 ml-2 -mr-1 text-violet-200 hover:text-violet-100"
-                    aria-hidden="true"
-                  />
-                ) : (
-                  <ChevronDownIcon
-                    className="w-5 h-5 ml-2 -mr-1 text-violet-200 hover:text-violet-100"
-                    aria-hidden="true"
-                  />
-                )}
-              </div>
-            </Menu.Button>
-            <Menu.Items className="w-full badge-bg xl:pt-10 pb-10 mx-auto xl:mt-6 grid grid-cols-3 gap-y-5 xl:gap-y-8 justify-items-center">
-              <Menu.Item
-                className={`col-span-3 flex flex-col justify-center items-center w-full  ${
-                  badges.includes("0") ? "glow opacity-100" : " opacity-30 "
-                }`}
-              >
-                <div>
-                  <img
-                    src={Badge7}
-                    className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
-                    alt="Avatar"
-                  />
-                  <div className="text-white text-base text-center font-semibold mt-3">
-                    Most Technical Answer
-                  </div>
-                </div>
-              </Menu.Item>
-              <Menu.Item
-                className={`flex flex-col justify-center items-center w-full  ${
-                  badges.includes("1") ? " opacity-100" : " opacity-30"
-                }`}
-              >
-                <div>
-                  <img
-                    src={Badge1}
-                    className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
-                    alt="Avatar"
-                  />
-                  <div className="text-white text-base text-center font-semibold mt-3">
-                    Solved 5th
-                  </div>
-                </div>
-              </Menu.Item>
-              <Menu.Item
-                className={`flex flex-col justify-center items-center w-full  ${
-                  badges.includes("2") ? " opacity-100" : " opacity-30"
-                }`}
-              >
-                <div>
-                  <img
-                    src={Badge2}
-                    className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
-                    alt="Avatar"
-                  />
-                  <div className="text-white text-base text-center font-semibold mt-3">
-                    Solved 10th
-                  </div>
-                </div>
-              </Menu.Item>
-              <Menu.Item
-                className={`flex flex-col justify-center items-center w-full  ${
-                  badges.includes("3") ? " opacity-100" : " opacity-30"
-                }`}
-              >
-                <div>
-                  <img
-                    src={Badge3}
-                    className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
-                    alt="Avatar"
-                  />
-                  <div className="text-white text-base text-center font-semibold mt-3">
-                    Solved 15th
-                  </div>
-                </div>
-              </Menu.Item>
-              <Menu.Item
-                className={`flex flex-col justify-center items-center w-full  ${
-                  badges.includes("4") ? " opacity-100" : " opacity-30"
-                }`}
-              >
-                <div>
-                  <img
-                    src={Badge4}
-                    className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
-                    alt="Avatar"
-                  />
-                  <div className="text-white text-base text-center font-semibold mt-3">
-                    Solved 20th
-                  </div>
-                </div>
-              </Menu.Item>
-              <Menu.Item
-                className={`flex flex-col justify-center items-center w-full  ${
-                  badges.includes("5") ? " opacity-100" : " opacity-30"
-                }`}
-              >
-                <div>
-                  <img
-                    src={Badge5}
-                    className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
-                    alt="Avatar"
-                  />
-                  <div className="text-white text-base text-center font-semibold mt-3">
-                    Solved 25th
-                  </div>
-                </div>
-              </Menu.Item>
-              <Menu.Item
-                className={`flex flex-col justify-center items-center w-full  ${
-                  badges.includes("6") ? " opacity-100" : " opacity-30"
-                }`}
-              >
-                <div>
-                  <img
-                    src={Badge6}
-                    className="w-[50px] h-[50px] xl:w-[88px] xl:h-[88px] lg:w-[75px] lg:h-[75px]"
-                    alt="Avatar"
-                  />
-                  <div className="text-white text-base text-center font-semibold mt-3">
-                    Solved 30th
-                  </div>
-                </div>
-              </Menu.Item>
-            </Menu.Items>
-          </>
-        )}
-      </Menu>
-
       {/* <div className="mt-6 badge-bg xl:rounded-xl w-full py-11">
         
         
