@@ -5,7 +5,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 const Timer = ({ user, setUser }) => {
   const navigate = useNavigate();
 
-  if (user.is_paid && Date.now() > 1649116800000) {
+  if (Date.now() > 1649116800000) {
     return <Navigate to="/dashboard" />;
   }
   if (Date.now() < 1649116800000) {
