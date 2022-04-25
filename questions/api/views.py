@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from utils.permissions import IsPaid
 from utils.badges import should_award_badge
+import base64
 from utils.questions import get_next_question
 from questions.models import Question
 from accounts.models import Player
@@ -39,7 +40,7 @@ class GetQuestion(views.APIView):
 
         q = get_next_question(player)
         q_text = q.question
-
+        q_img= q.upload.url
         player_info_serializer = PlayerInfoSerializer(player)
         # queryset = player.badges.annotate(total=Count('badge_type'))
         queryset = BadgeToPlayer.objects.filter(player=player, is_active=True)
@@ -52,6 +53,7 @@ class GetQuestion(views.APIView):
                 "badges": badge_serializer.data,
                 "detail": {
                     "question": q_text,
+                    "question_url": q_img,
                     "time_left": time_left + 1,
                 },
             }

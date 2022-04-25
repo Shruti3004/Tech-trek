@@ -4,7 +4,7 @@ from django.db import models
 
 class Question(models.Model):
     question = models.CharField(max_length=200)
-    image = models.ImageField(null=True, blank=True, upload_to="img/")
+    upload = models.ImageField(null=True, blank=True, upload_to="img/")
     tech_answer = models.CharField(max_length=100)
     # nontech_answer = models.CharField(max_length=100)
     level = models.IntegerField(default=1)
