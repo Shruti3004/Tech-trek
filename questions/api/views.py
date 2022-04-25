@@ -28,14 +28,14 @@ class GetQuestion(views.APIView):
         player = request.user
         self.check_object_permissions(request, player)
 
-        # tz_info = player.unlock_time.tzinfo
-        # time_left = int((player.unlock_time - datetime.now(tz_info)).total_seconds())
-        # has_started = True
+        tz_info = player.unlock_time.tzinfo
+        time_left = int((player.unlock_time - datetime.now(tz_info)).total_seconds())
+        has_started = True
         q_text = ""
-        # if datetime.now() < settings.START_TIME:
-        #     has_started = False
-        # if time_left < 0:
-        #     time_left = 0
+        if datetime.now() < settings.START_TIME:
+            has_started = False
+        if time_left < 0:
+            time_left = 0
 
         q = get_next_question(player)
         q_text = q.question
@@ -48,11 +48,11 @@ class GetQuestion(views.APIView):
         return Response(
             {
                 "player_info": player_info_serializer.data,
-                # "isTimeLeft": bool(time_left),
+                "isTimeLeft": bool(time_left),
                 "badges": badge_serializer.data,
                 "detail": {
                     "question": q_text,
-                    # "time_left": time_left + 1,
+                    "time_left": time_left + 1,
                 },
             }
         )
@@ -61,24 +61,22 @@ class GetQuestion(views.APIView):
         player = request.user
         self.check_object_permissions(request, player)
 
-        # tz_info = player.unlock_time.tzinfo
-        # time_left = (player.unlock_time - datetime.now(tz_info)).total_seconds()
+        tz_info = player.unlock_time.tzinfo
+        time_left = (player.unlock_time - datetime.now(tz_info)).total_seconds()
 
-        # if datetime.now() < settings.START_TIME:
-        #     return Response({"detail": "Game is not started yet."})
+        if datetime.now() < settings.START_TIME:
+            return Response({"detail": "Game is not started yet."})
+        if time_left >= 0:
+            return Response(
+                    {
+                        "isTimeLeft": True,
+                        "detail": {
+                            "question": "",
+                            # "time_left": time_left,
+                        },
+                    }
+                )
 
-        # if time_left >= 0:
-        return Response(
-                {
-                    "isTimeLeft": True,
-                    "detail": {
-                        "question": "",
-                        # "time_left": time_left,
-                    },
-                }
-            )
-
-        # question = Question.objects.get(level=player.current_question)
         question = get_next_question(player)
         question.hits += 1
         question.save()
@@ -149,6 +147,8 @@ class GetQuestion(views.APIView):
             is_correct = False
 
         return Response({"success": is_correct})
+        # question = Question.objects.get(level=player.current_question)
+        
 
 
 @api_view(["GET"])

@@ -41,7 +41,7 @@ class PlayerRegisterSerializer(serializers.ModelSerializer):
         ],
     )
 
-    avatar_no = serializers.IntegerField(default=1)
+    #avatar_no = serializers.IntegerField(default=1)
 
     # def validate_avatar_no(self, value):
     #     """
