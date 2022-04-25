@@ -66,7 +66,10 @@ const Dashboard = ({ user, setUser }) => {
   const handleChange = (event) => {
     setAnswer(event.target.value);
   };
-
+  console.log(
+    question,
+    `${process.env.REACT_APP_BASE_URL}${question.detail.question_url} sas`
+  );
   const setMessage = () => {
     const errorMsg = [
       "Nope..",
@@ -134,10 +137,15 @@ const Dashboard = ({ user, setUser }) => {
           <>
             {" "}
             <div className="w-full input-text mt-6 dashboard-input-bg p-[18px] text-[18px]">
-              {question.isImage ? (
-                <img src={question.details.question} alt="question" />
-              ) : (
-                <>{question.detail.question}</>
+              {question.detail.question_url && (
+                <img
+                  src={`${process.env.REACT_APP_BASE_URL}${question.detail.question_url}`}
+                  alt="question"
+                  className="h-60 w-60"
+                />
+              )}
+              {question.detail.question.length > 0 && (
+                <div> {question.detail.question}</div>
               )}
             </div>
             {/* <Clock /> */}
