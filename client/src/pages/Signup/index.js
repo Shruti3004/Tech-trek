@@ -44,38 +44,34 @@ const Signup = () => {
   }
   return (
     <>
-
       <Modal />
       <div className="background">
-        <div className="flex justify-center items-center h-full">
-          <div className='blur-background p-6 xl:w-[344px] lg:w-[320px] md:w-[310px] sm:w-[310px] w-[240px] lg:px-8 md:mt-[18rem] lg:mt-[12rem] xl:mt-[16rem] 2xl:mt-[8rem] 3xl:mt-[11rem] sm:mt-[16rem] mt-[5rem]'>
-            {/* <div className="blur-background p-6 lg:px-8 md:px-7 md:mt-[18rem] lg:mt-[16rem] sm:mt-[18rem] mt-[13.2rem]"> */}
-            <div className="login-container">
-              <div className="login-header grid grid-cols-2">
-                <h1 className="cursor-pointer font-demi text-2xl text-[#DDC2AE] text-center font-regular opacity-4">
+        <div className="flex items-center justify-center min-h-screen">
+          <div className='px-3 pt-2 blur-background pb-7'>
+            <div className="p-8 form-bg-container">
+              <div className="grid grid-cols-2 login-header">
+                <h1 className="flex items-center justify-center py-3 text-2xl cursor-pointer text-primary font-demi ">
                   <Link to="/login">
                     LOGIN
                   </Link>
                 </h1>
-                <h1 className="border-b-4 pb-2 cursor-pointer text-2xl font-demi text-white text-center">
+                <h1 className="flex items-center justify-center py-3 text-2xl text-white cursor-pointer bg-primary font-demi font-regular rounded-2xl">
                   <Link to="/register">
                     REGISTER
                   </Link>
                 </h1>
               </div>
-              <div className="login-body mt-4">
-
+              <div className="flex items-center justify-center text-center mt-14">
                 <form className="w-full max-w-xs">
                   <input name='username' onChange={handleChange} className="w-full input-text input-background p-[20px] text-[18px]" type="text" required placeholder="Username" />
-                  <input name='password' onChange={handleChange} className="w-full input-text mt-[10px] input-background p-[20px] text-[16px]" type="password" required placeholder="Password" />
-                  <input name='email' onChange={handleChange} className="w-full input-text mt-[10px] input-background p-[20px] text-[16px]" type="email" required placeholder="Email" />
-                  <input name='admission_no' onChange={handleChange} className="w-full input-text mt-[10px] input-background p-[20px] text-[16px]" type="text" required placeholder="Admission no" />
-                  <input name='contact_no' onChange={handleChange} className="w-full input-text mt-[10px] input-background p-[20px] text-[16px]" type="text" required placeholder="Phone no" />
-                  <div className="w-full flex justify-center item-center mt-11">
-                    <ButtonPrimary disabled={!(!!details.username && !!details.password && !!details.email && !!details.contact_no && !!details.admission_no)} handleClick={handleSubmit} text="Submit" className="W-[200px] py-5 button-background-form button-background-register" />
+                  <input name='password' onChange={handleChange} className="w-full input-text mt-6 input-background p-[20px] text-[16px]" type="password" required placeholder="Password" />
+                  <input name='email' onChange={handleChange} className="w-full input-text mt-6 input-background p-[20px] text-[16px]" type="email" required placeholder="Email" />
+                  <input name='admission_no' onChange={handleChange} className="w-full input-text mt-6 input-background p-[20px] text-[16px]" type="text" required placeholder="Admission no" />
+                  <input name='contact_no' onChange={handleChange} className="w-full input-text mt-6 input-background p-[20px] text-[16px]" type="text" required placeholder="Phone no" />
+                  <div className="flex items-center justify-center w-full mt-10 mb-4">
+                    <ButtonPrimary disabled={!(!!details.username && !!details.password && !!details.email && !!details.contact_no && !!details.admission_no)} handleClick={handleSubmit} text="SIGN UP"  />
                   </div>
                 </form>
-
               </div>
             </div>
           </div>

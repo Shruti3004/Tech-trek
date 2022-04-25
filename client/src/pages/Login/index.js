@@ -38,47 +38,35 @@ const Login = () => {
     <>
       <Modal />
       <div className="background">
-        <div className="flex justify-center items-center h-full">
-          <div className="blur-background p-6 xl:w-[344px] lg:w-[320px] md:w-[310px] sm:w-[310px] w-[220px] lg:px-8 xs:mt-12 mt-16">
-            <div className="login-container">
-              <div className="login-header grid grid-cols-2">
-                <h1 className="border-b-4 pb-2 cursor-pointer text-2xl font-demi text-white text-center">
-                  <Link to="/login">LOGIN</Link>
+        <div className="flex items-center justify-center min-h-screen">
+          <div className='px-3 pt-2 blur-background pb-7'>
+            <div className="p-8 form-bg-container">
+              <div className="grid grid-cols-2 login-header">
+                <h1 className="flex items-center justify-center py-3 text-2xl text-white cursor-pointer bg-primary font-demi font-regular rounded-2xl">
+                  <Link to="/login">
+                    LOGIN
+                  </Link>
                 </h1>
-                <h1 className="cursor-pointer text-2xl text-[#DDC2AE] text-center font-regular">
-                  <Link to="/register">REGISTER</Link>
+                <h1 className="flex items-center justify-center py-3 text-2xl cursor-pointer text-primary font-demi">
+                  <Link to="/register">
+                    REGISTER
+                  </Link>
                 </h1>
               </div>
-              <div className="login-body mt-11">
+              <div className="flex items-center justify-center text-center mt-14">
                 <form className="w-full max-w-xs">
-                  <input
-                    name="username"
-                    onChange={handleChange}
-                    className="w-full input-text input-background p-[20px] text-[18px]"
-                    type="text"
-                    placeholder="Username"
-                  />
-                  <input
-                    name="password"
-                    onChange={handleChange}
-                    className="w-full input-text mt-6 input-background p-[20px] text-[18px]"
-                    type="password"
-                    placeholder="Password"
-                  />
-                  <div className="w-full flex justify-center item-center mt-10">
-                    <ButtonPrimary
-                      disabled={!(!!details.username && !!details.password)}
-                      handleClick={handleSubmit}
-                      text="LOGIN"
-                      className="py-5 button-background-form button-background-login"
-                    />
+
+                <input name='email' onChange={handleChange} className="w-full input-text mt-[10px] input-background p-[20px] text-[16px]" type="email" required placeholder="Email" />
+                  <input name='password' onChange={handleChange} className="w-full input-text mt-6 input-background p-[20px] text-[16px]" type="password" required placeholder="Password" />
+                  <div className="flex items-center justify-center w-full mt-10 mb-4">
+                    <ButtonPrimary disabled={!(!!details.username && !!details.password && !!details.email && !!details.contact_no && !!details.admission_no)} handleClick={handleSubmit} text="LOGIN"  />
                   </div>
                 </form>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </div >
+      </div >
     </>
   );
 };

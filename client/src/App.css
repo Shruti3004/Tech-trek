@@ -1,10 +1,13 @@
+html {
+  height: 100vh !important;
+}
 .background {
-  background: url("./images/bg-xl.svg");
+  background: url("../src/assets/background/er-bg.svg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
 }
 ::-webkit-scrollbar {
   width: 1px;
@@ -69,24 +72,8 @@
 }
 
 @media screen and (max-width: 1650px) {
-  .background {
-    background: url("./images/bg-l.svg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vw;
-  }
 }
 @media screen and (max-width: 1350px) {
-  .background {
-    background: url("./images/bg-md.svg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vw;
-  }
   .logout-btn-bg {
     background: url("./assets/background/logout-bg.svg");
     background-size: cover;
@@ -99,13 +86,13 @@
 }
 
 @media screen and (max-width: 500px) {
-  .background {
+  /* .background {
     background: url("./images/bg-xs.svg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     max-width: 100%;
-  }
+  } */
   .dashboard-bg {
     background: url("./assets/background/dashboard-bg-mobile.svg");
     background-size: cover;
@@ -167,23 +154,19 @@
 }
 
 .input-background {
-  background: url("./images/input-bg.svg");
+  background-color: #E8E5FF;
+  padding: 17px 23px;
+  border-radius: 16px;
+}
+
+.button-bg {
+  background: url("./assets/background/button-bg.svg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-position-y: 0px;
-  height: 100%;
-  width: 100%;
-}
-
-.logout-btn-bg {
-  background: url("./assets/background/logout-bg.svg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-position-y: -6px;
-  height: 100%;
-  width: 100%;
+  height: 90px;
+  width: 208px;
 }
 
 .avatar-select {
@@ -203,10 +186,10 @@ body {
   overflow-x: hidden !important;
   scroll-behavior: smooth;
 }
-:root {
+/* :root {
   --darkOrange: #ffa43e;
   --brown: #663d14;
-}
+} */
 /* ::-webkit-scrollbar {
   width: 10px;
 }
@@ -267,10 +250,18 @@ body {
 }
 
 .blur-background {
-  background: rgba(0, 0, 0, 0.4);
-  /* backdrop-filter: blur(5px); */
-  border-radius: 6px;
+  min-width: 450px;
+  height: auto;
+  background-image: linear-gradient(#6554F2, #7160FF);
+  border-radius: 43px;
 }
+
+.form-bg-container{
+  background-color: white;
+  border-radius: 43px;
+  box-shadow: inset 0px -9.84308px 21.0923px #E4D3FF;
+}
+
 @media screen and (max-width: 500px) {
   .main-heading {
     font-size: 22px;
@@ -280,11 +271,16 @@ body {
   font-style: normal;
   height: 57px;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 100%;
-  color: #fdf3e7;
+  font-size: 20px;
+  line-height: 30px;
+  color: #7F70FF;
   outline: none;
 }
+
+.input-text::placeholder{
+  color: #7F70FF;
+}
+
 input:-webkit-autofill,
 select:-webkit-autofill,
 textarea:-webkit-autofill {
@@ -293,11 +289,11 @@ textarea:-webkit-autofill {
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
-  color: #fdf3e7;
+  color: #7F70FF;
   outline: none;
   -webkit-box-shadow: 0 0 0 1000px #000 inset !important;
-  -webkit-text-fill-color: #fdf3e7 !important;
-  -webkit-text-fill-color: #fdf3e7 !important;
+  -webkit-text-fill-color: #7F70FF !important;
+  -webkit-text-fill-color: #7F70FF !important;
 }
 @media screen and (max-width: 500px) {
   .input-text {
