@@ -91,7 +91,7 @@ const Routes = () => {
           <div className="background min-h-screen">
             <React.Suspense fallback={<Loader />}>
               {loading ? (
-                <div className="flex justify-center items-center h-full w-full">
+                <div className="flex justify-center items-center animate-spin h-5 w-5">
                   <Loader />
                 </div>
               ) : (

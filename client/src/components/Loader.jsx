@@ -1,10 +1,11 @@
 import React from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Loader = () => {
   return (
     <div style={{ height: "100vh" }}>
       <div className="flex justify-center align-center h-full">
-        <img src="./loader.gif" width="200px" />
+        <ClipLoader color={"#9F51FE"} />
       </div>
     </div>
   );
