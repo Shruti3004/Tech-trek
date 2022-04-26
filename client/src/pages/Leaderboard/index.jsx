@@ -73,41 +73,37 @@ const Leaderboard = () => {
     }
   };
   return (
-    <div className="w-11/12 xl:w-8/12 2xl:w-6/12 mx-auto mt-8">
-      <div className=" badge-bg w-full pt-11 pb-8 xl:w-9/12 mx-auto max-h-[80vh] overflow-y-scroll">
+    <div className="w-11/12 xl:w-8/12 2xl:w-6/12 mx-auto mt-8 blur-background  px-3 pt-2 pb-7">
+      <div className=" form-bg-container w-full pt-11 pb-8 xl:w-9/12 mx-auto max-h-[80vh]">
         <div className=" text-3xl text-center flex justify-center items-center text-[#D9A462]">
-          <div className="text-[#9F51FE]">Leaderboard</div>
+          <div className="bg-[#9F51FE] py-3 px-8 text-white font-semi rounded-[28px]">
+            Leaderboard
+          </div>
         </div>
         <div className="flex flex-col mt-8">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-3 inline-block min-w-full sm:px-12 lg:px-20">
               <div className="overflow-hidden">
                 <table className="min-w-full">
-                  <thead className=" border-b-2 border-white">
+                  <thead className=" border-b-2 border-white border-b-[#E8E5FF]">
                     <tr>
                       <th
                         scope="col"
-                        className="text-lg font-regular text-[#F77DFD] px-6 py-4 text-left"
+                        className="text-lg font-regular text-[#231F46] px-6 py-4 text-left"
                       >
                         Rank
                       </th>
                       <th
                         scope="col"
-                        className="text-lg font-regular text-[#F77DFD] px-6 py-4 text-center"
+                        className="text-lg font-regular text-[#231F46] px-6 py-4 text-center"
                       >
                         Name
                       </th>
                       <th
                         scope="col"
-                        className="text-lg font-regular text-[#F77DFD] px-6 py-4 text-left"
+                        className="text-lg font-regular text-[#231F46] px-6 py-4 text-left"
                       >
                         Score
-                      </th>
-                      <th
-                        scope="col"
-                        className="text-lg font-regular text-[#F77DFD] px-6 py-4 text-left"
-                      >
-                        Badge
                       </th>
                     </tr>
                   </thead>
@@ -126,31 +122,17 @@ const Leaderboard = () => {
                         <tr
                           key={leader.email}
                           className={`py-2 ${
-                            index % 2 !== 0 ? "bg-black bg-opacity-20" : ""
+                            index % 2 !== 0 ? "even-bg-leader " : ""
                           }`}
                         >
-                          <td className="px-6 py-4 whitespace-nowrap font-semibold text-lg text-[#F77DFD]">
+                          <td className="px-6 py-4 whitespace-nowrap font-semibold text-lg text-[#231F46]">
                             {index + 1}
                           </td>
-                          <td className="text-lg text-[#F77DFD] font-semibold uppercase px-6 py-4 flex items-center whitespace-nowrap">
-                            <img
-                              src={getAvatar(leader.avatar_no)}
-                              className="w-11 h-11 mr-3"
-                              alt="image"
-                            />
+                          <td className="text-lg text-[#231F46] font-semibold justify-center uppercase px-6 py-4 flex items-center whitespace-nowrap">
                             {leader.player_name}
                           </td>
-                          <td className="font-semibold text-lg text-[#F77DFD] px-6 py-4 whitespace-nowrap">
+                          <td className="font-semibold text-lg text-[#231F46] px-6 py-4 whitespace-nowrap">
                             {leader.score}
-                          </td>
-                          <td className="font-semibold text-lg text-[#F77DFD] px-6 py-4 whitespace-nowrap">
-                            {leader.best_badge && (
-                              <img
-                                src={getBadge(leader.best_badge)}
-                                alt="image"
-                                className="w-11 h-11"
-                              />
-                            )}
                           </td>
                         </tr>
                       ))

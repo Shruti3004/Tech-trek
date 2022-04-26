@@ -104,7 +104,7 @@ export default function NavbarDashboard({ user, children }) {
                             `${
                               isActive
                                 ? "text-[#7F70FF] navborder"
-                                : "text-[#231F46]"
+                                : "text-[#231F46]  "
                             } text-lg font-regular text-center w-20`
                           }
                           aria-current={item.current ? "page" : undefined}
@@ -151,7 +151,7 @@ export default function NavbarDashboard({ user, children }) {
               </div>
             </div>
 
-            <Disclosure.Panel className="sm:hidden">
+            <Disclosure.Panel className="lg:hidden">
               <div className="px-4 pt-2 pb-3 space-y-1">
                 {navigation.map((item) => {
                   if (
@@ -169,7 +169,7 @@ export default function NavbarDashboard({ user, children }) {
                       to={item.href}
                       className={({ isActive }) =>
                         `${
-                          isActive ? "text-white" : "text-[#231F46]"
+                          isActive ? "navborder" : "text-[#231F46] text-center"
                         } text-lg font-regular block`
                       }
                       aria-current={item.current ? "page" : undefined}
@@ -181,7 +181,7 @@ export default function NavbarDashboard({ user, children }) {
 
                 {localStorage.getItem("accessToken") ? (
                   <div
-                    className="text-[#231F46] text-lg font-regular block"
+                    className="text-[#231F46] text-lg font-regular block text-center"
                     onClick={() => {
                       close();
                       localStorage.clear();

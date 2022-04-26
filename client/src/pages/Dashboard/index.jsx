@@ -115,7 +115,7 @@ const Dashboard = ({ user, setUser }) => {
   };
   console.log(user);
   return (
-    <div className="mt-8 blur-background px-3 pt-2 blur-background pb-7 xl:w-8/12 mx-auto">
+    <div className="mt-8 px-3 pt-2 blur-background pb-7 xl:w-8/12 mx-auto">
       <div className="form-bg-container p-8 mx-auto">
         <div className="text-2xl text-[#D9A462] font-normal uppercase">
           <div className="flex items-center justify-between">

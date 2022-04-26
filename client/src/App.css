@@ -331,3 +331,8 @@ textarea:-webkit-autofill {
   box-shadow: inset 0px -9.84308px 21.0923px #e4d3ff;
   border-radius: 24px;
 }
+
+.even-bg-leader {
+  background: rgba(113, 96, 255, 0.16);
+  backdrop-filter: blur(10px);
+}
