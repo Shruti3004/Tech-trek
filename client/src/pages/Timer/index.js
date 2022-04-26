@@ -3,6 +3,7 @@ import { getDashboardInfo } from '../../api';
 import Footer from "../../components/Footer";
 import Timer from "../../components/Timer";
 import Navbar from "../../components/Navbar";
+import Loader from "../../components/Loader";
 
 const TimerPage = () => {
     const [user, setUser] = useState();
@@ -15,7 +16,7 @@ const TimerPage = () => {
     }, [])
 
     if (loading) {
-        return <div className="h-screen w-screen"> <div className="bg-bg-primary h-full w-full flex justify-center items-center"> <img src="./loader.gif" width="200px" /></div></div>
+        return <div className="h-screen w-screen"> <div className="bg-bg-primary h-full w-full flex justify-center items-center"><Loader /></div></div>
     }
     return (
         <div className="background">

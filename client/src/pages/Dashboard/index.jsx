@@ -5,6 +5,7 @@ import { useNavigate, Navigate } from "react-router-dom";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import Clock from "../../components/Clock";
 import ClipLoader from "react-spinners/ClipLoader";
+import Loader from "../../components/Loader";
 // import { Menu } from "@headlessui/react";
 // import Avatar1 from "../../images/avatar-1.svg";
 // import Avatar2 from "../../images/avatar-2.svg";
@@ -53,12 +54,7 @@ const Dashboard = ({ user, setUser }) => {
     return (
       <div className="min-w-screen min-h-screen">
         <div className="flex w-full h-full justify-center items-center">
-          <ClipLoader
-            color="#FD8D41"
-            css={{ textAlign: "center", marginTop: "10rem" }}
-            loading={loading}
-            size={150}
-          />
+          <Loader />
         </div>
       </div>
     );
@@ -117,15 +113,19 @@ const Dashboard = ({ user, setUser }) => {
     });
     setAnswer("");
   };
-  console.log(user)
+  console.log(user);
   return (
     <div className="mt-8 blur-background px-3 pt-2 blur-background pb-7 xl:w-8/12 mx-auto">
       <div className="form-bg-container p-8 mx-auto">
         <div className="text-2xl text-[#D9A462] font-normal uppercase">
-        <div className="flex items-center justify-between">
-                <div className="py-3 px-5 bg-[#F77DFD] text-lg font-bold text-white rounded-[28px]">Question {user.current_question}</div>
-                <div className="py-3 px-5 bg-[#9F51FE] text-lg font-bold text-white rounded-[28px]">Score: {user.score}</div>
-              </div>
+          <div className="flex items-center justify-between">
+            <div className="py-3 px-5 bg-[#F77DFD] text-lg font-bold text-white rounded-[28px]">
+              Question {user.current_question}
+            </div>
+            <div className="py-3 px-5 bg-[#9F51FE] text-lg font-bold text-white rounded-[28px]">
+              Score: {user.score}
+            </div>
+          </div>
           {/* <div className="text-lg font-semi text-[#231F46] mt-8">{question.isTimeLeft ? "Next Question in..." : "Question"}</div> */}
         </div>
         {question.isTimeLeft ? (
@@ -143,15 +143,18 @@ const Dashboard = ({ user, setUser }) => {
             {" "}
             <div className="pt-8">
               {question.detail.question.length > 0 && (
-                <div className="text-[#231F46] font-bold text-lg"> {question.detail.question}</div>
+                <div className="text-[#231F46] font-bold text-lg">
+                  {" "}
+                  {question.detail.question}
+                </div>
               )}
-               {question.detail.question_url && (
-                 <div className="flex justify-center pt-8">
-                <img
-                  src={`${process.env.REACT_APP_BASE_URL}${question.detail.question_url}`}
-                  alt="question"
-                  className="h-60 w-60"
-                />
+              {question.detail.question_url && (
+                <div className="flex justify-center pt-8">
+                  <img
+                    src={`${process.env.REACT_APP_BASE_URL}${question.detail.question_url}`}
+                    alt="question"
+                    className="h-60 w-60"
+                  />
                 </div>
               )}
             </div>
@@ -184,8 +187,7 @@ const Dashboard = ({ user, setUser }) => {
               </div>
             </div>
           </>
-        )
-        }
+        )}
       </div>
     </div>
   );

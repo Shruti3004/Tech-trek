@@ -98,12 +98,12 @@ const Routes = () => {
                 <NavbarDashboard user={user} setUser={setUser}>
                   <Dashboard user={user} setUser={setUser} />
                 </NavbarDashboard>
-              )} 
+              )}
             </React.Suspense>
           </div>
         }
       />
-      {/* <Route
+      <Route
         path="/leaderboard"
         exact
         element={
@@ -121,7 +121,7 @@ const Routes = () => {
             </React.Suspense>
           </div>
         }
-      /> */}
+      />
       <Route path="*" element={<div>404</div>} />
     </Router>
   );

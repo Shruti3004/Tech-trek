@@ -13,11 +13,11 @@ html {
   width: 1px;
 }
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px rgba(219, 138, 45, 0.3);
+  box-shadow: inset 0 0 5px #9f51fe;
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #fd8d41;
+  background: #9f51fe;
   border-radius: 2px;
 }
 .score-btn-bg {
@@ -57,7 +57,7 @@ html {
   border-radius: 8px;
   text-align: center;
   letter-spacing: 0.01em;
-  padding: 16px 32px; 
+  padding: 16px 32px;
   width: 100%;
 }
 
@@ -150,7 +150,7 @@ html {
 }
 
 .input-background {
-  background-color: #E8E5FF;
+  background-color: #e8e5ff;
   padding: 17px 23px;
   border-radius: 16px;
 }
@@ -165,7 +165,7 @@ html {
   width: 208px;
 }
 
-.form-button{
+.form-button {
   background: url("./assets/background/button-bg.svg");
   background-size: cover;
   background-position: center;
@@ -175,7 +175,7 @@ html {
   width: 208px;
 }
 
-.submit-button{
+.submit-button {
   background: url("./assets/background/submit-bg.svg");
   background-size: cover;
   background-position: center;
@@ -269,14 +269,14 @@ body {
 .blur-background {
   min-width: 450px;
   height: auto;
-  background-image: linear-gradient(#6554F2, #7160FF);
+  background-image: linear-gradient(#6554f2, #7160ff);
   border-radius: 43px;
 }
 
-.form-bg-container{
+.form-bg-container {
   background-color: white;
   border-radius: 43px;
-  box-shadow: inset 0px -9.84308px 21.0923px #E4D3FF;
+  box-shadow: inset 0px -9.84308px 21.0923px #e4d3ff;
 }
 
 @media screen and (max-width: 500px) {
@@ -290,12 +290,12 @@ body {
   font-weight: 400;
   font-size: 20px;
   line-height: 30px;
-  color: #7F70FF;
+  color: #7f70ff;
   outline: none;
 }
 
-.input-text::placeholder{
-  color: #7F70FF;
+.input-text::placeholder {
+  color: #7f70ff;
 }
 
 input:-webkit-autofill,
@@ -306,11 +306,11 @@ textarea:-webkit-autofill {
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
-  color: #7F70FF;
+  color: #7f70ff;
   outline: none;
   -webkit-box-shadow: 0 0 0 1000px #000 inset !important;
-  -webkit-text-fill-color: #7F70FF !important;
-  -webkit-text-fill-color: #7F70FF !important;
+  -webkit-text-fill-color: #7f70ff !important;
+  -webkit-text-fill-color: #7f70ff !important;
 }
 @media screen and (max-width: 500px) {
   .input-text {
@@ -321,14 +321,13 @@ textarea:-webkit-autofill {
   }
 }
 
-
 /* .logo_img{
   height: 493px;
   width: 493px;
 } */
 
-.navbar-styles{
-  background: #FFFEFF;
-  box-shadow: inset 0px -9.84308px 21.0923px #E4D3FF;
-  border-radius: 24px;  
+.navbar-styles {
+  background: #fffeff;
+  box-shadow: inset 0px -9.84308px 21.0923px #e4d3ff;
+  border-radius: 24px;
 }

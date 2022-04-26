@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Fragment } from "react";
-import LogoImg from '../../src/assets/background/nav-logo.svg'
+import LogoImg from "../../src/assets/background/nav-logo.svg";
 import Logo from "../images/Logo.svg";
 import { Disclosure, Menu } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
@@ -12,13 +12,13 @@ import Avatar4 from "../images/avatar-4.svg";
 import Avatar5 from "../images/avatar-5.svg";
 import Avatar6 from "../images/avatar-6.svg";
 import { NavLink, useNavigate } from "react-router-dom";
-import LogoutImg from '../../src/assets/background/logout-svgrepo-com.svg'
+import LogoutImg from "../../src/assets/background/logout-svgrepo-com.svg";
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard" },
   { name: "Rules", href: "/rules" },
 
-  // { name: "Leaderboard", href: "/leaderboard" },
+  { name: "Leaderboard", href: "/leaderboard" },
 ];
 
 function classNames(...classes) {
@@ -53,7 +53,7 @@ export default function NavbarDashboard({ user, children }) {
           <>
             <div className="w-full lg:w-10/12 xl:w-8/12 mx-auto px-2 sm:px-6 lg:px-4">
               <div className="relative w-full flex items-end justify-between pt-6 pb-5">
-                <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
+                <div className="absolute inset-y-0 right-0 flex items-center lg:hidden">
                   {/* Mobile menu button*/}
                   <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                     <span className="sr-only">Open main menu</span>
@@ -94,7 +94,7 @@ export default function NavbarDashboard({ user, children }) {
                   </div>
                 </div>
                 <div className="flex items-center justify-end w-7/12">
-                  <div className="hidden sm:block sm:ml-0">
+                  <div className="hidden lg:block sm:ml-0">
                     <div className="flex items-center space-x-20">
                       {navigation.map((item) => (
                         <NavLink
