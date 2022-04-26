@@ -6,7 +6,7 @@ html {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
 }
 ::-webkit-scrollbar {
@@ -53,18 +53,14 @@ html {
 }
 
 .navborder {
-  position: relative;
-}
-.navborder::after {
-  bottom: -20px;
-  left: 0;
-  margin-top: 2rem;
-  position: absolute;
-  content: "";
+  background: rgba(127, 112, 255, 0.22);
+  border-radius: 8px;
+  text-align: center;
+  letter-spacing: 0.01em;
+  padding: 16px 32px; 
   width: 100%;
-  height: 5px;
-  background-color: #fd8d41;
 }
+
 .dashboard-bg {
   background: url("./assets/background/dashboard-bg.svg");
   background-size: cover;
@@ -164,9 +160,30 @@ html {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-position-y: 0px;
+  background-position-y: 4px;
   height: 90px;
   width: 208px;
+}
+
+.form-button{
+  background: url("./assets/background/button-bg.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position-y: 2px;
+  height: 90px;
+  width: 208px;
+}
+
+.submit-button{
+  background: url("./assets/background/submit-bg.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position-y: 2px;
+  padding-top: 10px;
+  height: 64px;
+  width: 157px;
 }
 
 .avatar-select {
@@ -206,40 +223,40 @@ body {
   background: var(--darkOrange);
 }
 @font-face {
-  font-family: Emphera-bold;
-  src: url("../assets/fonts/EphemeraEgyptian-CondensedBold.ttf");
+  font-family: Titillium-bold;
+  src: url("../src/assets/fonts/TitilliumWeb-Black.ttf");
   font-display: swap;
 }
 @font-face {
-  font-family: Emphera-demi;
-  src: url("../assets/fonts/EphemeraEgyptian-CondensedSemibold.ttf");
+  font-family: Titillium-semi;
+  src: url("../src/assets/fonts/TitilliumWeb-Bold.ttf");
   font-display: swap;
 }
 @font-face {
-  font-family: Emphera-medium;
-  src: url("../assets/fonts/EphemeraEgyptian-CondensedMedium.ttf");
+  font-family: Titillium-medium;
+  src: url("../src/assets/fonts/TitilliumWeb-SemiBold.ttf");
   font-display: swap;
 }
 @font-face {
-  font-family: Emphera-regular;
-  src: url("../assets/fonts/EphemeraEgyptian-CondensedRegular.ttf");
+  font-family: Titillium-regular;
+  src: url("../src/assets/fonts/TitilliumWeb-Regular.ttf");
   font-display: swap;
 }
 .font-bold {
   margin: 0;
-  font-family: Emphera-bold !important;
+  font-family: Titillium-bold !important;
 }
 .font-demi {
   margin: 0;
-  font-family: Emphera-demi;
+  font-family: Titillium-semi;
 }
 .font-medium {
   margin: 0;
-  font-family: Emphera-medium;
+  font-family: Titillium-medium;
 }
 .font-regular {
   margin: 0;
-  font-family: Emphera-regular;
+  font-family: Titillium-regular;
 }
 .main-heading {
   font-weight: 500;
@@ -302,4 +319,16 @@ textarea:-webkit-autofill {
   input {
     height: 22px !important;
   }
+}
+
+
+/* .logo_img{
+  height: 493px;
+  width: 493px;
+} */
+
+.navbar-styles{
+  background: #FFFEFF;
+  box-shadow: inset 0px -9.84308px 21.0923px #E4D3FF;
+  border-radius: 24px;  
 }

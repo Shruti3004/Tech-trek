@@ -39,9 +39,9 @@ const Signup = () => {
 
   }
 
-  if (localStorage.getItem("accessToken")) {
-    return <Navigate to="/timer" />
-  }
+  // if (localStorage.getItem("accessToken")) {
+  //   return <Navigate to="/timer" />
+  // }
   return (
     <>
       <Modal />
@@ -69,7 +69,7 @@ const Signup = () => {
                   <input name='admission_no' onChange={handleChange} className="w-full input-text mt-6 input-background p-[20px] text-[16px]" type="text" required placeholder="Admission no" />
                   <input name='contact_no' onChange={handleChange} className="w-full input-text mt-6 input-background p-[20px] text-[16px]" type="text" required placeholder="Phone no" />
                   <div className="flex items-center justify-center w-full mt-10 mb-4">
-                    <ButtonPrimary disabled={!(!!details.username && !!details.password && !!details.email && !!details.contact_no && !!details.admission_no)} handleClick={handleSubmit} text="SIGN UP"  />
+                    <ButtonPrimary className="form-button" disabled={!(!!details.username && !!details.password && !!details.email && !!details.contact_no && !!details.admission_no)} handleClick={handleSubmit} text="SIGN UP"  />
                   </div>
                 </form>
               </div>

@@ -69,7 +69,7 @@ const Routes = () => {
         path="/rules"
         exact
         element={
-          <div className="dashboard-bg min-h-screen">
+          <div className="background min-h-screen">
             <React.Suspense fallback={<Loader />}>
               {loading ? (
                 <div className="flex justify-center items-center h-full w-full">
@@ -88,7 +88,7 @@ const Routes = () => {
         path="/dashboard"
         exact
         element={
-          <div className="dashboard-bg min-h-screen">
+          <div className="background min-h-screen">
             <React.Suspense fallback={<Loader />}>
               {loading ? (
                 <div className="flex justify-center items-center h-full w-full">
@@ -98,16 +98,16 @@ const Routes = () => {
                 <NavbarDashboard user={user} setUser={setUser}>
                   <Dashboard user={user} setUser={setUser} />
                 </NavbarDashboard>
-              )}
+              )} 
             </React.Suspense>
           </div>
         }
       />
-      <Route
+      {/* <Route
         path="/leaderboard"
         exact
         element={
-          <div className="dashboard-bg min-h-screen">
+          <div className="background min-h-screen">
             <React.Suspense fallback={<Loader />}>
               {loading ? (
                 <div className="flex justify-center items-center h-full w-full">
@@ -121,7 +121,7 @@ const Routes = () => {
             </React.Suspense>
           </div>
         }
-      />
+      /> */}
       <Route path="*" element={<div>404</div>} />
     </Router>
   );

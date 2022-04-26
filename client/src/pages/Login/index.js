@@ -30,9 +30,9 @@ const Login = () => {
     }
   };
 
-  if (localStorage.getItem("accessToken")) {
-    return <Navigate to="/timer" />;
-  }
+  // if (localStorage.getItem("accessToken")) {
+  //   return <Navigate to="/timer" />;
+  // }
 
   return (
     <>
@@ -56,10 +56,10 @@ const Login = () => {
               <div className="flex items-center justify-center text-center mt-14">
                 <form className="w-full max-w-xs">
 
-                <input name='email' onChange={handleChange} className="w-full input-text mt-[10px] input-background p-[20px] text-[16px]" type="email" required placeholder="Email" />
+                <input name='username' onChange={handleChange} className="w-full input-text mt-[10px] input-background p-[20px] text-[16px]" type="text" required placeholder="Username" />
                   <input name='password' onChange={handleChange} className="w-full input-text mt-6 input-background p-[20px] text-[16px]" type="password" required placeholder="Password" />
                   <div className="flex items-center justify-center w-full mt-10 mb-4">
-                    <ButtonPrimary disabled={!(!!details.username && !!details.password && !!details.email && !!details.contact_no && !!details.admission_no)} handleClick={handleSubmit} text="LOGIN"  />
+                    <ButtonPrimary className="form-button" disabled={!(!!details.password && !!details.username)} handleClick={handleSubmit} text="LOGIN"  />
                   </div>
                 </form>
               </div>
