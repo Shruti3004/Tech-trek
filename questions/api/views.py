@@ -2,6 +2,7 @@ from rest_framework import views
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
+from techtrek.settings import START_TIME
 from utils.permissions import IsPaid
 from utils.badges import should_award_badge
 import base64
@@ -24,9 +25,11 @@ from badges.api.serializers import BadgeToPlayerSerializer
 
 class GetQuestion(views.APIView):
     permission_classes = [IsAuthenticated,]
-
+   
     def get(self, request, format=None):
         player = request.user
+        time_left=START_TIME-datetime.now()
+        print(time_left)
         self.check_object_permissions(request, player)
 
         tz_info = player.unlock_time.tzinfo
@@ -61,6 +64,8 @@ class GetQuestion(views.APIView):
 
     def post(self, request, format=None):
         player = request.user
+        time_left=START_TIME-datetime.now()
+        print(time_left)
         self.check_object_permissions(request, player)
 
         tz_info = player.unlock_time.tzinfo
