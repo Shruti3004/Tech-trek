@@ -2,8 +2,10 @@ from rest_framework import views
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
+from techtrek.settings import START_TIME
 from utils.permissions import IsPaid
 from utils.badges import should_award_badge
+import base64
 from utils.questions import get_next_question
 from questions.models import Question
 from accounts.models import Player
@@ -22,10 +24,12 @@ from badges.api.serializers import BadgeToPlayerSerializer
 
 
 class GetQuestion(views.APIView):
-    permission_classes = [IsAuthenticated, IsPaid]
-
+    permission_classes = [IsAuthenticated,]
+   
     def get(self, request, format=None):
         player = request.user
+        time_left=START_TIME-datetime.now()
+        print(time_left)
         self.check_object_permissions(request, player)
 
         tz_info = player.unlock_time.tzinfo
@@ -37,9 +41,9 @@ class GetQuestion(views.APIView):
         if time_left < 0:
             time_left = 0
 
-            q = get_next_question(player)
-            q_text = q.question
-
+        q = get_next_question(player)
+        q_text = q.question
+        q_img= q.upload.url
         player_info_serializer = PlayerInfoSerializer(player)
         # queryset = player.badges.annotate(total=Count('badge_type'))
         queryset = BadgeToPlayer.objects.filter(player=player, is_active=True)
@@ -51,7 +55,8 @@ class GetQuestion(views.APIView):
                 "isTimeLeft": bool(time_left),
                 "badges": badge_serializer.data,
                 "detail": {
-                    "question": q_text if has_started else "",
+                    "question": q_text,
+                    "question_url": q_img,
                     "time_left": time_left + 1,
                 },
             }
@@ -59,6 +64,8 @@ class GetQuestion(views.APIView):
 
     def post(self, request, format=None):
         player = request.user
+        time_left=START_TIME-datetime.now()
+        print(time_left)
         self.check_object_permissions(request, player)
 
         tz_info = player.unlock_time.tzinfo
@@ -66,31 +73,29 @@ class GetQuestion(views.APIView):
 
         if datetime.now() < settings.START_TIME:
             return Response({"detail": "Game is not started yet."})
-
         if time_left >= 0:
             return Response(
-                {
-                    "isTimeLeft": True,
-                    "detail": {
-                        "question": "",
-                        "time_left": time_left,
-                    },
-                }
-            )
+                    {
+                        "isTimeLeft": True,
+                        "detail": {
+                            "question": "",
+                            # "time_left": time_left,
+                        },
+                    }
+                )
 
-        # question = Question.objects.get(level=player.current_question)
         question = get_next_question(player)
         question.hits += 1
         question.save()
         if request.data.get("answer").lower() == question.tech_answer.lower():
-            # if question.is_level_solved is False:
-            #     # Update questions to mark that the level is solved.
-            #     Question.objects.filter(level=player.current_question).update(
-            #         is_level_solved=True
-            #     )
-            #     badge = Badge.objects.get(badge_type="4")
-            #     # print("AWARDING...")
-            #     badge.award_to(player)
+            if question.is_level_solved is False:
+                # Update questions to mark that the level is solved.
+                Question.objects.filter(level=player.current_question).update(
+                    is_level_solved=True
+                )
+                # badge = Badge.objects.get(badge_type="4")
+                # # print("AWARDING...")
+                # badge.award_to(player)
 
             player.current_question = player.current_question + 1
             player.score = player.score + 10
@@ -123,14 +128,14 @@ class GetQuestion(views.APIView):
             is_correct = True
 
         elif request.data.get("answer").lower() == question.nontech_answer.lower():
-            # if question.is_level_solved is False:
-            #     # Update questions to mark that the level is solved.
-            #     Question.objects.filter(level=player.current_question).update(
-            #         is_level_solved=True
-            #     )
-            #     badge = Badge.objects.get(badge_type="4")
-            #     print("AWARDING...")
-            #     badge.award_to(player)
+            if question.is_level_solved is False:
+                # Update questions to mark that the level is solved.
+                Question.objects.filter(level=player.current_question).update(
+                    is_level_solved=True
+                )
+                # badge = Badge.objects.get(badge_type="4")
+                # print("AWARDING...")
+                # badge.award_to(player)
 
             player.current_question = player.current_question + 1
             player.score = player.score + 5
@@ -149,6 +154,8 @@ class GetQuestion(views.APIView):
             is_correct = False
 
         return Response({"success": is_correct})
+        # question = Question.objects.get(level=player.current_question)
+        
 
 
 @api_view(["GET"])
@@ -159,7 +166,7 @@ def leaderboard(request):
     """
 
     queryset = Player.objects.order_by("-score", "last_solved").filter(
-        is_superuser=False, is_paid=True
+         is_superuser=False
     )
     serializer = LeaderboardSerializer(queryset, many=True)
 

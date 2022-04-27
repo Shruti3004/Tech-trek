@@ -17,6 +17,10 @@ class TimeMiddleware(object):
             return None
         if request.path.startswith("/admin/"):
             return None
+        if request.path.startswith("/leaderboard/"):
+            return None
+        if request.path.startswith("/questions/") and request.method == "GET":
+            return None
         print(datetime.now(), settings.START_TIME)
         if datetime.now() < settings.START_TIME:
             return JsonResponse(

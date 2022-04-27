@@ -13,9 +13,9 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 from datetime import datetime, timedelta
 from pytz import timezone
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -82,7 +82,7 @@ INSTALLED_APPS = [
     "badges",
     "corsheaders",
     "rest_framework",
-    "payments",
+    # "payments",
     # "rest_framework.authtoken",
 ]
 
@@ -125,7 +125,7 @@ WSGI_APPLICATION = "techtrek.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "database/db.sqlite3"),
+        "NAME": os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -174,8 +174,9 @@ MEDIA_URL = "/media/"
 # TIME MIDDLEWARE SETTINGS
 
 # CAUTION: USE DIFFERENT TIMES IN PRODUCTION
-START_TIME = datetime(2022, 4, 5, 5, 30, 0, 0)
-END_TIME = datetime(2022, 4, 8, 0, 0, 0, 0)
+
+START_TIME = datetime(2022, 4, 28, 0, 0, 0, 0)
+END_TIME = datetime(2022, 4, 29, 0, 0, 0, 0)
 HOST_URL = "http://localhost:8000"
 
-FEE_AMOUNT = 40
+# FEE_AMOUNT = 40

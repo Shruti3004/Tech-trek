@@ -11,11 +11,11 @@ class PlayerChangeForm(UserChangeForm):
 
 class PlayerUserAdmin(UserAdmin):
     form = PlayerChangeForm
-    list_filter = ("is_paid",)
+    # list_filter = ("is_paid",)
     list_display = (
         "username",
         "email",
-        "is_paid",
+        # "is_paid",
         "current_question",
         "score",
         "admission_no",
@@ -26,11 +26,11 @@ class PlayerUserAdmin(UserAdmin):
             None,
             {
                 "fields": (
-                    "is_paid",
+                    # "is_paid",
                     "current_question",
                     "last_solved",
                     "unlock_time",
-                    "avatar_no",
+                    # "avatar_no",
                     "technical_solved",
                     "score",
                 )

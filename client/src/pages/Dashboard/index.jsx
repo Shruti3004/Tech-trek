@@ -75,8 +75,12 @@ const Dashboard = ({ user, setUser }) => {
       "Try! Try! Try!",
       "Far from Bingo",
     ];
-
-    setError(errorMsg[Math.floor(Math.random() * errorMsg.length)]);
+    console.log(ended)
+    if (ended) {
+      setError("ENDED");
+    } else {
+      setError(errorMsg[Math.floor(Math.random() * errorMsg.length)]);
+    }
     setTimeout(() => {
       setError("");
     }, 3000);
@@ -99,7 +103,10 @@ const Dashboard = ({ user, setUser }) => {
   };
   const handleSubmit = async () => {
     await postAnswer(answer).then((res) => {
-      if (!res.success) {
+      if (res == "ENDED") {
+        setMessage(true);
+      }
+      else if (!res.success) {
         setMessage();
       } else {
         successMessage();
