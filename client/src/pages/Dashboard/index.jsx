@@ -75,12 +75,7 @@ const Dashboard = ({ user, setUser }) => {
       "Try! Try! Try!",
       "Far from Bingo",
     ];
-    console.log(ended)
-    if (ended) {
-      setError("ENDED");
-    } else {
-      setError(errorMsg[Math.floor(Math.random() * errorMsg.length)]);
-    }
+    setError(errorMsg[Math.floor(Math.random() * errorMsg.length)]);
     setTimeout(() => {
       setError("");
     }, 3000);
