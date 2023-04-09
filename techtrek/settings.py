@@ -174,8 +174,8 @@ MEDIA_URL = "/media/"
 # TIME MIDDLEWARE SETTINGS
 
 # CAUTION: USE DIFFERENT TIMES IN PRODUCTION
-START_TIME = datetime(2023, 2, 24, 0, 0, 0, 0)
-END_TIME = datetime(2023, 2, 25, 12, 0, 0, 0)
+START_TIME = datetime(2023, 4, 9, 0, 0, 0, 0)
+END_TIME = datetime(2023, 4, 11, 12, 0, 0, 0)
 HOST_URL = "http://localhost:8000"
 
 FEE_AMOUNT = 40
