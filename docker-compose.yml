@@ -2,31 +2,27 @@ version: "3"
 
 services:
   frontend:
-    env_file: client/.env
-    build:
-      context: client
-      dockerfile: Dockerfile
+    depends_on:
+      - backend
+    # env_file: client/.env
+    # build:
+    #   context: client
+    image: hmx098/techtrek2023_frontend
     networks:
       - default
     ports:
-      - 4000:80
+      - 4096:80
 
   backend:
     restart: always
-    build: .
+    image: hmx098/tech_trek_backend
     env_file: .env
     ports:
-      - 8000:8000
+      - 8099:8000
     volumes:
       - type: volume
         source: database
         target: /techtrek/database/
-    command: >
-      bash -c "python3 manage.py makemigrations
-      && source secretkeys.sh
-      && python3 manage.py migrate
-      && python3 manage.py collectstatic --noinput
-      && /usr/local/bin/gunicorn techtrek.wsgi:application -b :8000"
 
 volumes:
   database:
