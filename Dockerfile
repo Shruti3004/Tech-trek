@@ -13,3 +13,7 @@ COPY requirements.txt .
 RUN pip install pillow && pip install pycrypto && pip install -r requirements.txt
 
 COPY . .
+
+RUN ["chmod", "+x", "/techtrek/container-run.sh"]
+
+ENTRYPOINT [ "/techtrek/container-run.sh" ]
