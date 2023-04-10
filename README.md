@@ -1,4 +1,6 @@
-# tech-trek
+# tech-trek  
+**Note** : Do not merge ``2023-backend`` branch to main. It will cause merge conflicts that wont be easy to resolve. Also this is a temporary measure for the 2023 event. The main branch contains well written code that should not be interfered with. For future editions of Tech-Trek we will use the main branch as a template.     
+
 
 ## How to setup development environment (Linux)
 1. Clone this repository `git clone https://github.com/prakhar9998/tech-trek`.
