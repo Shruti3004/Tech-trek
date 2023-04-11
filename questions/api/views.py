@@ -2,7 +2,7 @@ from rest_framework import views
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
-from utils.permissions import IsPaid
+from utils.permissions import IsPaid, IsActive
 from utils.badges import should_award_badge
 from utils.questions import get_next_question
 from questions.models import Question
@@ -22,7 +22,7 @@ from badges.api.serializers import BadgeToPlayerSerializer
 
 
 class GetQuestion(views.APIView):
-    permission_classes = [IsAuthenticated, IsPaid]
+    permission_classes = [IsAuthenticated, IsPaid, IsActive]
 
     def get(self, request, format=None):
         player = request.user
@@ -34,11 +34,17 @@ class GetQuestion(views.APIView):
         q_text = ""
         if datetime.now() < settings.START_TIME:
             has_started = False
+        
+        if datetime.now() > settings.END_TIME:
+            return Response({"detail": "Game is over."})
+
         if time_left < 0:
             time_left = 0
-
+        
             q = get_next_question(player)
             q_text = q.question
+
+        
 
         player_info_serializer = PlayerInfoSerializer(player)
         # queryset = player.badges.annotate(total=Count('badge_type'))
@@ -64,6 +70,9 @@ class GetQuestion(views.APIView):
         tz_info = player.unlock_time.tzinfo
         time_left = (player.unlock_time - datetime.now(tz_info)).total_seconds()
 
+        if datetime.now() > settings.END_TIME:
+            return Response({"detail": "Game is over."})
+        
         if datetime.now() < settings.START_TIME:
             return Response({"detail": "Game is not started yet."})
 

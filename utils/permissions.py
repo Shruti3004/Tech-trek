@@ -17,6 +17,26 @@ class IsPaid(permissions.BasePermission):
             return True
         raise RequirePayment()
 
+class IsActive(permissions.BasePermission):
+    """
+    Allow access to only active users.
+    """
+
+    message = "Only active users can access this."
+
+    def has_object_permission(self, request, view, obj):
+        if obj.is_active:
+            return True
+        raise RequireVerification()
+    
+class RequireVerification(APIException):
+    status_code = status.HTTP_403_FORBIDDEN
+    default_detail = {
+        "player_info": {
+            "is_active": False,
+        },
+        "message": "Only verified users can access this.",
+    }
 
 class RequirePayment(APIException):
     status_code = status.HTTP_403_FORBIDDEN

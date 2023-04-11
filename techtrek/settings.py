@@ -83,7 +83,13 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     "payments",
-    # "rest_framework.authtoken",
+    # django-rest-auth
+    'rest_framework.authtoken',
+    # 'rest_auth',
+    # 'rest_auth.registration',
+    # django-allauth
+    # 'allauth',
+    # 'allauth.account',
 ]
 
 MIDDLEWARE = [
@@ -174,8 +180,33 @@ MEDIA_URL = "/media/"
 # TIME MIDDLEWARE SETTINGS
 
 # CAUTION: USE DIFFERENT TIMES IN PRODUCTION
-START_TIME = datetime(2023, 4, 9, 0, 0, 0, 0)
-END_TIME = datetime(2023, 4, 11, 12, 0, 0, 0)
+START_DAY=int(os.getenv("START_DAY"))
+START_HOURS=int(os.getenv("START_HOURS"))
+START_MINUTE=int(os.getenv("START_MINUTE"))
+START_SECOND=int(os.getenv("START_SECOND"))
+START_MS=int(os.getenv("START_MS"))
+END_DAY=int(os.getenv("END_DAY"))
+END_HOURS=int(os.getenv("END_HOURS"))
+END_MINUTE=int(os.getenv("END_MINUTE"))
+END_SECOND=int(os.getenv("END_SECOND"))
+END_MS=int(os.getenv("END_MS"))  
+
+START_TIME = datetime(2023, 4, START_DAY, START_HOURS, START_MINUTE, START_SECOND, START_MS)
+END_TIME = datetime(2023, 4, END_DAY, END_HOURS, END_MINUTE, END_SECOND, END_MS)
 HOST_URL = "http://localhost:8000"
 
 FEE_AMOUNT = 40
+
+
+# SMTP Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+
+# Set up auth serializers
+# REST_AUTH_REGISTER_SERIALIZERS = {
+#     'REGISTER_SERIALIZER': 'accounts.api.serializers.PlayerRegisterSerializer',
+# }

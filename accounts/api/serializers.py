@@ -2,7 +2,13 @@ from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from rest_framework_simplejwt.tokens import RefreshToken
 from accounts.models import Player
-
+from django.contrib.sites.shortcuts import get_current_site
+from django.template.loader import render_to_string
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
+# from .tokens import account_activation_token
+# from rest_auth.registration.serializers import RegisterSerializer
+from django.contrib.auth.tokens import default_token_generator
 
 class PlayerRegisterSerializer(serializers.ModelSerializer):
     token = serializers.SerializerMethodField(read_only=True)
@@ -41,6 +47,14 @@ class PlayerRegisterSerializer(serializers.ModelSerializer):
         ],
     )
 
+    tezos_wallet_id = serializers.CharField(
+        max_length=255, 
+        required=False,
+        help_text="Enter You Tezos Wallet Address",
+        default=None,
+        allow_null=True,
+    )
+
     avatar_no = serializers.IntegerField(default=1)
 
     def validate_avatar_no(self, value):
@@ -70,8 +84,10 @@ class PlayerRegisterSerializer(serializers.ModelSerializer):
             "avatar_no",
             "contact_no",
             "admission_no",
+            "tezos_wallet_id",
         ]
 
+    
     def create(self, validated_data):
         username = validated_data["username"]
         email = validated_data["email"]
@@ -80,18 +96,40 @@ class PlayerRegisterSerializer(serializers.ModelSerializer):
         avatar_no = validated_data["avatar_no"]
         contact_no = validated_data["contact_no"]
         admission_no = validated_data["admission_no"]
+        tezos_wallet_id= validated_data["tezos_wallet_id"]
         if password != password2:
             raise serializers.ValidationError("Passwords didn't match.")
 
-        user = Player(
-            username=username,
-            email=email,
-            avatar_no=avatar_no,
-            contact_no=contact_no,
-            admission_no=admission_no,
-        )
+        validated_user_data = {
+            "username": username,
+            "email": email,
+            "avatar_no":avatar_no,
+            "contact_no":contact_no,
+            "admission_no":admission_no,
+            "tezos_wallet_id":tezos_wallet_id,
+        }
+        # user = Player(
+        #     username=username,
+        #     email=email,
+        #     avatar_no=avatar_no,
+        #     contact_no=contact_no,
+        #     admission_no=admission_no,
+        # )
+        user = super(PlayerRegisterSerializer, self).create(validated_user_data)
         user.set_password(password)
+        user.is_active = False
         user.save()
+
+        current_site = get_current_site(self.context['request'])
+        subject = 'Activate Your Account'
+        message = render_to_string('registration/account_activation_email.txt', {
+            'user': user,
+            'domain': current_site.domain,
+            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+            # 'token': account_activation_token.make_token(user),
+            'token': default_token_generator.make_token(user),
+        })
+        user.email_user(subject, message)
 
         return user
 

@@ -1,28 +1,29 @@
 version: "3"
 
 services:
-  frontend:
+  frontend2023:
     depends_on:
-      - backend
+      - backend2023
     # env_file: client/.env
     # build:
     #   context: client
-    image: hmx098/techtrek2023_frontend
+    image: hmx098/techtrek2023_frontend:v2
     networks:
       - default
     ports:
       - 4096:80
 
-  backend:
+  backend2023:
     restart: always
-    image: hmx098/tech_trek_backend
-    env_file: .env
+    image: hmx098/tech_trek_backend:testingv3
+    env_file: 
+      - stack.env
     ports:
       - 8099:8000
     volumes:
       - type: volume
-        source: database
+        source: techdatabase
         target: /techtrek/database/
 
 volumes:
-  database:
+  techdatabase:

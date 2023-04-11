@@ -12,6 +12,7 @@ class Player(AbstractUser):
     is_paid = models.BooleanField(default=True)
     last_solved = models.DateTimeField(default=timezone.now)
     unlock_time = models.DateTimeField(default=timezone.now)
+    tezos_wallet_id= models.CharField(blank=True, null=True, max_length=255, default=None)
     current_question = models.IntegerField(default=1)
     score = models.IntegerField(default=0)
     avatar_no = models.PositiveIntegerField(default=1)

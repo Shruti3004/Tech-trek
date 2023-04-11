@@ -1,0 +1,11 @@
+Hi {{ user.username }},
+
+Thank you for registering for our event TechTrek! To activate your account, please click on the following link:
+
+
+http://{{ domain }}/accounts/verify-email/{{ uid }}/{{ token }}/
+
+If you did not register for this site, please ignore this message.
+
+Thanks,
+Nibble Computer Society

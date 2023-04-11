@@ -33,6 +33,7 @@ class PlayerUserAdmin(UserAdmin):
                     "avatar_no",
                     "technical_solved",
                     "score",
+                    "tezos_wallet_id",
                 )
             },
         ),
